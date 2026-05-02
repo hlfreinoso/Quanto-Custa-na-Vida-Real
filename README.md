@@ -1,8 +1,36 @@
-# Vale o Pix?
+# Quanto custa na vida real
 
 Aplicativo mobile para transformar valores monetarios em comparacoes reais da vida do usuario: horas de trabalho, dias de trabalho, percentual da renda, impacto mensal/anual e equivalencias do cotidiano.
 
-Tambem pode ser referenciado como **Quanto Custa na Vida Real**.
+## Instalar e Rodar
+
+Estas instrucoes partem de uma maquina limpa.
+
+### Pre-requisitos
+
+- Git
+- Node.js LTS
+- npm
+
+### 1. Clonar o repositorio
+
+```bash
+git clone <url-do-repositorio>
+cd Quanto-Custa-na-Vida-Real
+```
+
+### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+### 3. Validar a estrutura atual
+
+```bash
+npm test
+npm run lint
+```
 
 ## Escopo do MVP
 
