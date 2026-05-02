@@ -10,22 +10,15 @@ import {
   View,
 } from "react-native";
 
+import { saveInitialProfile } from "../../storage/InitialProfileStorage";
+
 export function ComparisonPreferencesScreen() {
   const [monthlyIncome, setMonthlyIncome] = useState("");
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
 
-  const selectedCount = selectedIds.size;
   const actionLabel = useMemo(() => {
-    if (selectedCount === 0) {
-      return "Continuar sem preferencias";
-    }
-
-    if (selectedCount === 1) {
-      return "Continuar com 1 escolha";
-    }
-
-    return `Continuar com ${selectedCount} escolhas`;
-  }, [selectedCount]);
+    return "Continuar";
+  }, []);
 
   function togglePreference(id: string) {
     setSelectedIds((currentIds) => {
@@ -41,12 +34,19 @@ export function ComparisonPreferencesScreen() {
     });
   }
 
-  function handleContinue() {
+  async function handleContinue() {
+    const selectedComparisonIds = Array.from(selectedIds);
+
+    await saveInitialProfile({
+      monthlyIncome: monthlyIncome.trim(),
+      selectedComparisonIds,
+    });
+
     router.push({
       pathname: "/calculator",
       params: {
         monthlyIncome: monthlyIncome.trim(),
-        selectedComparisonIds: Array.from(selectedIds).join(","),
+        selectedComparisonIds: selectedComparisonIds.join(","),
       },
     });
   }

@@ -1,5 +1,5 @@
-import { ComparisonPreferencesScreen } from "../screens/onboarding/ComparisonPreferencesScreen";
+import { HomeScreen as Home } from "../screens/home/HomeScreen";
 
 export default function HomeScreen() {
-  return <ComparisonPreferencesScreen />;
+  return <Home />;
 }
