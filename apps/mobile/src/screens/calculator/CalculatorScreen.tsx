@@ -36,6 +36,7 @@ export function CalculatorScreen() {
   const [amount, setAmount] = useState("");
   const [result, setResult] = useState<CalculatorResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const hasResult = result !== null;
 
   function handleCalculate() {
     const parsedAmount = parseDecimalInput(amount);
@@ -72,46 +73,58 @@ export function CalculatorScreen() {
     }
   }
 
+  function handleNewProduct() {
+    setExpenseName("");
+    setAmount("");
+    setResult(null);
+    setErrorMessage(null);
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.eyebrow}>Calculo rapido</Text>
-        <Text style={styles.title}>Qual compra voce quer entender?</Text>
+        <Text style={styles.title}>
+          {hasResult ? "Resultado da compra" : "Qual compra voce quer entender?"}
+        </Text>
         <Text style={styles.description}>
-          Informe o valor da compra. Depois o app mostra o custo em horas de
-          trabalho e comparacoes do seu dia.
+          {hasResult
+            ? "Compare outro produto quando quiser recalcular."
+            : "Informe o valor da compra. Depois o app mostra o custo em horas de trabalho e comparacoes do seu dia."}
         </Text>
       </View>
 
-      <View style={styles.form}>
-        <View style={styles.field}>
-          <Text style={styles.label}>Nome da compra</Text>
-          <TextInput
-            onChangeText={setExpenseName}
-            placeholder="Ex: Cadeira ergonomica"
-            placeholderTextColor="#8A8F98"
-            style={styles.input}
-            value={expenseName}
-          />
-        </View>
+      {!hasResult ? (
+        <View style={styles.form}>
+          <View style={styles.field}>
+            <Text style={styles.label}>Nome da compra</Text>
+            <TextInput
+              onChangeText={setExpenseName}
+              placeholder="Ex: Cadeira ergonomica"
+              placeholderTextColor="#8A8F98"
+              style={styles.input}
+              value={expenseName}
+            />
+          </View>
 
-        <View style={styles.field}>
-          <Text style={styles.label}>Valor</Text>
-          <TextInput
-            inputMode="decimal"
-            keyboardType="decimal-pad"
-            onChangeText={setAmount}
-            placeholder="Ex: 1499,00"
-            placeholderTextColor="#8A8F98"
-            style={styles.input}
-            value={amount}
-          />
-        </View>
+          <View style={styles.field}>
+            <Text style={styles.label}>Valor</Text>
+            <TextInput
+              inputMode="decimal"
+              keyboardType="decimal-pad"
+              onChangeText={setAmount}
+              placeholder="Ex: 1499,00"
+              placeholderTextColor="#8A8F98"
+              style={styles.input}
+              value={amount}
+            />
+          </View>
 
-        <Text style={styles.assumptionText}>
-          Usamos 8 horas por dia e 22 dias por mes como padrao.
-        </Text>
-      </View>
+          <Text style={styles.assumptionText}>
+            Usamos 8 horas por dia e 22 dias por mes como padrao.
+          </Text>
+        </View>
+      ) : null}
 
       {errorMessage ? (
         <Text accessibilityRole="alert" style={styles.errorText}>
@@ -119,7 +132,7 @@ export function CalculatorScreen() {
         </Text>
       ) : null}
 
-      {result ? (
+      {hasResult ? (
         <View style={styles.resultCard}>
           <Text style={styles.resultEyebrow}>Resultado inicial</Text>
           <Text style={styles.resultTitle}>Essa compra custa:</Text>
@@ -136,8 +149,13 @@ export function CalculatorScreen() {
         </View>
       ) : null}
 
-      <Pressable onPress={handleCalculate} style={styles.primaryButton}>
-        <Text style={styles.primaryButtonText}>Calcular custo real</Text>
+      <Pressable
+        onPress={hasResult ? handleNewProduct : handleCalculate}
+        style={styles.primaryButton}
+      >
+        <Text style={styles.primaryButtonText}>
+          {hasResult ? "Novo produto" : "Calcular custo real"}
+        </Text>
       </Pressable>
     </ScrollView>
   );
