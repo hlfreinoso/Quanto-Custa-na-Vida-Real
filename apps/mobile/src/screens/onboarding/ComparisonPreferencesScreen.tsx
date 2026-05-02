@@ -12,9 +12,7 @@ import {
 
 export function ComparisonPreferencesScreen() {
   const [monthlyIncome, setMonthlyIncome] = useState("");
-  const [selectedIds, setSelectedIds] = useState<Set<string>>(
-    () => new Set(["coffee", "delivery", "netflix"]),
-  );
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
 
   const selectedCount = selectedIds.size;
   const actionLabel = useMemo(() => {

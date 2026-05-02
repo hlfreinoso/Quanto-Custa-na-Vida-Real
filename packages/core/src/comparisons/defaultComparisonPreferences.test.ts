@@ -12,13 +12,18 @@ describe("defaultComparisonPreferences", () => {
   it("starts with lightweight everyday comparison options", () => {
     expect(defaultComparisonPreferences.map((preference) => preference.id)).toEqual([
       "coffee",
-      "beer",
-      "chocolate",
-      "delivery",
+      "beer_can",
+      "bonbon",
+      "burger",
       "netflix",
       "gasoline",
-      "lunch",
-      "market",
+      "bus_ticket",
+      "movie_ticket",
+      "acai",
+      "pizza",
+      "bread",
+      "soda_2l",
+      "ride_short",
     ]);
   });
 
@@ -32,5 +37,17 @@ describe("defaultComparisonPreferences", () => {
       unitPrice: 39.9,
       unitLabel: "meses de Netflix",
     });
+  });
+
+  it("uses only tangible comparison items with direct prices", () => {
+    expect(defaultComparisonPreferences).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: "market" }),
+        expect.objectContaining({ id: "delivery" }),
+      ]),
+    );
+
+    expect(defaultComparisonPreferences.every(({ unitPrice }) => unitPrice > 0))
+      .toBe(true);
   });
 });

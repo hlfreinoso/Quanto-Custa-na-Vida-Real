@@ -8,14 +8,14 @@ describe("calculateComparisonResults", () => {
     const results = calculateComparisonResults({
       amount: 180,
       preferences: defaultComparisonPreferences,
-      selectedIds: ["coffee", "netflix", "chocolate"],
+      selectedIds: ["coffee", "netflix", "bonbon"],
       limit: 3,
       random: () => 0.99,
     });
 
     expect(results).toHaveLength(3);
     expect(results.map(({ id }) => id).sort()).toEqual([
-      "chocolate",
+      "bonbon",
       "coffee",
       "netflix",
     ]);

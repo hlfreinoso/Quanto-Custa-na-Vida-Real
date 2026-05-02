@@ -169,7 +169,7 @@ function parseDecimalInput(value: string): number {
 
 function parseSelectedComparisonIds(value: string | undefined): string[] {
   if (!value) {
-    return ["coffee", "netflix", "chocolate"];
+    return ["coffee", "netflix", "bonbon"];
   }
 
   return value.split(",").filter(Boolean);
