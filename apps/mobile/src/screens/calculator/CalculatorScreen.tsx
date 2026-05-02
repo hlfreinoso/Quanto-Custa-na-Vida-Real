@@ -15,29 +15,28 @@ interface CalculatorResult {
   workHoursEquivalent: number;
 }
 
+const DEFAULT_WORK_HOURS_PER_DAY = 8;
+const DEFAULT_WORK_DAYS_PER_MONTH = 22;
+
 export function CalculatorScreen() {
   const { monthlyIncome: initialMonthlyIncome } = useLocalSearchParams<{
     monthlyIncome?: string;
   }>();
   const [expenseName, setExpenseName] = useState("");
   const [amount, setAmount] = useState("");
-  const [workHoursPerDay, setWorkHoursPerDay] = useState("8");
-  const [workDaysPerMonth, setWorkDaysPerMonth] = useState("22");
   const [result, setResult] = useState<CalculatorResult | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function handleCalculate() {
     const parsedAmount = parseDecimalInput(amount);
     const parsedMonthlyIncome = parseDecimalInput(initialMonthlyIncome ?? "");
-    const parsedWorkHoursPerDay = parseDecimalInput(workHoursPerDay);
-    const parsedWorkDaysPerMonth = parseDecimalInput(workDaysPerMonth);
 
     try {
       const calculation = calculateBasicExpenseImpact(
         {
           monthlyIncome: parsedMonthlyIncome,
-          workHoursPerDay: parsedWorkHoursPerDay,
-          workDaysPerMonth: parsedWorkDaysPerMonth,
+          workHoursPerDay: DEFAULT_WORK_HOURS_PER_DAY,
+          workDaysPerMonth: DEFAULT_WORK_DAYS_PER_MONTH,
           currency: "BRL",
         },
         {
@@ -51,9 +50,7 @@ export function CalculatorScreen() {
       setErrorMessage(null);
     } catch {
       setResult(null);
-      setErrorMessage(
-        "Preencha valor, renda inicial, horas e dias com numeros validos.",
-      );
+      setErrorMessage("Preencha valor e renda inicial com numeros validos.");
     }
   }
 
@@ -93,33 +90,9 @@ export function CalculatorScreen() {
           />
         </View>
 
-        <View style={styles.row}>
-          <View style={[styles.field, styles.rowField]}>
-            <Text style={styles.label}>Horas por dia</Text>
-            <TextInput
-              inputMode="decimal"
-              keyboardType="decimal-pad"
-              onChangeText={setWorkHoursPerDay}
-              placeholder="8"
-              placeholderTextColor="#8A8F98"
-              style={styles.input}
-              value={workHoursPerDay}
-            />
-          </View>
-
-          <View style={[styles.field, styles.rowField]}>
-            <Text style={styles.label}>Dias por mes</Text>
-            <TextInput
-              inputMode="decimal"
-              keyboardType="decimal-pad"
-              onChangeText={setWorkDaysPerMonth}
-              placeholder="22"
-              placeholderTextColor="#8A8F98"
-              style={styles.input}
-              value={workDaysPerMonth}
-            />
-          </View>
-        </View>
+        <Text style={styles.assumptionText}>
+          Usamos 8 horas por dia e 22 dias por mes como padrao.
+        </Text>
       </View>
 
       {errorMessage ? (
@@ -218,12 +191,10 @@ const styles = StyleSheet.create({
     color: "#171717",
     fontSize: 17,
   },
-  row: {
-    flexDirection: "row",
-    gap: 12,
-  },
-  rowField: {
-    flex: 1,
+  assumptionText: {
+    color: "#6B7280",
+    fontSize: 13,
+    lineHeight: 19,
   },
   primaryButton: {
     minHeight: 54,
