@@ -1,10 +1,8 @@
 # Quanto custa na vida real
 
-Aplicativo mobile para transformar valores monetarios em comparacoes reais da vida do usuario: horas de trabalho, dias de trabalho, percentual da renda, impacto mensal/anual e equivalencias do cotidiano.
+Aplicativo mobile que transforma o preco de uma compra em comparacoes simples: horas do seu trabalho e equivalencias do dia a dia, como Netflix, cafe, bombons, gasolina e outros itens tangiveis.
 
 ## Instalar e Rodar
-
-Estas instrucoes partem de uma maquina limpa.
 
 ### Pre-requisitos
 
@@ -25,25 +23,71 @@ cd Quanto-Custa-na-Vida-Real
 npm install
 ```
 
-### 3. Validar a estrutura atual
+### 3. Rodar o app
 
 ```bash
-npm test
-npm run lint
-npm run typecheck
+npm run web:mobile
 ```
 
-### 4. Rodar o app mobile
+Abra no navegador:
+
+```text
+http://localhost:8081
+```
+
+Para Expo em modo geral:
 
 ```bash
 npm run dev:mobile
 ```
 
-Para abrir no navegador:
+## Como Usar o App
+
+1. Abra a pagina inicial.
+2. Clique em `Iniciar`.
+3. No primeiro uso, informe a renda mensal liquida.
+4. Escolha preferencias de comparacao, se quiser.
+5. Clique em `Continuar`.
+6. Informe o nome do produto e o preco.
+7. Clique em `Calcular custo real`.
+8. Veja a tela de resultado com:
+   - horas do seu trabalho;
+   - comparacoes sorteadas com base nas preferencias;
+   - botao `Novo comparativo`;
+   - atalho para `Mudar preferencias`.
+
+Se o perfil inicial ja estiver salvo, `Iniciar` pula o onboarding e abre direto a calculadora.
+
+## Validar o Projeto
 
 ```bash
-npm run web:mobile
+npm test
+npm run typecheck
+npm run lint
 ```
+
+Observacao: `npm run lint` ainda e placeholder. A configuracao real de lint deve entrar em uma etapa futura.
+
+## Testes Automatizados
+
+Coberto hoje:
+
+- calculo de valor-hora;
+- calculo de horas equivalentes;
+- calculo basico de impacto;
+- rejeicao de entradas invalidas no core;
+- lista padrao de comparacoes;
+- selecao aleatoria/limitada de comparacoes;
+- fallback quando o usuario escolhe poucas preferencias.
+
+Ainda nao coberto:
+
+- componentes React Native;
+- navegacao Expo Router;
+- persistencia AsyncStorage;
+- fluxo completo de onboarding ate resultado.
+
+Essas camadas devem ganhar testes quando adicionarmos uma biblioteca de teste para UI mobile.
 
 ## Escopo do MVP
 
@@ -53,12 +97,10 @@ Foco inicial:
 
 - calculo local de impacto financeiro;
 - perfil financeiro local;
-- historico local;
+- preferencias locais;
 - equivalencias locais;
-- geracao local de card/imagem;
-- compartilhamento nativo;
-- premium via compra in-app em fase publicavel;
-- analytics e crash reporting externos.
+- resultado compartilhavel em etapa futura;
+- historico local em etapa futura.
 
 Fora do MVP:
 
@@ -71,20 +113,15 @@ Fora do MVP:
 - integracao bancaria;
 - controle financeiro completo.
 
-## Stack Alvo
+## Stack
 
 - React Native
 - Expo
 - TypeScript
 - Expo Router
-- Zustand
-- Expo SQLite
-- RevenueCat
-- PostHog
-- Sentry
-- react-native-view-shot
-- expo-sharing
-- expo-media-library
+- AsyncStorage no prototipo
+- Expo SQLite no MVP publicado
+- Vitest para core
 
 ## Estrutura
 
@@ -92,11 +129,16 @@ Fora do MVP:
 apps/
   mobile/
     src/
+      app/
+      screens/
+      storage/
 packages/
   core/
     src/
+      calculations/
+      comparisons/
+      models/
   ui/
-    src/
 docs/
 ```
 
@@ -104,16 +146,12 @@ docs/
 
 - `packages/core`: regras puras e testaveis, sem dependencia de React Native ou Expo.
 - `apps/mobile`: telas, navegacao, storage local e integracoes nativas.
-- `packages/ui`: componentes compartilhaveis quando fizer sentido.
+- `packages/ui`: componentes compartilhados quando houver ganho real.
 - `docs`: produto, arquitetura, roadmap, monetizacao e analytics.
 
-## Como Comecar
+## Commits
 
-Este commit inicial contem apenas a estrutura base do projeto. As dependencias e funcionalidades serao adicionadas em tarefas separadas, com commits pequenos e Conventional Commits.
-
-## Regras de Commit
-
-Formato:
+Usar Conventional Commits:
 
 ```text
 <tipo>(escopo): <descricao>
@@ -122,5 +160,5 @@ Formato:
 Exemplo:
 
 ```text
-chore(project): create initial monorepo structure
+feat(calculator): show preference comparisons
 ```

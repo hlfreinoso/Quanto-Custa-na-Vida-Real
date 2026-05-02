@@ -50,4 +50,14 @@ describe("calculateComparisonResults", () => {
     expect(results).toHaveLength(3);
     expect(results.map(({ id }) => id)).toContain("netflix");
   });
+
+  it("rejects non-positive amount", () => {
+    expect(() =>
+      calculateComparisonResults({
+        amount: 0,
+        preferences: defaultComparisonPreferences,
+        selectedIds: ["coffee"],
+      }),
+    ).toThrow("amount must be greater than zero");
+  });
 });
