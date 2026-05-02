@@ -1,1 +1,2 @@
-// Public exports will be added with the first core feature.
+export { calculateHourlyRate } from "./calculations/calculateHourlyRate";
+export type { UserFinancialProfile } from "./models/UserFinancialProfile";
