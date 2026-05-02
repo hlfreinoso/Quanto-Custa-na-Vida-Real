@@ -30,6 +30,19 @@ npm install
 ```bash
 npm test
 npm run lint
+npm run typecheck
+```
+
+### 4. Rodar o app mobile
+
+```bash
+npm run dev:mobile
+```
+
+Para abrir no navegador:
+
+```bash
+npm run web:mobile
 ```
 
 ## Escopo do MVP
