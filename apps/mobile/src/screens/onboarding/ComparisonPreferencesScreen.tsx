@@ -48,6 +48,7 @@ export function ComparisonPreferencesScreen() {
       pathname: "/calculator",
       params: {
         monthlyIncome: monthlyIncome.trim(),
+        selectedComparisonIds: Array.from(selectedIds).join(","),
       },
     });
   }

@@ -1,4 +1,9 @@
-import { calculateBasicExpenseImpact } from "@vale-o-pix/core";
+import {
+  calculateBasicExpenseImpact,
+  calculateComparisonResults,
+  defaultComparisonPreferences,
+  type ComparisonResult,
+} from "@vale-o-pix/core";
 import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import {
@@ -13,14 +18,19 @@ import {
 interface CalculatorResult {
   hourlyRate: number;
   workHoursEquivalent: number;
+  comparisons: ComparisonResult[];
 }
 
 const DEFAULT_WORK_HOURS_PER_DAY = 8;
 const DEFAULT_WORK_DAYS_PER_MONTH = 22;
 
 export function CalculatorScreen() {
-  const { monthlyIncome: initialMonthlyIncome } = useLocalSearchParams<{
+  const {
+    monthlyIncome: initialMonthlyIncome,
+    selectedComparisonIds,
+  } = useLocalSearchParams<{
     monthlyIncome?: string;
+    selectedComparisonIds?: string;
   }>();
   const [expenseName, setExpenseName] = useState("");
   const [amount, setAmount] = useState("");
@@ -45,8 +55,16 @@ export function CalculatorScreen() {
           frequency: "once",
         },
       );
+      const comparisons = calculateComparisonResults({
+        amount: parsedAmount,
+        preferences: defaultComparisonPreferences,
+        selectedIds: parseSelectedComparisonIds(selectedComparisonIds),
+      });
 
-      setResult(calculation);
+      setResult({
+        ...calculation,
+        comparisons,
+      });
       setErrorMessage(null);
     } catch {
       setResult(null);
@@ -104,13 +122,17 @@ export function CalculatorScreen() {
       {result ? (
         <View style={styles.resultCard}>
           <Text style={styles.resultEyebrow}>Resultado inicial</Text>
-          <Text style={styles.resultTitle}>
-            Essa compra custa aproximadamente{" "}
-            {formatHours(result.workHoursEquivalent)} horas do seu trabalho.
-          </Text>
-          <Text style={styles.resultDetail}>
-            Seu valor-hora estimado e de R$ {formatCurrency(result.hourlyRate)}.
-          </Text>
+          <Text style={styles.resultTitle}>Essa compra custa:</Text>
+          <View style={styles.resultList}>
+            <Text style={styles.resultItem}>
+              {formatHours(result.workHoursEquivalent)} horas do seu trabalho
+            </Text>
+            {result.comparisons.map((comparison) => (
+              <Text key={comparison.id} style={styles.resultItem}>
+                {formatQuantity(comparison.quantity)} {comparison.unitLabel}
+              </Text>
+            ))}
+          </View>
         </View>
       ) : null}
 
@@ -127,6 +149,14 @@ function parseDecimalInput(value: string): number {
   return Number(normalizedValue);
 }
 
+function parseSelectedComparisonIds(value: string | undefined): string[] {
+  if (!value) {
+    return ["coffee", "netflix", "chocolate"];
+  }
+
+  return value.split(",").filter(Boolean);
+}
+
 function formatHours(value: number): string {
   if (value >= 10) {
     return value.toFixed(1).replace(".", ",");
@@ -135,8 +165,12 @@ function formatHours(value: number): string {
   return value.toFixed(2).replace(".", ",");
 }
 
-function formatCurrency(value: number): string {
-  return value.toFixed(2).replace(".", ",");
+function formatQuantity(value: number): string {
+  if (value >= 10) {
+    return Math.round(value).toString();
+  }
+
+  return value.toFixed(1).replace(".", ",");
 }
 
 const styles = StyleSheet.create({
@@ -237,9 +271,13 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     lineHeight: 28,
   },
-  resultDetail: {
+  resultList: {
+    gap: 6,
+  },
+  resultItem: {
     color: "#31524D",
-    fontSize: 15,
-    lineHeight: 21,
+    fontSize: 17,
+    fontWeight: "800",
+    lineHeight: 24,
   },
 });

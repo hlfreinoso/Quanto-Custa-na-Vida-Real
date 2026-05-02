@@ -5,3 +5,10 @@ export interface ComparisonPreference {
   unitPrice: number;
   unitLabel: string;
 }
+
+export interface ComparisonResult {
+  id: string;
+  label: string;
+  quantity: number;
+  unitLabel: string;
+}
