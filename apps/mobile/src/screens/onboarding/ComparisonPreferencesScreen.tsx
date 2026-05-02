@@ -1,4 +1,5 @@
 import { defaultComparisonPreferences } from "@vale-o-pix/core";
+import { router } from "expo-router";
 import { useMemo, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
@@ -78,7 +79,10 @@ export function ComparisonPreferencesScreen() {
         })}
       </View>
 
-      <Pressable style={styles.primaryButton}>
+      <Pressable
+        onPress={() => router.push("/calculator")}
+        style={styles.primaryButton}
+      >
         <Text style={styles.primaryButtonText}>{actionLabel}</Text>
       </Pressable>
     </ScrollView>
