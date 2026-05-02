@@ -1,9 +1,17 @@
 import { defaultComparisonPreferences } from "@vale-o-pix/core";
 import { router } from "expo-router";
 import { useMemo, useState } from "react";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export function ComparisonPreferencesScreen() {
+  const [monthlyIncome, setMonthlyIncome] = useState("");
   const [selectedIds, setSelectedIds] = useState<Set<string>>(
     () => new Set(["coffee", "delivery", "netflix"]),
   );
@@ -35,6 +43,15 @@ export function ComparisonPreferencesScreen() {
     });
   }
 
+  function handleContinue() {
+    router.push({
+      pathname: "/calculator",
+      params: {
+        monthlyIncome: monthlyIncome.trim(),
+      },
+    });
+  }
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
@@ -44,6 +61,19 @@ export function ComparisonPreferencesScreen() {
           Vamos priorizar exemplos que fazem sentido no seu dia a dia. Voce
           pode mudar isso depois.
         </Text>
+      </View>
+
+      <View style={styles.profileField}>
+        <Text style={styles.label}>Renda mensal liquida</Text>
+        <TextInput
+          inputMode="decimal"
+          keyboardType="decimal-pad"
+          onChangeText={setMonthlyIncome}
+          placeholder="Ex: 4500,00"
+          placeholderTextColor="#8A8F98"
+          style={styles.input}
+          value={monthlyIncome}
+        />
       </View>
 
       <View style={styles.grid}>
@@ -80,7 +110,7 @@ export function ComparisonPreferencesScreen() {
       </View>
 
       <Pressable
-        onPress={() => router.push("/calculator")}
+        onPress={handleContinue}
         style={styles.primaryButton}
       >
         <Text style={styles.primaryButtonText}>{actionLabel}</Text>
@@ -124,6 +154,25 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 10,
+  },
+  profileField: {
+    gap: 8,
+    marginBottom: 22,
+  },
+  label: {
+    color: "#252525",
+    fontSize: 14,
+    fontWeight: "800",
+  },
+  input: {
+    minHeight: 54,
+    borderWidth: 1,
+    borderColor: "#D7DBD2",
+    borderRadius: 8,
+    paddingHorizontal: 14,
+    backgroundColor: "#FFFFFF",
+    color: "#171717",
+    fontSize: 17,
   },
   option: {
     minHeight: 54,

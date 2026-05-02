@@ -1,4 +1,5 @@
 import { calculateBasicExpenseImpact } from "@vale-o-pix/core";
+import { useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import {
   Pressable,
@@ -15,9 +16,11 @@ interface CalculatorResult {
 }
 
 export function CalculatorScreen() {
+  const { monthlyIncome: initialMonthlyIncome } = useLocalSearchParams<{
+    monthlyIncome?: string;
+  }>();
   const [expenseName, setExpenseName] = useState("");
   const [amount, setAmount] = useState("");
-  const [monthlyIncome, setMonthlyIncome] = useState("");
   const [workHoursPerDay, setWorkHoursPerDay] = useState("8");
   const [workDaysPerMonth, setWorkDaysPerMonth] = useState("22");
   const [result, setResult] = useState<CalculatorResult | null>(null);
@@ -25,7 +28,7 @@ export function CalculatorScreen() {
 
   function handleCalculate() {
     const parsedAmount = parseDecimalInput(amount);
-    const parsedMonthlyIncome = parseDecimalInput(monthlyIncome);
+    const parsedMonthlyIncome = parseDecimalInput(initialMonthlyIncome ?? "");
     const parsedWorkHoursPerDay = parseDecimalInput(workHoursPerDay);
     const parsedWorkDaysPerMonth = parseDecimalInput(workDaysPerMonth);
 
@@ -48,7 +51,9 @@ export function CalculatorScreen() {
       setErrorMessage(null);
     } catch {
       setResult(null);
-      setErrorMessage("Preencha valor, renda, horas e dias com numeros validos.");
+      setErrorMessage(
+        "Preencha valor, renda inicial, horas e dias com numeros validos.",
+      );
     }
   }
 
@@ -58,8 +63,8 @@ export function CalculatorScreen() {
         <Text style={styles.eyebrow}>Calculo rapido</Text>
         <Text style={styles.title}>Qual compra voce quer entender?</Text>
         <Text style={styles.description}>
-          Informe o valor e, se quiser, sua renda. Depois o app mostra o custo
-          em horas de trabalho e comparacoes do seu dia.
+          Informe o valor da compra. Depois o app mostra o custo em horas de
+          trabalho e comparacoes do seu dia.
         </Text>
       </View>
 
@@ -85,19 +90,6 @@ export function CalculatorScreen() {
             placeholderTextColor="#8A8F98"
             style={styles.input}
             value={amount}
-          />
-        </View>
-
-        <View style={styles.field}>
-          <Text style={styles.label}>Renda mensal liquida</Text>
-          <TextInput
-            inputMode="decimal"
-            keyboardType="decimal-pad"
-            onChangeText={setMonthlyIncome}
-            placeholder="Ex: 4500,00"
-            placeholderTextColor="#8A8F98"
-            style={styles.input}
-            value={monthlyIncome}
           />
         </View>
 
