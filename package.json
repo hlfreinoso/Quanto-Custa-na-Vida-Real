@@ -1,0 +1,14 @@
+{
+  "name": "vale-o-pix",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Monorepo do app Vale o Pix? / Quanto Custa na Vida Real.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "lint": "echo \"No lint configured yet\"",
+    "test": "echo \"No tests configured yet\""
+  }
+}
