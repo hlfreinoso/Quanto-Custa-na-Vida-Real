@@ -2,7 +2,7 @@
 
 ## Visao Geral
 
-O Vale o Pix? transforma precos em comparacoes reais da vida do usuario, como horas de trabalho, dias de trabalho, percentual da renda e equivalencias do cotidiano.
+O Quanto custa na vida real transforma precos em comparacoes reais da vida do usuario, como horas de trabalho, dias de trabalho, percentual da renda e equivalencias do cotidiano.
 
 ## Proposta de Valor
 
@@ -25,3 +25,20 @@ O app deve ser simples, visual, brasileiro, compartilhavel e levemente provocati
 ## Viralidade
 
 A tela de resultado e os cards compartilhaveis sao o centro do produto. O app deve facilitar o compartilhamento como imagem e texto.
+
+## Preferencias de Comparacao
+
+A primeira experiencia pode incluir um questionario curto de preferencias, usando selecao multipla.
+
+Exemplos:
+
+- cafe;
+- cerveja;
+- bombons;
+- delivery;
+- streaming;
+- gasolina;
+- almoco;
+- mercado.
+
+Essas preferencias devem ajudar o app a priorizar comparacoes mais relevantes para cada usuario. O fluxo precisa continuar opcional e rapido para nao atrapalhar o primeiro calculo.
