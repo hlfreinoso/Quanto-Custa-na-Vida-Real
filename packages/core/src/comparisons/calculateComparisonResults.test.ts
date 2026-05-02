@@ -4,33 +4,26 @@ import { calculateComparisonResults } from "./calculateComparisonResults";
 import { defaultComparisonPreferences } from "./defaultComparisonPreferences";
 
 describe("calculateComparisonResults", () => {
-  it("calculates quantities for selected comparison preferences", () => {
+  it("selects a limited random set from preferred options", () => {
     const results = calculateComparisonResults({
       amount: 180,
       preferences: defaultComparisonPreferences,
       selectedIds: ["coffee", "netflix", "chocolate"],
+      limit: 3,
+      random: () => 0.99,
     });
 
-    expect(results).toEqual([
-      {
-        id: "coffee",
-        label: "Cafe",
-        quantity: 30,
-        unitLabel: "cafes",
-      },
-      {
-        id: "netflix",
-        label: "Netflix",
-        quantity: 180 / 39.9,
-        unitLabel: "meses de Netflix",
-      },
-      {
-        id: "chocolate",
-        label: "Bombons",
-        quantity: 72,
-        unitLabel: "bombons",
-      },
+    expect(results).toHaveLength(3);
+    expect(results.map(({ id }) => id).sort()).toEqual([
+      "chocolate",
+      "coffee",
+      "netflix",
     ]);
+    expect(results.find(({ id }) => id === "netflix")).toMatchObject({
+      label: "Netflix",
+      quantity: 180 / 39.9,
+      unitLabel: "meses de Netflix",
+    });
   });
 
   it("ignores unknown selected ids", () => {
@@ -38,8 +31,23 @@ describe("calculateComparisonResults", () => {
       amount: 180,
       preferences: defaultComparisonPreferences,
       selectedIds: ["unknown"],
+      limit: 1,
+      random: () => 0.99,
     });
 
-    expect(results).toEqual([]);
+    expect(results).toHaveLength(1);
+  });
+
+  it("uses fallback preferences when selected ids are not enough", () => {
+    const results = calculateComparisonResults({
+      amount: 180,
+      preferences: defaultComparisonPreferences,
+      selectedIds: ["netflix"],
+      limit: 3,
+      random: () => 0.99,
+    });
+
+    expect(results).toHaveLength(3);
+    expect(results.map(({ id }) => id)).toContain("netflix");
   });
 });
