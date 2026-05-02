@@ -1,3 +1,4 @@
+import { calculateBasicExpenseImpact } from "@vale-o-pix/core";
 import { useState } from "react";
 import {
   Pressable,
@@ -8,12 +9,48 @@ import {
   View,
 } from "react-native";
 
+interface CalculatorResult {
+  hourlyRate: number;
+  workHoursEquivalent: number;
+}
+
 export function CalculatorScreen() {
   const [expenseName, setExpenseName] = useState("");
   const [amount, setAmount] = useState("");
   const [monthlyIncome, setMonthlyIncome] = useState("");
   const [workHoursPerDay, setWorkHoursPerDay] = useState("8");
   const [workDaysPerMonth, setWorkDaysPerMonth] = useState("22");
+  const [result, setResult] = useState<CalculatorResult | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  function handleCalculate() {
+    const parsedAmount = parseDecimalInput(amount);
+    const parsedMonthlyIncome = parseDecimalInput(monthlyIncome);
+    const parsedWorkHoursPerDay = parseDecimalInput(workHoursPerDay);
+    const parsedWorkDaysPerMonth = parseDecimalInput(workDaysPerMonth);
+
+    try {
+      const calculation = calculateBasicExpenseImpact(
+        {
+          monthlyIncome: parsedMonthlyIncome,
+          workHoursPerDay: parsedWorkHoursPerDay,
+          workDaysPerMonth: parsedWorkDaysPerMonth,
+          currency: "BRL",
+        },
+        {
+          name: expenseName.trim() || undefined,
+          amount: parsedAmount,
+          frequency: "once",
+        },
+      );
+
+      setResult(calculation);
+      setErrorMessage(null);
+    } catch {
+      setResult(null);
+      setErrorMessage("Preencha valor, renda, horas e dias com numeros validos.");
+    }
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -93,11 +130,48 @@ export function CalculatorScreen() {
         </View>
       </View>
 
-      <Pressable style={styles.primaryButton}>
+      {errorMessage ? (
+        <Text accessibilityRole="alert" style={styles.errorText}>
+          {errorMessage}
+        </Text>
+      ) : null}
+
+      {result ? (
+        <View style={styles.resultCard}>
+          <Text style={styles.resultEyebrow}>Resultado inicial</Text>
+          <Text style={styles.resultTitle}>
+            Essa compra custa aproximadamente{" "}
+            {formatHours(result.workHoursEquivalent)} horas do seu trabalho.
+          </Text>
+          <Text style={styles.resultDetail}>
+            Seu valor-hora estimado e de R$ {formatCurrency(result.hourlyRate)}.
+          </Text>
+        </View>
+      ) : null}
+
+      <Pressable onPress={handleCalculate} style={styles.primaryButton}>
         <Text style={styles.primaryButtonText}>Calcular custo real</Text>
       </Pressable>
     </ScrollView>
   );
+}
+
+function parseDecimalInput(value: string): number {
+  const normalizedValue = value.trim().replace(/\./g, "").replace(",", ".");
+
+  return Number(normalizedValue);
+}
+
+function formatHours(value: number): string {
+  if (value >= 10) {
+    return value.toFixed(1).replace(".", ",");
+  }
+
+  return value.toFixed(2).replace(".", ",");
+}
+
+function formatCurrency(value: number): string {
+  return value.toFixed(2).replace(".", ",");
 }
 
 const styles = StyleSheet.create({
@@ -171,5 +245,38 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "800",
+  },
+  errorText: {
+    marginTop: 18,
+    color: "#B42318",
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 20,
+  },
+  resultCard: {
+    gap: 8,
+    marginTop: 24,
+    padding: 18,
+    borderWidth: 1,
+    borderColor: "#B8D8CC",
+    borderRadius: 8,
+    backgroundColor: "#E9F5F1",
+  },
+  resultEyebrow: {
+    color: "#16695D",
+    fontSize: 12,
+    fontWeight: "900",
+    textTransform: "uppercase",
+  },
+  resultTitle: {
+    color: "#12312D",
+    fontSize: 22,
+    fontWeight: "900",
+    lineHeight: 28,
+  },
+  resultDetail: {
+    color: "#31524D",
+    fontSize: 15,
+    lineHeight: 21,
   },
 });
