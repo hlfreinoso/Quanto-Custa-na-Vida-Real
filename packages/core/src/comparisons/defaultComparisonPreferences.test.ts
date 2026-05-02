@@ -15,10 +15,22 @@ describe("defaultComparisonPreferences", () => {
       "beer",
       "chocolate",
       "delivery",
-      "streaming",
+      "netflix",
       "gasoline",
       "lunch",
       "market",
     ]);
+  });
+
+  it("uses a specific Netflix monthly reference instead of a generic streaming option", () => {
+    expect(
+      defaultComparisonPreferences.find(
+        (preference) => preference.id === "netflix",
+      ),
+    ).toMatchObject({
+      label: "Netflix",
+      unitPrice: 39.9,
+      unitLabel: "meses de Netflix",
+    });
   });
 });

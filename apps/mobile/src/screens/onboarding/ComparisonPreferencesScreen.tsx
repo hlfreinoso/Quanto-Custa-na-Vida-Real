@@ -5,7 +5,7 @@ import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export function ComparisonPreferencesScreen() {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(
-    () => new Set(["coffee", "delivery", "streaming"]),
+    () => new Set(["coffee", "delivery", "netflix"]),
   );
 
   const selectedCount = selectedIds.size;
