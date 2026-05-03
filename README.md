@@ -25,7 +25,7 @@ O MVP é mobile-first, offline-first e sem backend. A aplicação funciona com d
 - Manter as regras principais em um pacote testável e independente da interface.
 - Trabalhar em etapas pequenas, com histórico de commits claro.
 - Construir a base do projeto com testes automatizados desde o início.
-- Preparar o projeto para evoluir futuramente para histórico, compartilhamento nativo, premium e analytics.
+- Preparar o projeto para evoluir futuramente para histórico, compartilhamento nativo e analytics.
 
 ## Arquitetura
 
@@ -46,7 +46,7 @@ UI compartilhada
 
 Documentação
   docs
-  Produto, arquitetura, testes, roadmap, monetização, analytics e fluxogramas
+  Produto, arquitetura, testes, roadmap, analytics e fluxogramas
 ```
 
 Princípios do MVP:
@@ -79,7 +79,6 @@ Mais detalhes:
 Tecnologias planejadas para fases futuras:
 
 - Expo SQLite
-- RevenueCat
 - PostHog
 - Sentry
 - react-native-view-shot
@@ -108,7 +107,6 @@ docs/
   architecture.md
   ai-usage.md
   flowchart.md
-  monetization.md
   product.md
   roadmap.md
   testing.md
@@ -250,7 +248,6 @@ Mais detalhes:
 - Não há backend, login ou sincronização entre dispositivos.
 - O histórico local ainda não foi implementado.
 - O compartilhamento de card como imagem ainda não foi implementado.
-- A monetização ainda não foi implementada.
 - Os valores de referência das comparações são locais e fixos.
 - Ainda não há testes automatizados para componentes React Native e navegação.
 - O lint ainda é um placeholder no `package.json`.
@@ -265,7 +262,6 @@ Mais detalhes:
 - Adicionar tela de configurações.
 - Evoluir AsyncStorage para SQLite no MVP publicável.
 - Integrar analytics e crash reporting.
-- Avaliar premium com RevenueCat.
 
 Mais detalhes:
 

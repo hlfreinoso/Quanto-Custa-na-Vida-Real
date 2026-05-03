@@ -11,7 +11,6 @@
 - comparações tangíveis;
 - testes automatizados do core e storage inicial;
 - sem persistência complexa além do perfil inicial;
-- sem pagamento.
 
 ## Fase 2 - MVP Funcional
 
@@ -29,10 +28,6 @@
 
 ## Fase 3 - MVP Publicável
 
-- limite gratuito;
-- tela premium;
-- RevenueCat;
-- paywall;
 - polimento visual;
 - revisão de textos;
 - ícone e splash screen;

@@ -20,7 +20,7 @@
 - AsyncStorage no protótipo.
 - Vitest.
 - Mermaid para fluxogramas.
-- Expo SQLite, RevenueCat, PostHog e Sentry em fases futuras.
+- Expo SQLite, PostHog e Sentry em fases futuras.
 
 ## Camadas
 
@@ -36,12 +36,12 @@ Persistência
   ProfileStorage, HistoryStorage, SettingsStorage e UsageStorage no MVP
 
 Integrações
-  RevenueCat, PostHog, Sentry e compartilhamento nativo
+  PostHog, Sentry e compartilhamento nativo
 ```
 
 ## Regra Para o Core
 
-`packages/core` não pode depender de React Native, Expo, SQLite, RevenueCat, PostHog, Sentry ou APIs nativas.
+`packages/core` não pode depender de React Native, Expo, SQLite, PostHog, Sentry ou APIs nativas.
 
 ## Backend
 
