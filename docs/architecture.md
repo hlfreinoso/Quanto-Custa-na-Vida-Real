@@ -58,6 +58,8 @@ Result
   -> Mudar preferencias
 ```
 
+Para diagramas Mermaid do fluxo, veja [flowchart.md](flowchart.md).
+
 ## Testes
 
 O `packages/core` e a fonte de verdade das regras testaveis. Telas e navegacao ainda nao possuem testes automatizados dedicados.
@@ -65,12 +67,13 @@ O `packages/core` e a fonte de verdade das regras testaveis. Telas e navegacao a
 Cobertura atual:
 
 - calculos puros;
-- validacoes basicas;
+- validacoes de caminho feliz, bordas e falhas;
 - base local de comparacoes;
-- selecao aleatoria/limitada de comparacoes.
+- selecao aleatoria/limitada de comparacoes;
+- persistencia inicial em AsyncStorage.
 
 Lacunas conhecidas:
 
 - testes de componentes React Native;
 - testes de navegacao Expo Router;
-- testes de AsyncStorage.
+- testes end-to-end do fluxo completo.

@@ -7,6 +7,14 @@ npm test
 npm run typecheck
 ```
 
+Atalhos equivalentes:
+
+```bash
+make test
+make typecheck
+make validate
+```
+
 ## O Que Esta Coberto
 
 - `calculateHourlyRate`
@@ -14,12 +22,24 @@ npm run typecheck
 - `calculateBasicExpenseImpact`
 - `defaultComparisonPreferences`
 - `calculateComparisonResults`
+- `InitialProfileStorage`
+
+## Tipos de Cenario Cobertos
+
+- caminho feliz;
+- entradas zeradas, negativas ou nao finitas;
+- limite de comparacoes igual a zero;
+- limite maior do que a quantidade de opcoes disponiveis;
+- ids de preferencia desconhecidos ou repetidos;
+- preco unitario invalido;
+- perfil inicial inexistente;
+- JSON salvo invalido;
+- falha de leitura do AsyncStorage.
 
 ## O Que Ainda Nao Esta Coberto
 
 - fluxo visual de home, onboarding, calculadora e resultado;
 - navegacao entre rotas;
-- AsyncStorage;
 - renderizacao de componentes React Native;
 - testes end-to-end.
 

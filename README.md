@@ -68,6 +68,19 @@ npm run lint
 
 Observacao: `npm run lint` ainda e placeholder. A configuracao real de lint deve entrar em uma etapa futura.
 
+Tambem existe um `Makefile` com atalhos para os comandos mais usados:
+
+```bash
+make install
+make dev
+make web
+make test
+make typecheck
+make validate
+```
+
+No Windows, caso `make` nao esteja instalado, use os comandos `npm` acima diretamente.
+
 ## Testes Automatizados
 
 Coberto hoje:
@@ -78,13 +91,13 @@ Coberto hoje:
 - rejeicao de entradas invalidas no core;
 - lista padrao de comparacoes;
 - selecao aleatoria/limitada de comparacoes;
-- fallback quando o usuario escolhe poucas preferencias.
+- fallback quando o usuario escolhe poucas preferencias;
+- persistencia inicial com AsyncStorage, incluindo falhas de leitura e JSON invalido.
 
 Ainda nao coberto:
 
 - componentes React Native;
 - navegacao Expo Router;
-- persistencia AsyncStorage;
 - fluxo completo de onboarding ate resultado.
 
 Essas camadas devem ganhar testes quando adicionarmos uma biblioteca de teste para UI mobile.
@@ -147,7 +160,11 @@ docs/
 - `packages/core`: regras puras e testaveis, sem dependencia de React Native ou Expo.
 - `apps/mobile`: telas, navegacao, storage local e integracoes nativas.
 - `packages/ui`: componentes compartilhados quando houver ganho real.
-- `docs`: produto, arquitetura, roadmap, monetizacao e analytics.
+- `docs`: produto, arquitetura, fluxogramas, roadmap, monetizacao e analytics.
+
+## Fluxogramas
+
+Os fluxos da aplicacao estao em [docs/flowchart.md](docs/flowchart.md), usando Mermaid.
 
 ## Commits
 
