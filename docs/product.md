@@ -1,42 +1,42 @@
 # Produto
 
-## Visao Geral
+## Visão Geral
 
-O Quanto custa na vida real transforma precos em comparacoes reais da vida do usuario, como horas de trabalho e equivalencias tangiveis do cotidiano.
+O Quanto custa na vida real transforma preços em comparações reais da vida do usuário, como horas de trabalho e equivalências tangíveis do cotidiano.
 
 ## Proposta de Valor
 
-Antes de comprar, o usuario entende quanto aquele valor representa na propria vida.
+Antes de comprar, o usuário entende quanto aquele valor representa na própria vida.
 
 ## Fluxo Atual
 
-1. Home amigavel com botao `Iniciar`.
-2. Se nao houver perfil salvo, abrir onboarding.
-3. Onboarding coleta renda mensal liquida e preferencias de comparacao.
-4. Se ja houver perfil salvo, pular onboarding.
-5. Calculadora coleta produto e preco.
-6. Resultado mostra horas do trabalho e comparacoes sorteadas.
-7. Usuario pode fazer `Novo comparativo` ou `Mudar preferencias`.
+1. Home amigável com botão `Iniciar`.
+2. Se não houver perfil salvo, abrir onboarding.
+3. Onboarding coleta renda mensal líquida e preferências de comparação.
+4. Se já houver perfil salvo, pular onboarding.
+5. Calculadora coleta produto e preço.
+6. Resultado mostra horas do trabalho e comparações sorteadas.
+7. Usuário pode fazer `Novo comparativo` ou `Mudar preferências`.
 
-## Preferencias de Comparacao
+## Preferências de Comparação
 
-As preferencias devem ser opcionais, sem itens pre-selecionados.
+As preferências devem ser opcionais, sem itens pré-selecionados.
 
-As opcoes precisam ser diretas, tangiveis e com preco de referencia claro. Evitar categorias amplas como `Mercado` ou `Delivery`, porque variam demais para comparacao imediata.
+As opções precisam ser diretas, tangíveis e com preço de referência claro. Evitar categorias amplas como `Mercado` ou `Delivery`, porque variam demais para comparação imediata.
 
 Exemplos atuais:
 
-- Cafe;
+- Café;
 - Cerveja lata;
 - Bombons;
-- Hamburguer;
+- Hambúrguer;
 - Netflix;
 - Gasolina;
-- Onibus;
+- Ônibus;
 - Cinema;
-- Acai;
+- Açaí;
 - Pizza;
-- Pao frances;
+- Pão francês;
 - Refrigerante 2L;
 - Uber curto.
 
@@ -48,26 +48,26 @@ O resultado deve sempre mostrar:
 Essa compra custa:
 52 horas do seu trabalho
 6 meses de Netflix
-180 cafes
+180 cafés
 250 bombons
 ```
 
-As comparacoes, exceto horas de trabalho, devem ser sorteadas usando as preferencias do usuario e fallback local quando necessario.
+As comparações, exceto horas de trabalho, devem ser sorteadas usando as preferências do usuário e fallback local quando necessário.
 
 ## Posicionamento
 
-O app deve ser simples, visual, brasileiro, compartilhavel e levemente provocativo. Ele nao deve parecer um controle financeiro complexo.
+O app deve ser simples, visual, brasileiro, compartilhável e levemente provocativo. Ele não deve parecer um controle financeiro complexo.
 
-## Publico-Alvo
+## Público-Alvo
 
 - jovens adultos;
 - trabalhadores CLT;
-- autonomos;
+- autônomos;
 - estudantes;
 - pessoas tentando economizar;
 - consumidores de marketplace;
-- usuarios de WhatsApp, Instagram e TikTok.
+- usuários de WhatsApp, Instagram e TikTok.
 
 ## Viralidade
 
-A tela de resultado e os cards compartilhaveis sao o centro do produto. O app deve facilitar o compartilhamento como imagem e texto em etapa futura.
+A tela de resultado e os cards compartilháveis são o centro do produto. O app deve facilitar o compartilhamento como imagem e texto em etapa futura.

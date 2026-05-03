@@ -2,13 +2,13 @@
 
 help:
 	@echo "Comandos disponiveis:"
-	@echo "  make install    Instala as dependencias"
+	@echo "  make install    Instala as dependências"
 	@echo "  make dev        Inicia o Expo para testar no celular"
 	@echo "  make web        Inicia o app no navegador"
 	@echo "  make android    Inicia o Expo com alvo Android"
 	@echo "  make ios        Inicia o Expo com alvo iOS"
 	@echo "  make test       Roda os testes automatizados"
-	@echo "  make typecheck  Roda a validacao TypeScript"
+	@echo "  make typecheck  Roda a validação TypeScript"
 	@echo "  make validate   Roda testes e typecheck"
 	@echo "  make doctor     Roda o diagnostico do Expo"
 

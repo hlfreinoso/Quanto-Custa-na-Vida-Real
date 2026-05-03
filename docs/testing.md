@@ -15,7 +15,7 @@ make typecheck
 make validate
 ```
 
-## O Que Esta Coberto
+## O Que Está Coberto
 
 - `calculateHourlyRate`
 - `calculateWorkHoursEquivalent`
@@ -24,23 +24,23 @@ make validate
 - `calculateComparisonResults`
 - `InitialProfileStorage`
 
-## Tipos de Cenario Cobertos
+## Tipos de Cenário Cobertos
 
 - caminho feliz;
-- entradas zeradas, negativas ou nao finitas;
-- limite de comparacoes igual a zero;
-- limite maior do que a quantidade de opcoes disponiveis;
-- ids de preferencia desconhecidos ou repetidos;
-- preco unitario invalido;
+- entradas zeradas, negativas ou não finitas;
+- limite de comparações igual a zero;
+- limite maior do que a quantidade de opções disponíveis;
+- ids de preferência desconhecidos ou repetidos;
+- preço unitário inválido;
 - perfil inicial inexistente;
-- JSON salvo invalido;
+- JSON salvo inválido;
 - falha de leitura do AsyncStorage.
 
-## O Que Ainda Nao Esta Coberto
+## O Que Ainda Não Está Coberto
 
 - fluxo visual de home, onboarding, calculadora e resultado;
-- navegacao entre rotas;
-- renderizacao de componentes React Native;
+- navegação entre rotas;
+- renderização de componentes React Native;
 - testes end-to-end.
 
 ## Diretriz
@@ -50,11 +50,11 @@ Toda regra nova deve nascer no `packages/core` com teste antes de ser conectada 
 Quando a UI estabilizar, adicionar uma biblioteca de teste para React Native e cobrir:
 
 - home pula onboarding quando existe perfil salvo;
-- onboarding salva perfil e preferencias;
-- calculadora envia produto e preco para resultado;
-- resultado exibe horas do trabalho e comparacoes;
-- botao `Novo comparativo` volta para calculadora.
+- onboarding salva perfil e preferências;
+- calculadora envia produto e preço para resultado;
+- resultado exibe horas do trabalho e comparações;
+- botão `Novo comparativo` volta para calculadora.
 
-## Limitacoes Atuais
+## Limitações Atuais
 
-O projeto ainda nao possui testes de renderizacao de componentes, testes de navegacao e testes end-to-end. Esses pontos devem ser tratados quando o fluxo visual estabilizar.
+O projeto ainda não possui testes de renderização de componentes, testes de navegação e testes end-to-end. Esses pontos devem ser tratados quando o fluxo visual estabilizar.

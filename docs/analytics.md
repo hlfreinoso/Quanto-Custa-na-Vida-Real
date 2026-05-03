@@ -19,14 +19,14 @@ PostHog.
 - history_opened
 - reference_value_edited
 
-## Metrica Central
+## Métrica Central
 
 ```text
-share_rate = calculos compartilhados / calculos concluidos
+share_rate = cálculos compartilhados / cálculos concluídos
 ```
 
 Meta inicial: `share_rate >= 15%`.
 
 ## Privacidade
 
-Nao enviar renda do usuario, nome detalhado da compra ou dados sensiveis para analytics.
+Não enviar renda do usuário, nome detalhado da compra ou dados sensíveis para analytics.

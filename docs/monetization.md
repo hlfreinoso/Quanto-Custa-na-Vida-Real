@@ -1,26 +1,26 @@
-# Monetizacao
+# Monetização
 
 ## Modelo Inicial
 
-Freemium com compra unica barata.
+Freemium com compra única barata.
 
 ## Gratuito
 
-- calculos diarios limitados;
-- poucas equivalencias;
+- cálculos diários limitados;
+- poucas equivalências;
 - um modelo de card;
-- historico limitado;
+- histórico limitado;
 - marca discreta no card.
 
 ## Premium
 
-- calculos ilimitados;
-- todas as equivalencias;
+- cálculos ilimitados;
+- todas as equivalências;
 - todos os modelos de card;
-- historico completo;
-- edicao dos valores de referencia;
-- sem marca d'agua ou com marca discreta.
+- histórico completo;
+- edição dos valores de referência;
+- sem marca d'água ou com marca discreta.
 
 ## Ferramenta
 
-RevenueCat deve encapsular compras in-app no MVP publicavel.
+RevenueCat deve encapsular compras in-app no MVP publicável.
