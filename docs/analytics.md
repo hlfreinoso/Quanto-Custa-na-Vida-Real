@@ -14,8 +14,6 @@ PostHog.
 - share_card_generated
 - share_clicked
 - share_completed
-- premium_screen_viewed
-- premium_purchased
 - history_opened
 - reference_value_edited
 
