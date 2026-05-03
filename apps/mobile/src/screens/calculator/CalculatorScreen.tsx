@@ -38,10 +38,10 @@ export function CalculatorScreen() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.eyebrow}>Calculo rapido</Text>
-        <Text style={styles.title}>Qual compra voce quer entender?</Text>
+        <Text style={styles.eyebrow}>Cálculo rápido</Text>
+        <Text style={styles.title}>Qual compra você quer entender?</Text>
         <Text style={styles.description}>
-          Informe o produto e o preco. O resultado vem na proxima tela.
+          Informe o produto e o preço. O resultado vem na próxima tela.
         </Text>
       </View>
 
@@ -50,7 +50,7 @@ export function CalculatorScreen() {
           <Text style={styles.label}>Nome da compra</Text>
           <TextInput
             onChangeText={setExpenseName}
-            placeholder="Ex: Cadeira ergonomica"
+            placeholder="Ex: Cadeira ergonômica"
             placeholderTextColor="#8A8F98"
             style={styles.input}
             value={expenseName}
@@ -71,7 +71,7 @@ export function CalculatorScreen() {
         </View>
 
         <Text style={styles.assumptionText}>
-          Usamos 8 horas por dia e 22 dias por mes como padrao.
+          Usamos 8 horas por dia e 22 dias por mês como padrão.
         </Text>
       </View>
 
@@ -89,7 +89,7 @@ export function CalculatorScreen() {
         onPress={() => router.push("/onboarding")}
         style={styles.secondaryButton}
       >
-        <Text style={styles.secondaryButtonText}>Mudar preferencias</Text>
+        <Text style={styles.secondaryButtonText}>Mudar preferências</Text>
       </Pressable>
     </ScrollView>
   );

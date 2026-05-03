@@ -35,7 +35,7 @@ export function HomeScreen() {
       <Text style={styles.eyebrow}>Quanto custa na vida real</Text>
       <Text style={styles.title}>Veja o custo real antes de comprar.</Text>
       <Text style={styles.description}>
-        Transforme precos em horas do seu trabalho e comparacoes simples do dia
+        Transforme preços em horas do seu trabalho e comparações simples do dia
         a dia.
       </Text>
 
@@ -50,7 +50,7 @@ export function HomeScreen() {
           onPress={() => router.push("/onboarding")}
           style={styles.secondaryButton}
         >
-          <Text style={styles.secondaryButtonText}>Mudar preferencias</Text>
+          <Text style={styles.secondaryButtonText}>Mudar preferências</Text>
         </Pressable>
       </View>
     </View>

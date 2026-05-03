@@ -3,17 +3,17 @@ import type { ComparisonPreference } from "../models/ComparisonPreference";
 export const defaultComparisonPreferences: readonly ComparisonPreference[] = [
   {
     id: "coffee",
-    label: "Cafe",
+    label: "Café",
     category: "food",
     unitPrice: 6,
-    unitLabel: "cafes",
+    unitLabel: "cafés",
   },
   {
     id: "beer_can",
     label: "Cerveja lata",
     category: "leisure",
     unitPrice: 5,
-    unitLabel: "cervejas lata",
+    unitLabel: "cervejas em lata",
   },
   {
     id: "bonbon",
@@ -24,10 +24,10 @@ export const defaultComparisonPreferences: readonly ComparisonPreference[] = [
   },
   {
     id: "burger",
-    label: "Hamburguer",
+    label: "Hambúrguer",
     category: "food",
     unitPrice: 30,
-    unitLabel: "hamburgueres",
+    unitLabel: "hambúrgueres",
   },
   {
     id: "netflix",
@@ -45,10 +45,10 @@ export const defaultComparisonPreferences: readonly ComparisonPreference[] = [
   },
   {
     id: "bus_ticket",
-    label: "Onibus",
+    label: "Ônibus",
     category: "transport",
     unitPrice: 5,
-    unitLabel: "passagens de onibus",
+    unitLabel: "passagens de ônibus",
   },
   {
     id: "movie_ticket",
@@ -59,10 +59,10 @@ export const defaultComparisonPreferences: readonly ComparisonPreference[] = [
   },
   {
     id: "acai",
-    label: "Acai",
+    label: "Açaí",
     category: "food",
     unitPrice: 18,
-    unitLabel: "acais",
+    unitLabel: "açaís",
   },
   {
     id: "pizza",
@@ -73,10 +73,10 @@ export const defaultComparisonPreferences: readonly ComparisonPreference[] = [
   },
   {
     id: "bread",
-    label: "Pao frances",
+    label: "Pão francês",
     category: "food",
     unitPrice: 1.2,
-    unitLabel: "paes franceses",
+    unitLabel: "pães franceses",
   },
   {
     id: "soda_2l",

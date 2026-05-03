@@ -64,7 +64,7 @@ export function ResultScreen() {
         </View>
       ) : (
         <Text accessibilityRole="alert" style={styles.errorText}>
-          Nao foi possivel calcular. Volte e confira renda e valor.
+          Não foi possível calcular. Volte e confira renda e valor.
         </Text>
       )}
 
@@ -76,7 +76,7 @@ export function ResultScreen() {
         onPress={() => router.push("/onboarding")}
         style={styles.secondaryButton}
       >
-        <Text style={styles.secondaryButtonText}>Mudar preferencias</Text>
+        <Text style={styles.secondaryButtonText}>Mudar preferências</Text>
       </Pressable>
     </ScrollView>
   );

@@ -55,15 +55,15 @@ export function ComparisonPreferencesScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Text style={styles.eyebrow}>Quanto custa na vida real</Text>
-        <Text style={styles.title}>Escolha suas comparacoes favoritas.</Text>
+        <Text style={styles.title}>Escolha suas comparações favoritas.</Text>
         <Text style={styles.description}>
-          Vamos priorizar exemplos que fazem sentido no seu dia a dia. Voce
+          Vamos priorizar exemplos que fazem sentido no seu dia a dia. Você
           pode mudar isso depois.
         </Text>
       </View>
 
       <View style={styles.profileField}>
-        <Text style={styles.label}>Renda mensal liquida</Text>
+        <Text style={styles.label}>Renda mensal líquida</Text>
         <TextInput
           inputMode="decimal"
           keyboardType="decimal-pad"
