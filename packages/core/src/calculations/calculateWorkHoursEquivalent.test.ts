@@ -18,7 +18,7 @@ describe("calculateWorkHoursEquivalent", () => {
         amount: 0,
         hourlyRate: 25.568181818,
       }),
-    ).toThrow("amount must be greater than zero");
+    ).toThrow("amount must be a finite number greater than zero");
   });
 
   it("rejects non-positive hourly rate", () => {
@@ -27,6 +27,22 @@ describe("calculateWorkHoursEquivalent", () => {
         amount: 299.9,
         hourlyRate: 0,
       }),
-    ).toThrow("hourlyRate must be greater than zero");
+    ).toThrow("hourlyRate must be a finite number greater than zero");
+  });
+
+  it("rejects non-finite values", () => {
+    expect(() =>
+      calculateWorkHoursEquivalent({
+        amount: Number.NaN,
+        hourlyRate: 25.568181818,
+      }),
+    ).toThrow("amount must be a finite number greater than zero");
+
+    expect(() =>
+      calculateWorkHoursEquivalent({
+        amount: 299.9,
+        hourlyRate: Number.POSITIVE_INFINITY,
+      }),
+    ).toThrow("hourlyRate must be a finite number greater than zero");
   });
 });

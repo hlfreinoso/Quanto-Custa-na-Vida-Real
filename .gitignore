@@ -21,6 +21,9 @@ coverage/
 .env.*
 !.env.example
 
+# Local agent context
+CONTEXT.md
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
