@@ -11,6 +11,17 @@
 - Cards gerados localmente.
 - Compartilhamento nativo.
 
+## Tecnologias
+
+- React Native.
+- Expo.
+- Expo Router.
+- TypeScript.
+- AsyncStorage no prototipo.
+- Vitest.
+- Mermaid para fluxogramas.
+- Expo SQLite, RevenueCat, PostHog e Sentry em fases futuras.
+
 ## Camadas
 
 ```text

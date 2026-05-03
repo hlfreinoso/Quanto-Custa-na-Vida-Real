@@ -5,25 +5,40 @@
 - tela inicial;
 - tela de calculo;
 - tela de resultado;
-- card compartilhavel fake;
-- dados fixos;
-- sem persistencia complexa;
+- onboarding inicial;
+- renda mensal local;
+- preferencias locais;
+- comparacoes tangiveis;
+- testes automatizados do core e storage inicial;
+- sem persistencia complexa alem do perfil inicial;
 - sem pagamento.
 
 ## Fase 2 - MVP Funcional
 
-- calculo real;
-- perfil financeiro local;
-- comparacoes basicas;
 - historico local;
-- geracao de imagem;
+- geracao de card como imagem;
 - compartilhamento nativo;
-- limite gratuito;
-- tela premium;
+- ajustes de UI;
+- testes de componentes React Native;
+- testes de navegacao;
+- mascaras de entrada monetaria;
+- tela de configuracoes;
+- SQLite local;
 - analytics;
 - crash reporting.
 
-## Fase 3 - Beta Fechado
+## Fase 3 - MVP Publicavel
+
+- limite gratuito;
+- tela premium;
+- RevenueCat;
+- paywall;
+- polimento visual;
+- revisao de textos;
+- icone e splash screen;
+- termos de uso e privacidade.
+
+## Fase 4 - Beta Fechado
 
 - ajustes de UX;
 - novos templates;
@@ -32,7 +47,7 @@
 - medicao de share rate;
 - testes com usuarios reais.
 
-## Fase 4 - Lancamento Publico
+## Fase 5 - Lancamento Publico
 
 - publicacao nas lojas;
 - pagina simples de divulgacao;

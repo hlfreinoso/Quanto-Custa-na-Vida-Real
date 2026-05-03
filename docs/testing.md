@@ -54,3 +54,7 @@ Quando a UI estabilizar, adicionar uma biblioteca de teste para React Native e c
 - calculadora envia produto e preco para resultado;
 - resultado exibe horas do trabalho e comparacoes;
 - botao `Novo comparativo` volta para calculadora.
+
+## Limitacoes Atuais
+
+O projeto ainda nao possui testes de renderizacao de componentes, testes de navegacao e testes end-to-end. Esses pontos devem ser tratados quando o fluxo visual estabilizar.
