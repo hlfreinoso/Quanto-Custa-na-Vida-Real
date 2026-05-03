@@ -18,8 +18,8 @@ export function calculateComparisonResults({
   limit = 4,
   random = Math.random,
 }: CalculateComparisonResultsParams): ComparisonResult[] {
-  if (amount <= 0) {
-    throw new RangeError("amount must be greater than zero");
+  if (!Number.isFinite(amount) || amount <= 0) {
+    throw new RangeError("amount must be a finite number greater than zero");
   }
 
   if (limit <= 0) {
@@ -52,11 +52,15 @@ function buildResults(
   preferences: readonly ComparisonPreference[],
   selectedIds: readonly string[],
 ): ComparisonResult[] {
-  return selectedIds.flatMap((selectedId) => {
+  return [...new Set(selectedIds)].flatMap((selectedId) => {
     const preference = preferences.find(({ id }) => id === selectedId);
 
     if (!preference) {
       return [];
+    }
+
+    if (!Number.isFinite(preference.unitPrice) || preference.unitPrice <= 0) {
+      throw new RangeError("unitPrice must be a finite number greater than zero");
     }
 
     return {

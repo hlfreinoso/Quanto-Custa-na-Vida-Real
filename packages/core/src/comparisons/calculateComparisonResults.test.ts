@@ -58,6 +58,70 @@ describe("calculateComparisonResults", () => {
         preferences: defaultComparisonPreferences,
         selectedIds: ["coffee"],
       }),
-    ).toThrow("amount must be greater than zero");
+    ).toThrow("amount must be a finite number greater than zero");
+  });
+
+  it("rejects non-finite amount", () => {
+    expect(() =>
+      calculateComparisonResults({
+        amount: Number.NaN,
+        preferences: defaultComparisonPreferences,
+        selectedIds: ["coffee"],
+      }),
+    ).toThrow("amount must be a finite number greater than zero");
+  });
+
+  it("returns an empty list when limit is zero", () => {
+    const results = calculateComparisonResults({
+      amount: 180,
+      preferences: defaultComparisonPreferences,
+      selectedIds: ["coffee"],
+      limit: 0,
+    });
+
+    expect(results).toEqual([]);
+  });
+
+  it("does not duplicate repeated selected ids", () => {
+    const results = calculateComparisonResults({
+      amount: 180,
+      preferences: defaultComparisonPreferences,
+      selectedIds: ["coffee", "coffee", "coffee"],
+      limit: 4,
+      random: () => 0,
+    });
+
+    expect(results.filter(({ id }) => id === "coffee")).toHaveLength(1);
+  });
+
+  it("returns every available preference when limit is greater than available options", () => {
+    const preferences = defaultComparisonPreferences.slice(0, 2);
+    const results = calculateComparisonResults({
+      amount: 180,
+      preferences,
+      selectedIds: preferences.map(({ id }) => id),
+      limit: 10,
+      random: () => 0,
+    });
+
+    expect(results).toHaveLength(2);
+  });
+
+  it("rejects invalid unit prices", () => {
+    expect(() =>
+      calculateComparisonResults({
+        amount: 180,
+        preferences: [
+          {
+            id: "invalid",
+            label: "Invalid",
+            category: "test",
+            unitPrice: 0,
+            unitLabel: "invalid units",
+          },
+        ],
+        selectedIds: ["invalid"],
+      }),
+    ).toThrow("unitPrice must be a finite number greater than zero");
   });
 });

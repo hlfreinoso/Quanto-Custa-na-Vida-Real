@@ -18,18 +18,32 @@ describe("calculateHourlyRate", () => {
   it("rejects non-positive monthly income", () => {
     expect(() =>
       calculateHourlyRate({ ...validProfile, monthlyIncome: 0 }),
-    ).toThrow("monthlyIncome must be greater than zero");
+    ).toThrow("monthlyIncome must be a finite number greater than zero");
   });
 
   it("rejects non-positive work hours per day", () => {
     expect(() =>
       calculateHourlyRate({ ...validProfile, workHoursPerDay: 0 }),
-    ).toThrow("workHoursPerDay must be greater than zero");
+    ).toThrow("workHoursPerDay must be a finite number greater than zero");
   });
 
   it("rejects non-positive work days per month", () => {
     expect(() =>
       calculateHourlyRate({ ...validProfile, workDaysPerMonth: 0 }),
-    ).toThrow("workDaysPerMonth must be greater than zero");
+    ).toThrow("workDaysPerMonth must be a finite number greater than zero");
+  });
+
+  it("rejects non-finite financial inputs", () => {
+    expect(() =>
+      calculateHourlyRate({ ...validProfile, monthlyIncome: Number.NaN }),
+    ).toThrow("monthlyIncome must be a finite number greater than zero");
+
+    expect(() =>
+      calculateHourlyRate({ ...validProfile, workHoursPerDay: Number.POSITIVE_INFINITY }),
+    ).toThrow("workHoursPerDay must be a finite number greater than zero");
+
+    expect(() =>
+      calculateHourlyRate({ ...validProfile, workDaysPerMonth: Number.NaN }),
+    ).toThrow("workDaysPerMonth must be a finite number greater than zero");
   });
 });
