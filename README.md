@@ -133,7 +133,7 @@ Responsabilidades principais:
 ### 1. Clonar o repositório
 
 ```bash
-git clone <url-do-repositório>
+git clone https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real
 cd Quanto-Custa-na-Vida-Real
 ```
 
