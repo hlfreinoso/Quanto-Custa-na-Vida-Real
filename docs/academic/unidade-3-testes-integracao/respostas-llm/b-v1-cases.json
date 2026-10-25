@@ -1,0 +1,261 @@
+[
+  {
+    "id": "B-V1-01",
+    "title": "Compra vazia bloqueia a navegação",
+    "objective": "Verificar o bloqueio específico de CA-03.2 com perfil válido.",
+    "preconditions": [
+      "Perfil local válido com renda string '1760'."
+    ],
+    "components": [
+      "HomeScreen real",
+      "CalculatorScreen real",
+      "InitialProfileStorage real",
+      "Adapter de AsyncStorage e rotas simulado",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Iniciar com perfil salvo.",
+      "Tentar calcular uma compra cujo valor contém apenas espaços."
+    ],
+    "expected": [
+      "Calculator permanece ativa.",
+      "Mensagem exata 'Informe o valor da compra.'.",
+      "Nenhuma nova navegação nem alteração do perfil."
+    ],
+    "requirements": [
+      "RF-03 e RF-08 operacionalizam CA-01.2 e CA-03.2.",
+      "RN-02 impede cálculo sem valor positivo."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-02",
+    "title": "Preferências duplicadas e desconhecidas",
+    "objective": "Integrar ResultScreen ao core real e conferir seleção e quantidades com oráculo independente.",
+    "preconditions": [
+      "Renda '1760', compra '60' e selectedComparisonIds='coffee,coffee,desconhecido'."
+    ],
+    "components": [
+      "ResultScreen real",
+      "calculateComparisonResults real",
+      "Catálogo real",
+      "Adapter de rotas simulado",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Calcular comparações no core real.",
+      "Montar Result com os mesmos parâmetros."
+    ],
+    "expected": [
+      "Café aparece uma única vez.",
+      "Identificador desconhecido não produz comparação.",
+      "Fallback completa quatro resultados distintos.",
+      "Quantidades correspondem a 60 dividido pelos preços de referência.",
+      "UI apresenta '6,00 horas do seu trabalho'."
+    ],
+    "requirements": [
+      "RF-11, RF-12 e RF-13 correspondem a CA-04.2, CA-04.3 e CA-04.4.",
+      "RN-06, RN-10, RN-11, RN-12 e RN-14 regem cálculo, prioridade, deduplicação e limite."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-03",
+    "title": "Onboarding rejeita renda inválida",
+    "objective": "Preservar o contrato aprovado mesmo quando o teste revela a validação ausente na implementação.",
+    "preconditions": [
+      "Sem perfil salvo.",
+      "Casos parametrizados: renda vazia, zero, negativa e não numérica."
+    ],
+    "components": [
+      "ComparisonPreferencesScreen real",
+      "InitialProfileStorage real",
+      "Adapter de AsyncStorage e rotas simulado",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Preencher a renda inválida.",
+      "Acionar Continuar."
+    ],
+    "expected": [
+      "Permanecer no onboarding.",
+      "Apresentar orientação sobre a renda.",
+      "Não gravar perfil nem navegar à Calculator.",
+      "O código fornecido pode falhar neste teste; não há expectativa de falha nem supressão do defeito."
+    ],
+    "requirements": [
+      "RF-04 e RF-08 correspondem a CA-02.3.",
+      "RN-02 exige renda finita e positiva.",
+      "LAC-01 registra a implementação parcial; não revoga o contrato."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-04",
+    "title": "Compra inválida não produz resultado numérico",
+    "objective": "Aceitar rejeição na entrada ou no Result sem impor uma fronteira de validação pendente.",
+    "preconditions": [
+      "Calculator com perfil válido.",
+      "Casos parametrizados: zero, negativo, texto e Infinity."
+    ],
+    "components": [
+      "CalculatorScreen real",
+      "ResultScreen real quando alcançada",
+      "Core real",
+      "Adapter de rotas simulado",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Informar cada valor inválido.",
+      "Acionar Calcular custo real.",
+      "Aguardar a rota observada e a mensagem de erro."
+    ],
+    "expected": [
+      "Mensagem orienta conferir o valor ou a renda.",
+      "Nenhuma quantidade ou hora calculada é apresentada.",
+      "Nenhum NaN ou Infinity aparece na UI."
+    ],
+    "requirements": [
+      "RF-08 e RF-15 correspondem a CA-03.3 e CA-04.5.",
+      "RN-02 e RNF-07 proíbem resultados inválidos.",
+      "CA-03.3 permite bloqueio na Calculator ou no Result."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-05",
+    "title": "Result protege contra renda inválida nos parâmetros",
+    "objective": "Verificar a defesa do resultado independentemente da validação incompleta do onboarding.",
+    "preconditions": [
+      "Compra válida '60'.",
+      "Casos parametrizados: renda vazia, zero, negativa, texto e Infinity."
+    ],
+    "components": [
+      "ResultScreen real",
+      "Core real",
+      "Adapter de rotas simulado como controlador de entrada",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Montar Result diretamente com cada renda inválida."
+    ],
+    "expected": [
+      "Mensagem de erro de cálculo.",
+      "Nenhuma hora ou comparação numérica.",
+      "Nenhum NaN ou Infinity na interface."
+    ],
+    "requirements": [
+      "RF-08 e RF-15 correspondem a CA-04.5.",
+      "RN-02 e RNF-07 exigem proteção contra parâmetros inválidos."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-06",
+    "title": "Formato brasileiro atravessa persistência, rotas e cálculo",
+    "objective": "Verificar separadores pt-BR e remoção de espaços nas fronteiras do fluxo.",
+    "preconditions": [
+      "Sem perfil salvo.",
+      "Renda ' 1.760,00 ' e compra ' 60,50 '."
+    ],
+    "components": [
+      "HomeScreen real",
+      "ComparisonPreferencesScreen real",
+      "CalculatorScreen real",
+      "ResultScreen real",
+      "InitialProfileStorage e core reais",
+      "Adapters nativos simulados",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Iniciar e salvar renda com Café e Netflix.",
+      "Informar nome e valor com espaços.",
+      "Calcular."
+    ],
+    "expected": [
+      "Perfil persiste renda string '1.760,00' e IDs selecionados.",
+      "Rotas transportam strings sem espaços externos.",
+      "Resultado apresenta nome normalizado e '6,05 horas do seu trabalho'.",
+      "Café e Netflix são priorizados e calculados pelos preços locais."
+    ],
+    "requirements": [
+      "RF-02, RF-06, RF-07, RF-09, RF-10 e RF-12 correspondem a CA-01.1, CA-02.1, CA-03.1, CA-04.1 e CA-04.2.",
+      "RN-01, RN-03, RN-04, RN-05 e RN-06 fundamentam o oráculo.",
+      "RNF-08 e LAC-02: somente pt-BR; formato internacional permanece pendente."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-07",
+    "title": "Zero preferências e nome vazio permitem repetir o cálculo",
+    "objective": "Verificar opcionalidade, fallback sem IDs fixos e preservação do perfil no novo comparativo.",
+    "preconditions": [
+      "Onboarding sem preferências selecionadas.",
+      "Renda '1760'."
+    ],
+    "components": [
+      "ComparisonPreferencesScreen real",
+      "CalculatorScreen real",
+      "ResultScreen real",
+      "InitialProfileStorage e core reais",
+      "Adapters nativos simulados",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Selecionar e desmarcar Café.",
+      "Salvar sem preferências.",
+      "Calcular compra sem nome.",
+      "Acionar Novo comparativo e calcular outra compra."
+    ],
+    "expected": [
+      "Perfil armazena lista vazia.",
+      "Nome substituto 'Essa compra'.",
+      "Comparações válidas, distintas e limitadas a quatro, sem ordem ou IDs impostos.",
+      "Novo comparativo usa replace e preserva renda e lista vazia.",
+      "Segunda compra de '30' apresenta '3,00 horas do seu trabalho'."
+    ],
+    "requirements": [
+      "RF-05, RF-06, RF-12, RF-14 e RF-16 correspondem a CA-02.2, CA-03.4, CA-04.3 e CA-05.1.",
+      "RN-08, RN-09, RN-11, RN-14 e RN-17 regem opcionalidade, fallback e apresentação.",
+      "LAC-03 permanece pendente quanto aos IDs do fallback vazio.",
+      "LAC-04/CA-06.2 não é convertido em contrato de pré-preenchimento."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V1-08",
+    "title": "Storage propaga corrupção e falhas sem inventar recuperação na Home",
+    "objective": "Verificar o contrato do storage real com falhas controladas no adapter e retomada com dados válidos.",
+    "preconditions": [
+      "Adapter nativo em memória.",
+      "Controlador de teste aguarda explicitamente todas as rejeições."
+    ],
+    "components": [
+      "InitialProfileStorage real",
+      "HomeScreen e CalculatorScreen reais após restauração dos dados",
+      "Adapter de AsyncStorage simulado com falhas pontuais",
+      "Adapter de rotas simulado",
+      "React Native Web e jsdom"
+    ],
+    "actions": [
+      "Ler ausência e JSON corrompido.",
+      "Injetar rejeição pontual de leitura.",
+      "Injetar rejeição pontual de escrita sobre perfil válido.",
+      "Salvar dados válidos e iniciar pela Home."
+    ],
+    "expected": [
+      "Ausência retorna null.",
+      "JSON inválido rejeita com SyntaxError.",
+      "Erros nativos de leitura e escrita são propagados.",
+      "Escrita rejeitada preserva o perfil anterior no adapter.",
+      "Após armazenamento válido, Home reutiliza renda e preferências."
+    ],
+    "requirements": [
+      "RF-01, RF-03 e RF-06 relacionam persistência a CA-01.2.",
+      "RNF-03 mantém dados locais.",
+      "LAC-11/RNF-A04: recuperação e aviso na Home permanecem pendentes; não se provoca rejeição por clique na Home.",
+      "Fronteira simulada: falha do adapter; serialização e propagação pertencem ao storage real."
+    ],
+    "status": "confirmed"
+  }
+]
