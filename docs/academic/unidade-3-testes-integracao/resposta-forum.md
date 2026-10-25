@@ -4,7 +4,7 @@ Professora Mariana e colegas,
 
 Realizei a atividade no projeto acadêmico **Quanto Custa na Vida Real**, aplicativo React Native/Expo que traduz o preço de uma compra em horas de trabalho e comparações cotidianas. Preservei sua arquitetura mobile-first, offline-first e sem backend.
 
-Repositório: [Quanto-Custa-na-Vida-Real](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real). Os [artefatos da Unidade III](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real/tree/test/genai-integration-unit3/docs/academic/unidade-3-testes-integracao) estão na branch de revisão `test/genai-integration-unit3`, sem merge automático.
+Repositório: [Quanto-Custa-na-Vida-Real](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real). Os [artefatos da Unidade III](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real/tree/main/docs/academic/unidade-3-testes-integracao) estão na `main`, após integração do [PR #5](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real/pull/5) autorizada pelo autor.
 
 O cenário escolhido foi **Home → Onboarding → persistência local → Calculadora → core de cálculos → Resultado**, incluindo retorno com perfil salvo, novo comparativo e alteração/reutilização de preferências. Antes de editar, executei os testes existentes: 31 aprovados e verificação de tipos sem erros.
 
