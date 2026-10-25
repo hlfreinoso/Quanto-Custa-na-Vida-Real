@@ -14,6 +14,7 @@ import { saveInitialProfile } from "../../storage/InitialProfileStorage";
 
 export function ComparisonPreferencesScreen() {
   const [monthlyIncome, setMonthlyIncome] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
 
   const actionLabel = useMemo(() => {
@@ -35,17 +36,27 @@ export function ComparisonPreferencesScreen() {
   }
 
   async function handleContinue() {
+    const trimmedIncome = monthlyIncome.trim();
+    // Keep the existing pt-BR normalization; alternative formats remain LAC-02.
+    const parsedIncome = Number(trimmedIncome.replace(/\./g, "").replace(",", "."));
+
+    if (!Number.isFinite(parsedIncome) || parsedIncome <= 0) {
+      setErrorMessage("Informe uma renda mensal válida, maior que zero.");
+      return;
+    }
+
+    setErrorMessage(null);
     const selectedComparisonIds = Array.from(selectedIds);
 
     await saveInitialProfile({
-      monthlyIncome: monthlyIncome.trim(),
+      monthlyIncome: trimmedIncome,
       selectedComparisonIds,
     });
 
     router.push({
       pathname: "/calculator",
       params: {
-        monthlyIncome: monthlyIncome.trim(),
+        monthlyIncome: trimmedIncome,
         selectedComparisonIds: selectedComparisonIds.join(","),
       },
     });
@@ -83,6 +94,7 @@ export function ComparisonPreferencesScreen() {
             <Pressable
               accessibilityRole="checkbox"
               accessibilityState={{ checked: isSelected }}
+              aria-checked={isSelected}
               key={preference.id}
               onPress={() => togglePreference(preference.id)}
               style={[styles.option, isSelected && styles.optionSelected]}
@@ -107,6 +119,12 @@ export function ComparisonPreferencesScreen() {
           );
         })}
       </View>
+
+      {errorMessage ? (
+        <Text accessibilityRole="alert" style={styles.errorText}>
+          {errorMessage}
+        </Text>
+      ) : null}
 
       <Pressable
         onPress={handleContinue}
@@ -225,6 +243,13 @@ const styles = StyleSheet.create({
     marginTop: 28,
     borderRadius: 8,
     backgroundColor: "#171717",
+  },
+  errorText: {
+    marginTop: 18,
+    color: "#B42318",
+    fontSize: 14,
+    fontWeight: "700",
+    lineHeight: 20,
   },
   primaryButtonText: {
     color: "#FFFFFF",

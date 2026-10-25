@@ -1,0 +1,382 @@
+{
+  "baseline/tests.json": {
+    "original_sha256": "bf1e618a2f75e63db91401d03f6269afe030440723743d31e91d42a78be9b550",
+    "public_sha256": "9ecbedb1ef9217737d0bf8e38c9e1f7c9e5744c168be8a11b2f771829101c748",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "baseline/tests.txt": {
+    "original_sha256": "d29dd0fee49be7223741ac04cf2cdf5047a16452ae54f9f5d954f92a2105680b",
+    "public_sha256": "7cf8370157e683ad10d2622fafd75df9e3f87b74cba2772648ae48853d01fd98",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "baseline/typecheck.txt": {
+    "original_sha256": "d013eeaccb59024dcb785b913a77016a1e647d42eeeabc4d493651afb4866d96",
+    "public_sha256": "c6ca53a5072cee5bfd34e6cb6b87a895810ecd45c52e1b27a19b326d219ab7c2",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "baseline/coverage-summary.json": {
+    "original_sha256": "eaa5529256bb342da45e5a54d706afb836e8ade4231565fe121c39cd9763a38c",
+    "public_sha256": "131b6442353c0a18dfc84c3f058d0c0ab00b24a8568ca83a6ec4294bacbe8459",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v1/tests.json": {
+    "original_sha256": "a1dda90a9e7bf8875db45faed6a2f6e3b94d1c34df1caa172a0affb17bec28eb",
+    "public_sha256": "53c468bae56978b8c437704b81cc6f503041c3e6b48329422bff5fb66273fc08",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v1/execution.txt": {
+    "original_sha256": "a8758072ac3592e40f781dbdfb85917ea5235e1d8ee4ba06fdc4d46b927261ff",
+    "public_sha256": "15b376d542e5625de9e95495eb8531e93ad2a2d1384e947b89d9d8e5ae54f5e5",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v1/status.json": {
+    "original_sha256": "bab881d0287235b9331097e7c7e947176afeae3adec1be4f8514ad9fe0311213",
+    "public_sha256": "bab881d0287235b9331097e7c7e947176afeae3adec1be4f8514ad9fe0311213",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v1/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v1/coverage-summary.json": {
+    "original_sha256": "e087e05a791eeccdb3246090b335d3bb992decc8ffca793d04bbe9ffe1764af5",
+    "public_sha256": "fac149c2d10185d8fb42c82cc74fc3dc3f3060e7aa104a16432c544ec65e537c",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v1/lcov.info": {
+    "original_sha256": "065dcb39501f0ef8a2b98b0430f80c36f922f65d2dcbc743ae7a89e33444cad8",
+    "public_sha256": "065dcb39501f0ef8a2b98b0430f80c36f922f65d2dcbc743ae7a89e33444cad8",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v2/tests.json": {
+    "original_sha256": "7c857b0ed37f3389180a9d789ab650aa664c53b3eb03e244b7edc3ce3c6fcfb8",
+    "public_sha256": "1934fd2fb4abf7c7d4b8a3b46bfb30daa6f4bdc347a84be8acd6783f0915c008",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v2/execution.txt": {
+    "original_sha256": "be9a673568dbe922da5f32fed24f6744227b688a991be847ea81dd288fed7317",
+    "public_sha256": "bb44f57652fe0cc1d509584ac5e2cfcceee8151998c324d7ddfbf9c9f5b31e43",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v2/status.json": {
+    "original_sha256": "a3971f7b5f6fa2da511c073901eb9cb02af48f34d47acad33cd4a316ac81b0c6",
+    "public_sha256": "a3971f7b5f6fa2da511c073901eb9cb02af48f34d47acad33cd4a316ac81b0c6",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v2/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v2/coverage-summary.json": {
+    "original_sha256": "e555fee3095b0917bc6f4c5dce0f3e602a60da028916b987d8101b9241433039",
+    "public_sha256": "7433ecf76172070678792bf40f89012e091074ed0d2a1a50cc65998e5501e884",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/a-v2/lcov.info": {
+    "original_sha256": "ead192cd9bd7dd1be880062b8dd40a159e4080daccf4a1f4b506e6f2bc42022c",
+    "public_sha256": "ead192cd9bd7dd1be880062b8dd40a159e4080daccf4a1f4b506e6f2bc42022c",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v1/tests.json": {
+    "original_sha256": "40b4bb31e19abe4018f05438b513aed8325bf3c855ebb4645d3bc5439f661af4",
+    "public_sha256": "abadfa871cfab658ed17197edfe45420beaadb499365c38bb3d8fe3da2c359c6",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v1/execution.txt": {
+    "original_sha256": "a8556cfba4ae2cd5f7df2394001caa3d234c2547b10bcf06b62b37efc756074b",
+    "public_sha256": "fe06a8b91397eb83204e942c2cea6d03e32e579bb78d0f6cf5aa2d291454b4e5",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v1/status.json": {
+    "original_sha256": "9cd52c251121a34bc2b4787304353887a0dbb10f4a7ed819766b611d5a84e5d3",
+    "public_sha256": "9cd52c251121a34bc2b4787304353887a0dbb10f4a7ed819766b611d5a84e5d3",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v1/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v1/coverage-summary.json": {
+    "original_sha256": "73c75a6a8381583f708395b6eba887f5c8d6d4a5cfa139976dca8b06a963b319",
+    "public_sha256": "5a1282189d300df34f07012c451ace35d94afb8d1cf9098d6cc1d630afbb7428",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v1/lcov.info": {
+    "original_sha256": "3d7699d4043fb6fd8aa9a771307879e6ac52fa3d3ec0d631007e60a0a009632e",
+    "public_sha256": "3d7699d4043fb6fd8aa9a771307879e6ac52fa3d3ec0d631007e60a0a009632e",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v2/tests.json": {
+    "original_sha256": "cb4fe48422620cdbaca201921f5db6d5f20d2740086c334b899cf67d32d46d8a",
+    "public_sha256": "c457a14d3926f2f11b14eccf6d428a70f2439283a126fb90f2cf869882ea2ec8",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v2/execution.txt": {
+    "original_sha256": "f31cdcb856989da7e68354bcde3ca4c6ef2f3b686153549f7168db03d6b53e22",
+    "public_sha256": "97f72fc2eb0dad03d3210bc1896c67a0b1a3d0a399cd61026672e3f0551dcce0",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v2/status.json": {
+    "original_sha256": "ccdd7e863fe939b9f2d3080c0bc1ea091cce1b6b7dc80ebe23fdea7ac826ed14",
+    "public_sha256": "ccdd7e863fe939b9f2d3080c0bc1ea091cce1b6b7dc80ebe23fdea7ac826ed14",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v2/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v2/coverage-summary.json": {
+    "original_sha256": "6360f7404045bccebc198e1be46f1b072162799878340b3d319a78e1bbecf2c3",
+    "public_sha256": "3e0b0b218ebcf9487a6d8c43451e6789b84577ab8b6697f42cec134427432c30",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/b-v2/lcov.info": {
+    "original_sha256": "9b6a91765d9b75b2e5db26f4189d3aa13d761ff07abdde7b4dc75ddea3d330fe",
+    "public_sha256": "9b6a91765d9b75b2e5db26f4189d3aa13d761ff07abdde7b4dc75ddea3d330fe",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/combined/tests.json": {
+    "original_sha256": "7e8d3e1a034960394777caa7c8e580309433cac6abddf6a92dfddf6494cb5221",
+    "public_sha256": "e5c1d9fc7ba13af4d07955b8f0ecdbbcb051a8d37bcfc7d7f90c529cbe5212d7",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/combined/execution.txt": {
+    "original_sha256": "9d153fd9d3afb5dbdd550e07a460f49ff1e6a4c4876b9b7e3b0a5fbb3cfa07f8",
+    "public_sha256": "dbdddb9ca9ac5e73a326fe4bcb6e84dd59fab157ed5a0e4f291f20226cba4b15",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/combined/status.json": {
+    "original_sha256": "3c4ac877f068c6b5700e788eca989a5c57f195fe65fbf19e80e9d70844be65c7",
+    "public_sha256": "3c4ac877f068c6b5700e788eca989a5c57f195fe65fbf19e80e9d70844be65c7",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/combined/coverage-summary.json": {
+    "original_sha256": "b2bfeb7c1f8cd810e9c51b70399f1013a42c7e53ace96ba95a9a1d601aacbcc0",
+    "public_sha256": "3b96d5a20c2c06c26de51037a93e2b0aeff32643150e6f794793f2a1bd9a1137",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "before-fixes/combined/lcov.info": {
+    "original_sha256": "d55a09630e6599f6d04d66c095ec8fde697c137cbbe983931a75a6c93e51b4fa",
+    "public_sha256": "d55a09630e6599f6d04d66c095ec8fde697c137cbbe983931a75a6c93e51b4fa",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "test-correction-only/b-v2/tests.json": {
+    "original_sha256": "8355dd7d31d06696f0e9f605daaef1d676f108797850f759f6c355fc6081738b",
+    "public_sha256": "d444d0396776e0ed90646aa343794994723d0cf78e73e31faa80e84ece37a06d",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "test-correction-only/b-v2/execution.txt": {
+    "original_sha256": "594c2d4f798eb829b042780e7f3ab0cd4877761d5b7197a8d390d8e28321a5dd",
+    "public_sha256": "73cf5a839f584c2cf078ac6f23c4157e20893bb0de6867462ca854115ff67e9f",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "test-correction-only/b-v2/status.json": {
+    "original_sha256": "090351aa48bb1cb4a32d1524ebb599fb2b53201c2e6f0a93f78e3a7f50ac43eb",
+    "public_sha256": "090351aa48bb1cb4a32d1524ebb599fb2b53201c2e6f0a93f78e3a7f50ac43eb",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "test-correction-only/b-v2/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "test-correction-only/b-v2/coverage-summary.json": {
+    "original_sha256": "6360f7404045bccebc198e1be46f1b072162799878340b3d319a78e1bbecf2c3",
+    "public_sha256": "3e0b0b218ebcf9487a6d8c43451e6789b84577ab8b6697f42cec134427432c30",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "test-correction-only/b-v2/lcov.info": {
+    "original_sha256": "429de23a5fcc78a92403f9f74acd143f3d941d826e1bd97d5e3e75dcdb3be021",
+    "public_sha256": "429de23a5fcc78a92403f9f74acd143f3d941d826e1bd97d5e3e75dcdb3be021",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v1/tests.json": {
+    "original_sha256": "300bd30afd80821b2d6e51b8e1ccce2c35f35a9de05b1b7a4115bdc6216c586a",
+    "public_sha256": "4a51653593e110e6ac5772dad237331db8b893840dd6cc5ce40a99c50c98d69b",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v1/execution.txt": {
+    "original_sha256": "3025809180618b897129d2e103a1cccf3847534d15e1ea4b25b1c445644f7339",
+    "public_sha256": "e1b26c4dece9dfca42d6f28ff2906703f551d1f8cee2e85543e59d747771d260",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v1/status.json": {
+    "original_sha256": "416f39e32b7025b09dbc13a3879a27d8576152e3e09fa6e425b05fa67e819bec",
+    "public_sha256": "416f39e32b7025b09dbc13a3879a27d8576152e3e09fa6e425b05fa67e819bec",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v1/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v1/coverage-summary.json": {
+    "original_sha256": "37a3276152156b92cb782c4ab49bb19da8e94a84c2269c5fb4b7d6b0849c0545",
+    "public_sha256": "4816010d5d00f85f74d4d4b5114bbbebc3c850078e4a30153cb12ee82f665c94",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v1/lcov.info": {
+    "original_sha256": "409d1c0002e09096652e7433803588d703f59835b5bcb9ccbb2fdca208778acb",
+    "public_sha256": "409d1c0002e09096652e7433803588d703f59835b5bcb9ccbb2fdca208778acb",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v2/tests.json": {
+    "original_sha256": "ac17a02f2aa634a64f1e4c588d0c658c8e03af5c4b8ad5a27c9ced4a05c78bbf",
+    "public_sha256": "8f6ae742a38763c2d4d799c0fbff572e245108a04e4e7d8ea31bbfbd3ccf7c9b",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v2/execution.txt": {
+    "original_sha256": "b2671bc5c12c25daa95d0ec1ce231e020ef314f8df9e9b2b8d673101f097de21",
+    "public_sha256": "064a7cbd346dd33d49e7c84a42076238c212a45867990ca0d9eb00822008255d",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v2/status.json": {
+    "original_sha256": "1c26c3234b3357002bd570fec58b36ea963027c537b0eeee694589b6f77089c7",
+    "public_sha256": "1c26c3234b3357002bd570fec58b36ea963027c537b0eeee694589b6f77089c7",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v2/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v2/coverage-summary.json": {
+    "original_sha256": "c646347353dfb460120fbed3a944201cd574a5d3b54f6e85396d1d3c3ba578ab",
+    "public_sha256": "ea15d9312f7705c65bcc0cf466104ab1892b021cbc7fcdfad4e006942390f595",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/a-v2/lcov.info": {
+    "original_sha256": "e5ba214734a79dfae2eb3c80d29f933821e228102fd33c922931737e65ae95c6",
+    "public_sha256": "e5ba214734a79dfae2eb3c80d29f933821e228102fd33c922931737e65ae95c6",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v1/tests.json": {
+    "original_sha256": "cd1ff451ba50e6c6d16e0a23128d59e01ef4d28053b02efd4439a1aed78eb833",
+    "public_sha256": "a157aad9d82be52d283232e81a98586b4eabb392ce98fd0d37d772c3208aee85",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v1/execution.txt": {
+    "original_sha256": "40521ba089cbc7d9fc7d719ce25f40db6ca602d02efda7d2a16fe16504cb2087",
+    "public_sha256": "59cc7a1adbcbfad4791027417bb0edc8ab48b6ace1e15a662b097b4e42acca52",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v1/status.json": {
+    "original_sha256": "d80d5d476280182534cd9bfe69711dbd3d8cee42cb784604431463f42e1af38f",
+    "public_sha256": "d80d5d476280182534cd9bfe69711dbd3d8cee42cb784604431463f42e1af38f",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v1/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v1/coverage-summary.json": {
+    "original_sha256": "abff6f0b37a1428deb01574e2c3d233c269675edd76bc9e1f1928cd0d90e0f99",
+    "public_sha256": "dafe196df53952483a71f7669c80779963f0565436148cbb9b42bdb78df0d3d8",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v1/lcov.info": {
+    "original_sha256": "e0b0baa8ad13174caa38bb27a161a3f3ad8f9d622c5992e9e9668cf18dbeddb6",
+    "public_sha256": "e0b0baa8ad13174caa38bb27a161a3f3ad8f9d622c5992e9e9668cf18dbeddb6",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v2/tests.json": {
+    "original_sha256": "38edb5d21b11bd6d4db582cba31b5ab2b7785cf39d8d408fcbfb815842712829",
+    "public_sha256": "d10285d7778f08567d85b1fca4cd9f1168f444325cd2db5c105353886cd77a4f",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v2/execution.txt": {
+    "original_sha256": "cbb815fb7f5bd84da5b87114bdfdba3f7abdb19e89988b9abe510854dfb3b9f5",
+    "public_sha256": "1911c876156b079327ab378af7fb196ce9057a227ee89f210523d11c915b81f0",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v2/status.json": {
+    "original_sha256": "bbcf9f6da99c0831e7c9222a4f932edb5e94c586956f19e67183046ee2f3913d",
+    "public_sha256": "bbcf9f6da99c0831e7c9222a4f932edb5e94c586956f19e67183046ee2f3913d",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v2/typecheck.txt": {
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "public_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v2/coverage-summary.json": {
+    "original_sha256": "1e5b2f61139417b6f463d99f5994079cb12d6821b72b0382c1291761ca78231d",
+    "public_sha256": "d798cb1064ea25ad4e836a557b57997fedfe74700d85617858d8aaa81788f32c",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/b-v2/lcov.info": {
+    "original_sha256": "b925b4e79a3e332525f932cfe7f7e9ea5fca8c7d765f945d9164186b77597a36",
+    "public_sha256": "b925b4e79a3e332525f932cfe7f7e9ea5fca8c7d765f945d9164186b77597a36",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/combined/tests.json": {
+    "original_sha256": "650168d53745700e0fe0ec0cdd45ba76a61c7d260d84ee528d7b87bfc3966c58",
+    "public_sha256": "a874004e3ceb7b7e4a5dde19457ff51da7db99e8fd42a6dbc2fbbe1405e98585",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/combined/execution.txt": {
+    "original_sha256": "452033bf651344dc364e86c4f6a6297b0f941a4e07c955884a3099bdeb451a1c",
+    "public_sha256": "816ecf9979059f81c20068be6b8db7a846262b69dfd0bdb1566992ee6b4fdd1e",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/combined/status.json": {
+    "original_sha256": "58968376c63808517aecf9714c8e271970c2488f6af2b2a0e149125816e385ff",
+    "public_sha256": "58968376c63808517aecf9714c8e271970c2488f6af2b2a0e149125816e385ff",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/combined/coverage-summary.json": {
+    "original_sha256": "5fc071384b3074d097f022cf9b70bdc3fd2909d83228c48c525c2b202a846fd9",
+    "public_sha256": "d2c03ddfee97a71ce834380f54731a3d6aeaf3b4bc0219273610b26bdcaf0551",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "after-fixes/combined/lcov.info": {
+    "original_sha256": "bfa8ce50f24fc6bf07538590efe276602a7de41cf3c85f1f1d889ff5994529ea",
+    "public_sha256": "bfa8ce50f24fc6bf07538590efe276602a7de41cf3c85f1f1d889ff5994529ea",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "final/final-tests.json": {
+    "original_sha256": "384a2602a7116100a494b4c64b7b06d8121683e9c782e653d146d47f9c372f26",
+    "public_sha256": "77cd3ca51fb85e2c6b0ab1c1cbcedcd955d6d8c3bc37b7368b81abb44a6699b6",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "final/final-tests.txt": {
+    "original_sha256": "b00367dd151060d38b937c0acafec779063ef7602f3250758cf921782c874ee7",
+    "public_sha256": "c78d1b029ea460b3b6cc52feeeb68afac3b8aaca953299ef16ea4b460f723180",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "final/final-typecheck.txt": {
+    "original_sha256": "d013eeaccb59024dcb785b913a77016a1e647d42eeeabc4d493651afb4866d96",
+    "public_sha256": "c6ca53a5072cee5bfd34e6cb6b87a895810ecd45c52e1b27a19b326d219ab7c2",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "final/web-export.txt": {
+    "original_sha256": "4b0b6ff8cec3593d7ac154f2477437511428649582bee1bf9213eccca861ba4a",
+    "public_sha256": "76b87cf6ed4573434c67c731cf05ad769ef2e6313c68194c6b745a419ee22afe",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "final/coverage-summary.json": {
+    "original_sha256": "4674d131b9c730c877ecc11a7ae3808ba7bbbfc0fbd1129637928899646eb7c9",
+    "public_sha256": "9df51e42bafbd4fa635ac8eba5c08c77805b12feaf8a89de0bc122a8530922a3",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "replay-original/tests.json": {
+    "original_sha256": "89aa53e3ee56b2f4bef634ddb32feb9b29c9485450e7988e0ac45d37288f7cb2",
+    "public_sha256": "03aafc8529ea646b310049408ff144962cbc0ce616741581b4d4ea3959532b04",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "replay-original/status.json": {
+    "original_sha256": "af06685abd4e7a0c3622493ae7a3698fbd6d7d5a60f9c4b097612178453de7da",
+    "public_sha256": "af06685abd4e7a0c3622493ae7a3698fbd6d7d5a60f9c4b097612178453de7da",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  },
+  "replay-original/execution.txt": {
+    "original_sha256": "3c56883b78b33abb9ffef8ef7a95a4483b297d950ea892bd7cfb56838e777236",
+    "public_sha256": "99cc9e5589b268a57aea89e2b34ea3b45f3611366f77ccd99c3c374ee10a753c",
+    "transformation": "local-root replaced in keys/values, ANSI colors removed, LF normalized and JSON formatted; assertions and outcomes preserved"
+  }
+}

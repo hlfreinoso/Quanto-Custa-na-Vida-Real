@@ -1,0 +1,8 @@
+{
+  "stage": "replay-before-fixes",
+  "suite": "combined",
+  "typecheck_exit": null,
+  "test_exit": 1,
+  "signal": null,
+  "error": null
+}

@@ -1,0 +1,316 @@
+[
+  {
+    "id": "A-V1-01",
+    "title": "Primeiro acesso salva perfil e calcula compra",
+    "objective": "Integrar Home, onboarding, persistência, navegação e resultado com renda e preferências informadas.",
+    "preconditions": [
+      "Storage vazio.",
+      "Math.random controlado em 0.25."
+    ],
+    "components": [
+      "Telas, InitialProfileStorage e core reais.",
+      "React Native Web com jsdom; adapters nativos de armazenamento e rotas simulados. Não é E2E em dispositivo."
+    ],
+    "actions": [
+      "Acionar Iniciar.",
+      "Verificar preferências inicialmente desmarcadas.",
+      "Informar renda, selecionar e desmarcar preferências.",
+      "Continuar e calcular uma compra de 60 reais."
+    ],
+    "expected": [
+      "Perfil contém renda string '1760' e somente coffee e netflix.",
+      "Adapter recebe a serialização do perfil.",
+      "Rotas propagam renda, preferências, nome e preço como strings.",
+      "Resultado apresenta nome, 6,00 horas, 10 cafés e 1,5 meses de Netflix."
+    ],
+    "requirements": [
+      "RF-01, RF-02 → CA-01.1.",
+      "RF-04, RF-05, RF-06 → RN-09 → CA-02.1.",
+      "RF-07, RF-09, RF-10, RF-11, RF-12, RF-14 → RN-03 a RN-06, RN-10 → CA-03.1, CA-04.1, CA-04.2."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-02",
+    "title": "Retorno recupera perfil e integra seleção real do core",
+    "objective": "Verificar reutilização do perfil e tratamento de IDs repetidos ou inexistentes na seleção integrada.",
+    "preconditions": [
+      "Perfil local contém renda '1760' e IDs coffee, coffee, inexistente e netflix."
+    ],
+    "components": [
+      "Home, CalculatorScreen, ResultScreen, storage e core reais.",
+      "Persistência nativa e navegação substituídas pelos adapters do harness; UI em jsdom."
+    ],
+    "actions": [
+      "Acionar Iniciar.",
+      "Conferir parâmetros recuperados.",
+      "Calcular compra de 60 reais.",
+      "Exercitar também a função real de seleção, sem usá-la como oráculo numérico da UI."
+    ],
+    "expected": [
+      "Home lê a chave do perfil e abre a calculadora sem onboarding.",
+      "Perfil permanece inalterado e não é regravado.",
+      "Core retorna quatro IDs distintos, incluindo coffee e netflix, sem inexistente.",
+      "UI apresenta equivalências independentes para café e Netflix e quatro comparações distintas."
+    ],
+    "requirements": [
+      "RF-01, RF-03, RF-06 → CA-01.2.",
+      "RF-11, RF-12, RF-13 → RN-06, RN-10, RN-11, RN-12, RN-14 → CA-04.2, CA-04.3, CA-04.4."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-03",
+    "title": "Zero preferências permite cálculo com entrada pt-BR",
+    "objective": "Verificar preferências opcionais, nome substituto e comparações válidas sem fixar fallback.",
+    "preconditions": [
+      "Storage vazio.",
+      "Entrada monetária utiliza formato pt-BR."
+    ],
+    "components": [
+      "Onboarding, calculadora, resultado, storage e core reais.",
+      "Adapters de storage e rotas simulados; renderização React Native Web com jsdom."
+    ],
+    "actions": [
+      "Iniciar sem perfil.",
+      "Informar renda '1.760,00' e continuar sem selecionar preferências.",
+      "Calcular compra de '60,00' sem nome."
+    ],
+    "expected": [
+      "Perfil e parâmetros preservam renda textual e lista vazia.",
+      "Resultado apresenta 'Essa compra custa:' e 6,00 horas.",
+      "Resultado contém entre uma e quatro comparações numéricas válidas e distintas, sem impor IDs ou ordem."
+    ],
+    "requirements": [
+      "RF-05, RF-06 → RN-08, RN-09 → CA-02.1, CA-02.2.",
+      "RF-14 → RN-17 → CA-03.4.",
+      "RF-09 a RF-13 → RN-03 a RN-06, RN-14 → CA-04.1, CA-04.3, CA-04.4.",
+      "LAC-02 permanece pendente para formatos alternativos; LAC-03 permanece pendente para a composição específica do fallback."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-04",
+    "title": "Novo comparativo preserva perfil e recalcula",
+    "objective": "Verificar retorno por replace, preservação dos parâmetros financeiros e cálculo independente de outra compra.",
+    "preconditions": [
+      "Perfil válido salvo com renda '1760' e preferência coffee."
+    ],
+    "components": [
+      "Fluxo real Home, calculadora e resultado, com storage e core reais.",
+      "Rotas e AsyncStorage simulados nas fronteiras nativas; UI em jsdom."
+    ],
+    "actions": [
+      "Calcular uma compra de 60 reais.",
+      "Acionar Novo comparativo.",
+      "Conferir replace e parâmetros preservados.",
+      "Calcular outra compra de 120 reais."
+    ],
+    "expected": [
+      "Novo comparativo substitui a rota por calculator com renda e preferências.",
+      "Segunda compra apresenta 12,0 horas e 20 cafés.",
+      "Nome e preço da segunda compra chegam ao resultado.",
+      "Perfil persistido permanece igual e não há nova gravação."
+    ],
+    "requirements": [
+      "RF-16 → CA-05.1.",
+      "RF-09, RF-10, RF-11, RF-14 → RN-03 a RN-06 → CA-03.1, CA-04.1.",
+      "RN-18 descreve a apresentação atual das horas."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-05-empty",
+    "title": "Onboarding bloqueia renda vazia",
+    "objective": "Verificar contrato de validação mesmo quando a implementação atual apresentar defeito.",
+    "preconditions": [
+      "Onboarding aberto sem perfil salvo.",
+      "Renda vazia."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters nativos simulados; UI em jsdom."
+    ],
+    "actions": [
+      "Acionar Continuar sem renda."
+    ],
+    "expected": [
+      "Permanece no onboarding e apresenta alerta não vazio.",
+      "Nenhum perfil é salvo e nenhuma rota adicional é registrada."
+    ],
+    "requirements": [
+      "RF-08 → RN-02 → CA-02.3.",
+      "LAC-01: teste de contrato pode falhar na implementação atual; confirmed não significa executado ou aprovado.",
+      "LAC-11: recuperação da Home após falha de storage permanece pendente e não é exercitada."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-05-zero",
+    "title": "Onboarding bloqueia renda zero",
+    "objective": "Verificar limite inferior exclusivo da renda.",
+    "preconditions": [
+      "Onboarding aberto sem perfil salvo.",
+      "Renda '0'."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters nativos simulados; UI em jsdom."
+    ],
+    "actions": [
+      "Informar zero e acionar Continuar."
+    ],
+    "expected": [
+      "Permanece no onboarding com alerta não vazio.",
+      "Não persiste perfil nem registra navegação adicional."
+    ],
+    "requirements": [
+      "RF-08 → RN-02 → CA-02.3.",
+      "LAC-01: expectativa normativa pode revelar defeito atual."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-05-negative",
+    "title": "Onboarding bloqueia renda negativa",
+    "objective": "Verificar rejeição de renda inferior a zero.",
+    "preconditions": [
+      "Onboarding aberto sem perfil salvo.",
+      "Renda '-1'."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters nativos simulados; UI em jsdom."
+    ],
+    "actions": [
+      "Informar renda negativa e acionar Continuar."
+    ],
+    "expected": [
+      "Permanece no onboarding com alerta não vazio.",
+      "Não persiste perfil nem registra navegação adicional."
+    ],
+    "requirements": [
+      "RF-08 → RN-02 → CA-02.3.",
+      "LAC-01: expectativa normativa pode revelar defeito atual."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-05-text",
+    "title": "Onboarding bloqueia renda não numérica",
+    "objective": "Verificar rejeição de texto sem interpretação numérica.",
+    "preconditions": [
+      "Onboarding aberto sem perfil salvo.",
+      "Renda 'abc'."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters nativos simulados; UI em jsdom."
+    ],
+    "actions": [
+      "Informar texto e acionar Continuar."
+    ],
+    "expected": [
+      "Permanece no onboarding com alerta não vazio.",
+      "Não persiste perfil nem registra navegação adicional."
+    ],
+    "requirements": [
+      "RF-08 → RN-02 → CA-02.3.",
+      "LAC-01: expectativa normativa pode revelar defeito atual.",
+      "LAC-02: não estabelece interpretação de formatos monetários ambíguos."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-06-empty",
+    "title": "Compra vazia apresenta orientação na calculadora",
+    "objective": "Verificar mensagem específica e bloqueio antes da navegação.",
+    "preconditions": [
+      "Calculadora aberta com renda válida e preferência coffee.",
+      "Valor da compra vazio."
+    ],
+    "components": [
+      "CalculatorScreen real; adaptador de rotas simulado; React Native Web com jsdom."
+    ],
+    "actions": [
+      "Acionar Calcular custo real sem valor."
+    ],
+    "expected": [
+      "Permanece na calculadora com 'Informe o valor da compra.'.",
+      "Não registra rota adicional nem apresenta equivalências numéricas."
+    ],
+    "requirements": [
+      "RF-08 → CA-03.2.",
+      "RNF-07: não apresenta NaN ou Infinity."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-06-zero",
+    "title": "Compra zero não apresenta resultado numérico",
+    "objective": "Aceitar rejeição na entrada ou no resultado, exigindo orientação e ausência de números inválidos.",
+    "preconditions": [
+      "Calculadora aberta com renda válida.",
+      "Valor da compra '0'."
+    ],
+    "components": [
+      "Calculadora, resultado e core reais; rotas simuladas; UI em jsdom."
+    ],
+    "actions": [
+      "Informar zero e calcular."
+    ],
+    "expected": [
+      "Apresenta alerta não vazio na calculadora ou no resultado.",
+      "Não apresenta horas, comparações, NaN ou Infinity."
+    ],
+    "requirements": [
+      "RF-08, RF-15 → RN-02 → CA-03.3, CA-04.5.",
+      "Não impõe Calculator como local obrigatório da rejeição."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-06-negative",
+    "title": "Compra negativa não apresenta resultado numérico",
+    "objective": "Verificar rejeição integrada de valor inferior a zero.",
+    "preconditions": [
+      "Calculadora aberta com renda válida.",
+      "Valor da compra '-1'."
+    ],
+    "components": [
+      "Calculadora, resultado e core reais; rotas simuladas; UI em jsdom."
+    ],
+    "actions": [
+      "Informar valor negativo e calcular."
+    ],
+    "expected": [
+      "Apresenta alerta não vazio na calculadora ou no resultado.",
+      "Não apresenta horas, comparações, NaN ou Infinity."
+    ],
+    "requirements": [
+      "RF-08, RF-15 → RN-02 → CA-03.3, CA-04.5."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V1-06-text",
+    "title": "Compra não numérica não apresenta equivalências",
+    "objective": "Verificar tratamento integrado de texto inválido.",
+    "preconditions": [
+      "Calculadora aberta com renda válida.",
+      "Valor da compra 'abc'."
+    ],
+    "components": [
+      "Calculadora, resultado e core reais; rotas simuladas; UI em jsdom."
+    ],
+    "actions": [
+      "Informar texto e calcular."
+    ],
+    "expected": [
+      "Apresenta alerta não vazio na calculadora ou no resultado.",
+      "Não apresenta horas, comparações, NaN ou Infinity."
+    ],
+    "requirements": [
+      "RF-08, RF-15 → RN-02 → CA-03.3, CA-04.5.",
+      "LAC-02: não exige suporte a separadores internacionais.",
+      "LAC-04/CA-06.2: pré-preenchimento de edição permanece pendente e não é convertido em contrato neste arquivo."
+    ],
+    "status": "confirmed"
+  }
+]

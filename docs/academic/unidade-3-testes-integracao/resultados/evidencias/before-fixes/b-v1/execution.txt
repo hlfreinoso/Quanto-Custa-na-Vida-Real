@@ -1,0 +1,219 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ❯ |integration| apps/mobile/src/integration/b-v1.integration.test.tsx (18 tests | 5 failed) 4850ms
+     ✓ B-V1-01 — compra vazia permanece na Calculator com mensagem específica 176ms
+     ✓ B-V1-02 — core e Result deduplicam preferências e completam fallback 10ms
+     × B-V1-03 — onboarding bloqueia renda inválida "" sem persistir 1027ms
+     × B-V1-03 — onboarding bloqueia renda inválida "0" sem persistir 1028ms
+     × B-V1-03 — onboarding bloqueia renda inválida "-1" sem persistir 1021ms
+     × B-V1-03 — onboarding bloqueia renda inválida "abc" sem persistir 1035ms
+     ✓ B-V1-04 — compra inválida "0" recebe mensagem sem resultado numérico 48ms
+     ✓ B-V1-04 — compra inválida "-1" recebe mensagem sem resultado numérico 55ms
+     ✓ B-V1-04 — compra inválida "abc" recebe mensagem sem resultado numérico 59ms
+     ✓ B-V1-04 — compra inválida "Infinity" recebe mensagem sem resultado numérico 51ms
+     ✓ B-V1-05 — Result rejeita renda inválida "" recebida por rota 28ms
+     ✓ B-V1-05 — Result rejeita renda inválida "0" recebida por rota 28ms
+     ✓ B-V1-05 — Result rejeita renda inválida "-1" recebida por rota 27ms
+     ✓ B-V1-05 — Result rejeita renda inválida "abc" recebida por rota 31ms
+     ✓ B-V1-05 — Result rejeita renda inválida "Infinity" recebida por rota 32ms
+     ✓ B-V1-06 — pt-BR preserva strings e calcula renda e compra normalizadas 70ms
+     × B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo 112ms
+     ✓ B-V1-08 — storage real propaga corrupção e falhas controladas antes de reutilização válida 12ms
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 13 passed (18)
+   Start at  11:35:35
+   Duration  7.14s (transform 138ms, setup 225ms, import 980ms, tests 4.85s, environment 772ms)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/before-fixes/b-v1/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   88.42 |     75.6 |   88.88 |   88.13 |                   
+ ...ens/calculator |    90.9 |       75 |   66.66 |    90.9 |                   
+  ...torScreen.tsx |    90.9 |       75 |   66.66 |    90.9 | 89                
+ ...c/screens/home |   91.66 |      100 |   66.66 |   91.66 |                   
+  HomeScreen.tsx   |   91.66 |      100 |   66.66 |   91.66 | 50                
+ ...ens/onboarding |   94.73 |       90 |     100 |   94.44 |                   
+  ...cesScreen.tsx |   94.73 |       90 |     100 |   94.44 | 28                
+ ...screens/result |   85.18 |       50 |   77.77 |   85.18 |                   
+  ResultScreen.tsx |   85.18 |       50 |   77.77 |   85.18 | 34,76,129,137     
+ ...c/calculations |   81.25 |       85 |     100 |   81.25 |                   
+  ...HourlyRate.ts |      75 |    83.33 |     100 |      75 | 12,19             
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 88.42% ( 107/121 )
+Branches     : 75.6% ( 62/82 )
+Functions    : 88.88% ( 32/36 )
+Lines        : 88.13% ( 104/118 )
+================================================================================
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "" sem persistir
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "0" sem persistir
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "-1" sem persistir
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "abc" sem persistir
+AssertionError: expected '/calculator' to be '/onboarding' // Object.is equality
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      >
+        <div
+          class="css-view-g5y9jx r-backgroundColor-172bra0 r-flexGrow-16y2uox r-padding-d23pfw"
+        >
+          <div
+            class="css-view-g5y9jx r-marginBottom-1ivnorr r-paddingTop-131miar"
+          >
+            <div
+              class="css-text-146c3p1 r-color-ombics r-fontSize-n6v787 r-fontWeight-1vr29t4 r-marginBottom-15d164r r-textTransform-tsynxw"
+              dir="auto"
+            >
+              Cálculo rápido
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1njgeiw r-fontSize-1yjpyg1 r-fontWeight-1vr29t4 r-lineHeight-zj17g9 r-maxWidth-51zu7q"
+              dir="auto"
+            >
+              Qual compra você quer entender?
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-edjfg1 r-fontSize-ubezar r-lineHeight-7ptqe7 r-marginTop-1s2bzr4 r-maxWidth-hvns9x"
+              dir="auto"
+            >
+              Informe o produto e o preço. O resultado vem na próxima tela.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-gap-f4gmv6"
+          >
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Nome da compra
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                placeholder="Ex: Cadeira ergonômica"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Valor
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                inputmode="decimal"
+                placeholder="Ex: 1499,00"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                type="text"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1cucpzw r-fontSize-n6v787 r-lineHeight-hjklzo"
+              dir="auto"
+            >
+              Usamos 8 horas por dia e 22 dias por mês como padrão.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-iudk43 r-borderRadius-1xfd6ze r-justifyContent-1777fci r-marginTop-1no09lo r-minHeight-vdqesa"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-jwli3a r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Calcular custo real
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-justifyContent-1777fci r-marginTop-1s2bzr4 r-minHeight-19yznuf"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Mudar preferências
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+Expected: "/onboarding"
+Received: "/calculator"
+
+ ❯ apps/mobile/src/integration/b-v1.integration.test.tsx:147:37
+    145|       // Contrato CA-02.3: falha legítima na implementação parcial for…
+    146|       await waitFor(() => {
+    147|         expect(getRoute().pathname).toBe('/onboarding');
+       |                                     ^
+    148|         assertCorrectionMessage();
+    149|       });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v1.integration.test.tsx:225:53
+    223|     expect(checkboxes).toHaveLength(13);
+    224|     for (const checkbox of checkboxes) {
+    225|       expect(checkbox.getAttribute('aria-checked')).toBe('false');
+       |                                                     ^
+    226|     }
+    227|     enterIncome('1760');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+

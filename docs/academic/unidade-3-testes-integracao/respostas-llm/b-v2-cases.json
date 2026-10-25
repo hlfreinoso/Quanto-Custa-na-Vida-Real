@@ -1,0 +1,569 @@
+[
+  {
+    "id": "B-V2-01",
+    "title": "Primeiro acesso, perfil persistido e dois cálculos",
+    "objective": "Verificar configuração inicial, cálculo independente e reutilização do perfil na sessão.",
+    "preconditions": [
+      "Storage vazio; Math.random=0.25."
+    ],
+    "components": [
+      "Home, onboarding, Calculator, Result, storage e core reais.",
+      "AsyncStorage e Expo Router adaptados; React Native Web com jsdom, sem E2E em dispositivo."
+    ],
+    "actions": [
+      "Iniciar; informar renda '1760'; selecionar Café e Netflix; continuar.",
+      "Calcular compra 'Livro' de '60'; iniciar novo comparativo e calcular 'Ingresso' de '30'."
+    ],
+    "expected": [
+      "Perfil persistido com renda string e IDs coffee/netflix.",
+      "Rotas transportam valores string e preferências.",
+      "Resultados mostram respectivamente 6,00 e 3,00 horas do seu trabalho.",
+      "Novo comparativo utiliza replace e preserva o perfil."
+    ],
+    "requirements": [
+      "RF-01/02/04/05/06/07/09/10/14/16; RN-03/04/05; CA-01.1/02.1/03.1/04.1/05.1."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-02-empty",
+    "title": "Compra vazia: amount=''",
+    "objective": "Bloquear compra vazia e permitir corrigir a entrada.",
+    "preconditions": [
+      "Calculator com renda '1760' e preferência coffee."
+    ],
+    "components": [
+      "Calculator e Result reais; core real; rotas adaptadas em jsdom."
+    ],
+    "actions": [
+      "Calcular com valor vazio.",
+      "Corrigir valor para '60' e calcular."
+    ],
+    "expected": [
+      "Permanece na Calculator com 'Informe o valor da compra.' e sem navegação.",
+      "Correção abre Result com 6,00 horas."
+    ],
+    "requirements": [
+      "RF-07/08/15; RN-02; CA-03.2/03.1."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-02-zero",
+    "title": "Compra inválida: amount='0'",
+    "objective": "Rejeitar zero e permitir novo cálculo após o erro.",
+    "preconditions": [
+      "Calculator com renda válida."
+    ],
+    "components": [
+      "Calculator, Result e core reais; navegação adaptada."
+    ],
+    "actions": [
+      "Calcular '0'; observar erro na entrada ou no Result.",
+      "Se estiver no Result, acionar Novo comparativo; corrigir para '60'."
+    ],
+    "expected": [
+      "Mensagem orienta conferir valor/renda, sem resultado numérico.",
+      "Retorno preserva parâmetros financeiros e novo cálculo mostra 6,00 horas."
+    ],
+    "requirements": [
+      "RF-08/15/16; RN-02; CA-03.3/04.5/05.1; RNF-07."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-02-negative",
+    "title": "Compra inválida: amount='-1'",
+    "objective": "Rejeitar valor negativo e permitir recuperação.",
+    "preconditions": [
+      "Calculator com renda válida."
+    ],
+    "components": [
+      "Calculator, Result e core reais; navegação adaptada."
+    ],
+    "actions": [
+      "Calcular '-1'; observar erro; retornar se necessário e corrigir para '60'."
+    ],
+    "expected": [
+      "Nenhum resultado numérico inválido.",
+      "Perfil preservado e cálculo corrigido apresenta 6,00 horas."
+    ],
+    "requirements": [
+      "RF-08/15/16; RN-02; CA-03.3/04.5/05.1."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-02-text",
+    "title": "Compra inválida: amount='abc'",
+    "objective": "Rejeitar texto não numérico sem impor formato monetário alternativo.",
+    "preconditions": [
+      "Calculator com renda válida."
+    ],
+    "components": [
+      "Calculator, Result e core reais; navegação adaptada."
+    ],
+    "actions": [
+      "Calcular 'abc'; observar erro; retornar se necessário e corrigir para '60'."
+    ],
+    "expected": [
+      "Mensagem de correção, sem NaN, Infinity ou horas calculadas.",
+      "Novo cálculo válido funciona."
+    ],
+    "requirements": [
+      "RF-08/15/16; RN-02; CA-03.3/04.5/05.1; LAC-02 permanece pendente."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-02-infinity",
+    "title": "Compra inválida: amount='Infinity'",
+    "objective": "Rejeitar número não finito e permitir recuperação.",
+    "preconditions": [
+      "Calculator com renda válida."
+    ],
+    "components": [
+      "Calculator, Result e core reais; navegação adaptada."
+    ],
+    "actions": [
+      "Calcular 'Infinity'; observar erro; retornar se necessário e corrigir para '60'."
+    ],
+    "expected": [
+      "Mensagem de correção, sem resultado numérico.",
+      "Retorno e cálculo válido preservam renda e preferências."
+    ],
+    "requirements": [
+      "RF-08/15/16; RN-02; CA-03.3/04.5/05.1; RNF-07."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-03-empty",
+    "title": "Onboarding bloqueia monthlyIncome=''",
+    "objective": "Exigir renda válida antes de persistir ou navegar.",
+    "preconditions": [
+      "Onboarding com storage vazio."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters nativos simulados."
+    ],
+    "actions": [
+      "Informar renda vazia e acionar Continuar."
+    ],
+    "expected": [
+      "Permanece no onboarding, apresenta erro de renda e não grava perfil.",
+      "Contrato pode falhar na implementação atual; não é marcado como falha esperada."
+    ],
+    "requirements": [
+      "RF-08; RN-02; CA-02.3; LAC-01."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-03-zero",
+    "title": "Onboarding bloqueia monthlyIncome='0'",
+    "objective": "Impedir persistência e navegação com renda zero.",
+    "preconditions": [
+      "Onboarding com storage vazio."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters simulados."
+    ],
+    "actions": [
+      "Informar '0' e acionar Continuar."
+    ],
+    "expected": [
+      "Erro de renda, nenhuma escrita e nenhuma navegação.",
+      "Falha atual deve permanecer visível."
+    ],
+    "requirements": [
+      "RF-08; RN-02; CA-02.3; LAC-01."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-03-negative",
+    "title": "Onboarding bloqueia monthlyIncome='-1'",
+    "objective": "Impedir renda negativa.",
+    "preconditions": [
+      "Onboarding com storage vazio."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters simulados."
+    ],
+    "actions": [
+      "Informar '-1' e acionar Continuar."
+    ],
+    "expected": [
+      "Erro de renda, nenhuma escrita e nenhuma navegação.",
+      "Falha atual deve permanecer visível."
+    ],
+    "requirements": [
+      "RF-08; RN-02; CA-02.3; LAC-01."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-03-text",
+    "title": "Onboarding bloqueia monthlyIncome='abc'",
+    "objective": "Impedir renda não numérica.",
+    "preconditions": [
+      "Onboarding com storage vazio."
+    ],
+    "components": [
+      "Onboarding e storage reais; adapters simulados."
+    ],
+    "actions": [
+      "Informar 'abc' e acionar Continuar."
+    ],
+    "expected": [
+      "Erro de renda, nenhuma escrita e nenhuma navegação.",
+      "Falha atual deve permanecer visível."
+    ],
+    "requirements": [
+      "RF-08; RN-02; CA-02.3; LAC-01."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-04-no-params",
+    "title": "Result com params realmente ausente",
+    "objective": "Tratar rota sem objeto params.",
+    "preconditions": [
+      "Rota /result sem propriedade params."
+    ],
+    "components": [
+      "Result e core reais; parâmetros fornecidos pelo adaptador de rotas."
+    ],
+    "actions": [
+      "Montar Result diretamente.",
+      "Acionar Novo comparativo."
+    ],
+    "expected": [
+      "Alerta de cálculo, sem números inválidos.",
+      "Retorna por replace à Calculator com strings vazias para os dados ausentes."
+    ],
+    "requirements": [
+      "RF-15/16; CA-04.5/05.1; RNF-07."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-04-no-income",
+    "title": "Result com amount='60' e monthlyIncome ausente",
+    "objective": "Rejeitar ausência real de renda na rota.",
+    "preconditions": [
+      "Result recebe amount e preferências, sem monthlyIncome."
+    ],
+    "components": [
+      "Result e core reais; rotas adaptadas."
+    ],
+    "actions": [
+      "Montar Result e acionar Novo comparativo após erro."
+    ],
+    "expected": [
+      "Alerta sem horas ou comparações numéricas.",
+      "Calculator recebe renda vazia e preserva coffee."
+    ],
+    "requirements": [
+      "RF-08/15/16; RN-02; CA-04.5/05.1."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-04-no-amount",
+    "title": "Result com monthlyIncome='1760' e amount ausente",
+    "objective": "Rejeitar ausência real de preço na rota.",
+    "preconditions": [
+      "Result recebe renda e preferências, sem amount."
+    ],
+    "components": [
+      "Result e core reais; rotas adaptadas."
+    ],
+    "actions": [
+      "Montar Result e acionar Novo comparativo após erro."
+    ],
+    "expected": [
+      "Alerta sem números inválidos.",
+      "Calculator preserva renda '1760' e coffee."
+    ],
+    "requirements": [
+      "RF-08/15/16; RN-02; CA-04.5/05.1."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-04-inconsistent",
+    "title": "Result com monthlyIncome='abc' e amount='60'",
+    "objective": "Tratar parâmetros presentes, mas inconsistentes.",
+    "preconditions": [
+      "Result recebe renda não numérica."
+    ],
+    "components": [
+      "Result e core reais; rotas adaptadas."
+    ],
+    "actions": [
+      "Montar Result e acionar Novo comparativo."
+    ],
+    "expected": [
+      "Alerta, sem NaN, Infinity ou resultado numérico.",
+      "Retorno preserva os parâmetros recebidos, sem inventar correção automática."
+    ],
+    "requirements": [
+      "RF-15/16; RN-02; CA-04.5/05.1."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-04-optional",
+    "title": "Result válido sem expenseName e selectedComparisonIds",
+    "objective": "Distinguir parâmetros opcionais ausentes de dados financeiros inválidos.",
+    "preconditions": [
+      "Result recebe somente monthlyIncome='1760' e amount='60'."
+    ],
+    "components": [
+      "Result e core reais; rotas adaptadas."
+    ],
+    "actions": [
+      "Montar Result sem nome e preferências."
+    ],
+    "expected": [
+      "Título 'Essa compra custa:' e 6,00 horas.",
+      "Até quatro comparações válidas e distintas, sem exigir IDs ou ordem de fallback."
+    ],
+    "requirements": [
+      "RF-12/13/14; RN-08/11/14/17; CA-03.4/04.1/04.3; LAC-03 permanece pendente."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-05-duplicate",
+    "title": "Preferências 'coffee,coffee,desconhecido'",
+    "objective": "Verificar deduplicação, descarte de ID inexistente e complemento por fallback.",
+    "preconditions": [
+      "Perfil persistido com IDs duplicados e desconhecido; renda '1760'."
+    ],
+    "components": [
+      "Home, Calculator, Result, storage e core reais; adapters simulados."
+    ],
+    "actions": [
+      "Iniciar pelo perfil salvo e calcular compra de '60'."
+    ],
+    "expected": [
+      "Parâmetros preservam a entrada armazenada.",
+      "Uma comparação de 10 cafés; quatro comparações válidas e distintas; nenhum ID desconhecido."
+    ],
+    "requirements": [
+      "RF-03/11/12/13; RN-06/10/11/12/14; CA-01.2/04.2/04.3/04.4."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-05-empty",
+    "title": "Onboarding aceita selectedComparisonIds=[]",
+    "objective": "Medir fallback independentemente da falha de aria-checked.",
+    "preconditions": [
+      "Onboarding sem seleção e storage vazio."
+    ],
+    "components": [
+      "Onboarding, Calculator, Result, storage e core reais; adapters simulados."
+    ],
+    "actions": [
+      "Salvar renda '1760' sem selecionar preferências e calcular '60'."
+    ],
+    "expected": [
+      "Perfil persiste lista vazia e navegação é permitida.",
+      "Resultado contém até quatro comparações válidas e distintas; IDs e ordem não são fixados."
+    ],
+    "requirements": [
+      "RF-05/06/12/13; RN-08/11/14; CA-02.1/02.2/04.3; LAC-03 permanece pendente."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-05-limit",
+    "title": "Cinco preferências válidas para limite quatro",
+    "objective": "Verificar prioridade e limite sem fixar ordem aleatória.",
+    "preconditions": [
+      "Perfil com coffee, beer_can, bonbon, burger e netflix."
+    ],
+    "components": [
+      "Home, Calculator, Result, storage e core reais; adapters simulados."
+    ],
+    "actions": [
+      "Recuperar perfil e calcular '60'."
+    ],
+    "expected": [
+      "Exatamente quatro comparações distintas pertencentes às preferências escolhidas.",
+      "Quantidades conferidas por valores literais independentes do core."
+    ],
+    "requirements": [
+      "RF-03/11/12/13; RN-06/10/14; CA-01.2/04.2/04.4."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-06",
+    "title": "Checkbox web Café: false → true → false",
+    "objective": "Isolar o contrato público de estado acessível e verificar persistência da seleção final.",
+    "preconditions": [
+      "Onboarding com preferências inicialmente desmarcadas."
+    ],
+    "components": [
+      "Onboarding e storage reais em React Native Web/jsdom.",
+      "Fronteira nativa adaptada; não afirma reprodução em Android/iOS."
+    ],
+    "actions": [
+      "Inspecionar aria-checked de Café; selecionar e desmarcar Café.",
+      "Selecionar Netflix e salvar renda válida."
+    ],
+    "expected": [
+      "Café expõe aria-checked='false', depois 'true', depois 'false'.",
+      "Perfil final contém somente netflix.",
+      "Assertions soft preservam a falha acessível conhecida e permitem medir a persistência."
+    ],
+    "requirements": [
+      "RF-05/06; RN-09; CA-02.1; contrato web W3C checkbox com aria-checked false/true."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-07-json",
+    "title": "Storage real: JSON corrompido",
+    "objective": "Verificar propagação controlada de erro de interpretação.",
+    "preconditions": [
+      "Adapter contém JSON inválido na chave do perfil."
+    ],
+    "components": [
+      "loadInitialProfile real; bytes corrompidos somente no adapter nativo.",
+      "Home real montada, sem clicar Iniciar."
+    ],
+    "actions": [
+      "Invocar leitura pelo controlador do teste e aguardar a rejeição."
+    ],
+    "expected": [
+      "Rejeita com SyntaxError; chave correta é lida; conteúdo permanece intacto; nenhuma navegação adicional.",
+      "Recuperação e aviso na Home permanecem pendentes em LAC-11."
+    ],
+    "requirements": [
+      "RF-06; fronteira de persistência real; LAC-11/RNF-A04 sem política de UI inventada."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-07-read",
+    "title": "Storage real: getItem rejeita",
+    "objective": "Verificar propagação da falha de leitura sem rejection não tratada.",
+    "preconditions": [
+      "Perfil anterior válido; getItem do adapter rejeita uma vez."
+    ],
+    "components": [
+      "loadInitialProfile real; somente falha do adapter simulada.",
+      "Home real sem clique assíncrono."
+    ],
+    "actions": [
+      "Invocar leitura pelo controlador e capturar a rejeição."
+    ],
+    "expected": [
+      "Mesmo erro é propagado; perfil anterior é preservado; nenhuma escrita ou navegação adicional.",
+      "Aviso e recuperação de UI não são definidos por este teste."
+    ],
+    "requirements": [
+      "RF-06; fronteira de persistência; LAC-11/RNF-A04 pendentes."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-07-write",
+    "title": "Storage real: setItem rejeita",
+    "objective": "Verificar rejeição da gravação de dados originados da interface.",
+    "preconditions": [
+      "Perfil anterior válido; setItem do adapter rejeita uma vez."
+    ],
+    "components": [
+      "Onboarding e saveInitialProfile reais; controlador do teste aguarda a rejeição; falha somente no adapter."
+    ],
+    "actions": [
+      "Informar nova renda e selecionar Netflix.",
+      "Invocar gravação real com dados da entrada, sem clicar Continuar."
+    ],
+    "expected": [
+      "Mesmo erro é propagado; argumentos serializados corretos; perfil anterior não é substituído; nenhuma navegação adicional.",
+      "Não impõe mensagem ou recuperação pendente em LAC-11."
+    ],
+    "requirements": [
+      "RF-06; fronteira de persistência; LAC-11/RNF-A04 pendentes."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-08-home",
+    "title": "Editar pela Home e reutilizar perfil atualizado",
+    "objective": "Verificar acesso, gravação e nova leitura pela Home.",
+    "preconditions": [
+      "Perfil anterior com renda '3520' e coffee; origem Home."
+    ],
+    "components": [
+      "Home, onboarding, Calculator, Result e storage reais; adapters simulados."
+    ],
+    "actions": [
+      "Abrir Mudar preferências; definir renda '1760' e seleção somente Netflix; salvar.",
+      "Remontar Home, iniciar e calcular '60'."
+    ],
+    "expected": [
+      "Perfil atualizado persistido antes de remontar Home.",
+      "Home recupera renda string e netflix; cálculo mostra 6,00 horas e 1,5 meses de Netflix.",
+      "Não exige pré-preenchimento na edição."
+    ],
+    "requirements": [
+      "RF-03/06/17; CA-01.2/02.1/06.1; CA-06.2/LAC-04 pendentes."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-08-calculator",
+    "title": "Editar pela Calculator e reutilizar perfil atualizado",
+    "objective": "Verificar edição acessível pela Calculator e recuperação posterior.",
+    "preconditions": [
+      "Perfil anterior válido; origem Calculator."
+    ],
+    "components": [
+      "Telas, storage e core reais; adapters de rotas e AsyncStorage."
+    ],
+    "actions": [
+      "Abrir configuração; salvar renda '1760' e somente Netflix.",
+      "Remontar Home, iniciar e calcular '60'."
+    ],
+    "expected": [
+      "Persistência e parâmetros refletem a alteração.",
+      "Resultado mostra 6,00 horas e Netflix; não exige pré-preenchimento."
+    ],
+    "requirements": [
+      "RF-03/06/17; CA-01.2/02.1/06.1; LAC-04 pendente."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "B-V2-08-result",
+    "title": "Editar pelo Result e reutilizar perfil atualizado",
+    "objective": "Verificar edição acessível pelo Result e recuperação posterior.",
+    "preconditions": [
+      "Perfil anterior válido; origem Result."
+    ],
+    "components": [
+      "Telas, storage e core reais; adapters de rotas e AsyncStorage."
+    ],
+    "actions": [
+      "Abrir configuração; salvar renda '1760' e somente Netflix.",
+      "Remontar Home, iniciar e calcular '60'."
+    ],
+    "expected": [
+      "Persistência e parâmetros refletem a alteração.",
+      "Resultado mostra 6,00 horas e Netflix; não exige pré-preenchimento."
+    ],
+    "requirements": [
+      "RF-03/06/17; CA-01.2/02.1/06.1; LAC-04 pendente."
+    ],
+    "status": "confirmed"
+  }
+]

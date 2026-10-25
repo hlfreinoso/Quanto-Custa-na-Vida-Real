@@ -1,0 +1,35 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ✓ |integration| apps/mobile/src/integration/b-v2.integration.test.tsx (25 tests) 3004ms
+     ✓ B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix  1265ms
+
+ Test Files  1 passed (1)
+      Tests  25 passed (25)
+   Start at  11:45:03
+   Duration  5.41s (transform 145ms, setup 232ms, import 1.01s, tests 3.00s, environment 791ms)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/after-fixes/b-v2/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   93.75 |    88.63 |     100 |    93.6 |                   
+ ...ens/calculator |     100 |       75 |     100 |     100 |                   
+  ...torScreen.tsx |     100 |       75 |     100 |     100 | 32-33             
+ ...screens/result |   96.29 |       95 |     100 |   96.29 |                   
+  ResultScreen.tsx |   96.29 |       95 |     100 |   96.29 | 137               
+ ...c/calculations |   81.25 |       85 |     100 |   81.25 |                   
+  ...HourlyRate.ts |      75 |    83.33 |     100 |      75 | 12,19             
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 93.75% ( 120/128 )
+Branches     : 88.63% ( 78/88 )
+Functions    : 100% ( 36/36 )
+Lines        : 93.6% ( 117/125 )
+================================================================================

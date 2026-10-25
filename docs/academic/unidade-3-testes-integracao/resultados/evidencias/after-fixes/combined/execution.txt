@@ -1,0 +1,38 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ✓ |integration| apps/mobile/src/integration/a-v2.integration.test.tsx (6 tests) 528ms
+ ✓ |integration| apps/mobile/src/integration/a-v1.integration.test.tsx (12 tests) 1061ms
+     ✓ A-V1-01 primeiro acesso persiste seleção e apresenta custo real  390ms
+ ✓ |integration| apps/mobile/src/integration/b-v1.integration.test.tsx (18 tests) 1712ms
+     ✓ B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo  749ms
+ ✓ |integration| apps/mobile/src/integration/b-v2.integration.test.tsx (25 tests) 3034ms
+     ✓ B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix  1295ms
+
+ Test Files  4 passed (4)
+      Tests  61 passed (61)
+   Start at  11:45:09
+   Duration  5.54s (transform 512ms, setup 1.01s, import 4.30s, tests 6.34s, environment 3.27s)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/after-fixes/combined/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   94.53 |    89.77 |     100 |    94.4 |                   
+ ...ens/calculator |     100 |       75 |     100 |     100 |                   
+  ...torScreen.tsx |     100 |       75 |     100 |     100 | 32-33             
+ ...c/calculations |   81.25 |       85 |     100 |   81.25 |                   
+  ...HourlyRate.ts |      75 |    83.33 |     100 |      75 | 12,19             
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 94.53% ( 121/128 )
+Branches     : 89.77% ( 79/88 )
+Functions    : 100% ( 36/36 )
+Lines        : 94.4% ( 118/125 )
+================================================================================

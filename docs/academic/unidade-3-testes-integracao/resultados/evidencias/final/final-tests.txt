@@ -1,0 +1,47 @@
+
+> quanto-custa-na-vida-real@0.1.0 test
+> vitest run --coverage --coverage.reportsDirectory=.experiment-local/final-coverage --reporter=default --reporter=json --outputFile=.experiment-local/final-tests.json
+
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ✓ |unit| apps/mobile/src/storage/InitialProfileStorage.test.ts (5 tests) 10ms
+ ✓ |unit| packages/core/src/calculations/calculateHourlyRate.test.ts (5 tests) 7ms
+ ✓ |unit| packages/core/src/calculations/calculateWorkHoursEquivalent.test.ts (4 tests) 7ms
+ ✓ |unit| packages/core/src/comparisons/calculateComparisonResults.test.ts (9 tests) 11ms
+ ✓ |unit| packages/core/src/index.test.ts (1 test) 5ms
+ ✓ |unit| packages/core/src/comparisons/defaultComparisonPreferences.test.ts (4 tests) 8ms
+ ✓ |unit| packages/core/src/calculations/calculateBasicExpenseImpact.test.ts (3 tests) 7ms
+ ✓ |integration| tests/integration/harness.smoke.test.tsx (1 test) 127ms
+ ✓ |integration| apps/mobile/src/integration/a-v2.integration.test.tsx (6 tests) 505ms
+ ✓ |integration| apps/mobile/src/integration/a-v1.integration.test.tsx (12 tests) 1029ms
+     ✓ A-V1-01 primeiro acesso persiste seleção e apresenta custo real  403ms
+ ✓ |integration| apps/mobile/src/integration/b-v1.integration.test.tsx (18 tests) 1681ms
+     ✓ B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo  733ms
+ ✓ |integration| apps/mobile/src/integration/b-v2.integration.test.tsx (25 tests) 2919ms
+     ✓ B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix  1171ms
+
+ Test Files  12 passed (12)
+      Tests  93 passed (93)
+   Start at  11:45:18
+   Duration  5.68s (transform 689ms, setup 1.29s, import 5.85s, tests 6.32s, environment 4.75s)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/final-tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   99.21 |    96.59 |     100 |    99.2 |                   
+ ...ens/calculator |     100 |       75 |     100 |     100 |                   
+  ...torScreen.tsx |     100 |       75 |     100 |     100 | 32-33             
+ ...rc/comparisons |   96.66 |    94.44 |     100 |   96.42 |                   
+  ...sonResults.ts |   96.55 |    94.44 |     100 |   96.29 | 87                
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 99.21% ( 127/128 )
+Branches     : 96.59% ( 85/88 )
+Functions    : 100% ( 36/36 )
+Lines        : 99.2% ( 124/125 )
+================================================================================

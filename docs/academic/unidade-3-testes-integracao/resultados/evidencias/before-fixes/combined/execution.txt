@@ -1,0 +1,1069 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ✓ |integration| apps/mobile/src/integration/a-v2.integration.test.tsx (6 tests) 445ms
+ ❯ |integration| apps/mobile/src/integration/b-v2.integration.test.tsx (25 tests | 8 failed) 2948ms
+     ✓ B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30 164ms
+     ✓ 'B-V2-02-empty' compra amount="''": erro e correção 163ms
+     ✓ 'B-V2-02-zero' compra amount="'0'": erro e correção 85ms
+     ✓ 'B-V2-02-negative' compra amount="'-1'": erro e correção 91ms
+     ✓ 'B-V2-02-text' compra amount="'abc'": erro e correção 91ms
+     ✓ 'B-V2-02-infinity' compra amount="'Infinity'": erro e correção 75ms
+     × 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita 25ms
+     × 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita 22ms
+     × 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita 24ms
+     × 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita 22ms
+     ✓ 'B-V2-04-no-params' Result: 'params ausente' 37ms
+     ✓ 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente' 36ms
+     ✓ 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente' 35ms
+     ✓ 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60' 35ms
+     ✓ 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…' 21ms
+     ✓ 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ] 31ms
+     ✓ 'B-V2-05-empty' fallback: selectedComparisonIds=[] 40ms
+     ✓ 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ] 27ms
+     × B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix 1110ms
+     ✓ 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador 4ms
+     ✓ 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador 3ms
+     ✓ 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador 22ms
+     × 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home 236ms
+     × 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home 266ms
+     × 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home 281ms
+ ❯ |integration| apps/mobile/src/integration/a-v1.integration.test.tsx (12 tests | 5 failed) 4733ms
+     × A-V1-01 primeiro acesso persiste seleção e apresenta custo real 272ms
+     ✓ A-V1-02 retorno recupera perfil e integra seleção real sem duplicatas 36ms
+     ✓ A-V1-03 zero preferências aceita pt-BR e nome opcional sem fixar fallback 63ms
+     ✓ A-V1-04 novo comparativo preserva perfil e usa a segunda compra 54ms
+     × 'A-V1-05-empty' bloqueia renda inválida no onboarding 1014ms
+     × 'A-V1-05-zero' bloqueia renda inválida no onboarding 1028ms
+     × 'A-V1-05-negative' bloqueia renda inválida no onboarding 1021ms
+     × 'A-V1-05-text' bloqueia renda inválida no onboarding 1036ms
+     ✓ 'A-V1-06-empty' rejeita compra inválida sem equivalências numéricas 56ms
+     ✓ 'A-V1-06-zero' rejeita compra inválida sem equivalências numéricas 39ms
+     ✓ 'A-V1-06-negative' rejeita compra inválida sem equivalências numéricas 53ms
+     ✓ 'A-V1-06-text' rejeita compra inválida sem equivalências numéricas 60ms
+ ❯ |integration| apps/mobile/src/integration/b-v1.integration.test.tsx (18 tests | 5 failed) 4862ms
+     ✓ B-V1-01 — compra vazia permanece na Calculator com mensagem específica 193ms
+     ✓ B-V1-02 — core e Result deduplicam preferências e completam fallback 12ms
+     × B-V1-03 — onboarding bloqueia renda inválida "" sem persistir 1028ms
+     × B-V1-03 — onboarding bloqueia renda inválida "0" sem persistir 1026ms
+     × B-V1-03 — onboarding bloqueia renda inválida "-1" sem persistir 1022ms
+     × B-V1-03 — onboarding bloqueia renda inválida "abc" sem persistir 1027ms
+     ✓ B-V1-04 — compra inválida "0" recebe mensagem sem resultado numérico 54ms
+     ✓ B-V1-04 — compra inválida "-1" recebe mensagem sem resultado numérico 63ms
+     ✓ B-V1-04 — compra inválida "abc" recebe mensagem sem resultado numérico 64ms
+     ✓ B-V1-04 — compra inválida "Infinity" recebe mensagem sem resultado numérico 48ms
+     ✓ B-V1-05 — Result rejeita renda inválida "" recebida por rota 29ms
+     ✓ B-V1-05 — Result rejeita renda inválida "0" recebida por rota 24ms
+     ✓ B-V1-05 — Result rejeita renda inválida "-1" recebida por rota 26ms
+     ✓ B-V1-05 — Result rejeita renda inválida "abc" recebida por rota 27ms
+     ✓ B-V1-05 — Result rejeita renda inválida "Infinity" recebida por rota 31ms
+     ✓ B-V1-06 — pt-BR preserva strings e calcula renda e compra normalizadas 63ms
+     × B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo 111ms
+     ✓ B-V1-08 — storage real propaga corrupção e falhas controladas antes de reutilização válida 12ms
+
+ Test Files  3 failed | 1 passed (4)
+      Tests  18 failed | 43 passed (61)
+   Start at  11:42:29
+   Duration  7.32s (transform 456ms, setup 1.07s, import 4.17s, tests 12.99s, environment 3.22s)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/before-fixes/combined/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   94.21 |    89.02 |     100 |   94.06 |                   
+ ...ens/calculator |     100 |       75 |     100 |     100 |                   
+  ...torScreen.tsx |     100 |       75 |     100 |     100 | 32-33             
+ ...c/calculations |   81.25 |       85 |     100 |   81.25 |                   
+  ...HourlyRate.ts |      75 |    83.33 |     100 |      75 | 12,19             
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 94.21% ( 114/121 )
+Branches     : 89.02% ( 73/82 )
+Functions    : 100% ( 36/36 )
+Lines        : 94.06% ( 111/118 )
+================================================================================
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 18 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > A-V1-01 primeiro acesso persiste seleção e apresenta custo real
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/a-v1.integration.test.tsx:92:53
+     90|     expect(checkboxes).toHaveLength(13);
+     91|     for (const checkbox of checkboxes) {
+     92|       expect(checkbox.getAttribute('aria-checked')).toBe('false');
+       |                                                     ^
+     93|     }
+     94|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-empty' bloqueia renda inválida no onboarding
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-zero' bloqueia renda inválida no onboarding
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-negative' bloqueia renda inválida no onboarding
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-text' bloqueia renda inválida no onboarding
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+    >
+      <div
+        class="css-view-g5y9jx r-backgroundColor-172bra0 r-flexGrow-16y2uox r-padding-d23pfw"
+      >
+        <div
+          class="css-view-g5y9jx r-marginBottom-1ivnorr r-paddingTop-131miar"
+        >
+          <div
+            class="css-text-146c3p1 r-color-ombics r-fontSize-n6v787 r-fontWeight-1vr29t4 r-marginBottom-15d164r r-textTransform-tsynxw"
+            dir="auto"
+          >
+            Cálculo rápido
+          </div>
+          <div
+            class="css-text-146c3p1 r-color-1njgeiw r-fontSize-1yjpyg1 r-fontWeight-1vr29t4 r-lineHeight-zj17g9 r-maxWidth-51zu7q"
+            dir="auto"
+          >
+            Qual compra você quer entender?
+          </div>
+          <div
+            class="css-text-146c3p1 r-color-edjfg1 r-fontSize-ubezar r-lineHeight-7ptqe7 r-marginTop-1s2bzr4 r-maxWidth-hvns9x"
+            dir="auto"
+          >
+            Informe o produto e o preço. O resultado vem na próxima tela.
+          </div>
+        </div>
+        <div
+          class="css-view-g5y9jx r-gap-f4gmv6"
+        >
+          <div
+            class="css-view-g5y9jx r-gap-1cmwbt1"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Nome da compra
+            </div>
+            <input
+              autocapitalize="sentences"
+              autocomplete="on"
+              autocorrect="on"
+              class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+              dir="auto"
+              placeholder="Ex: Cadeira ergonômica"
+              rows="1"
+              spellcheck="true"
+              style="--placeholderTextColor: #8A8F98;"
+              value=""
+              virtualkeyboardpolicy="auto"
+            />
+          </div>
+          <div
+            class="css-view-g5y9jx r-gap-1cmwbt1"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Valor
+            </div>
+            <input
+              autocapitalize="sentences"
+              autocomplete="on"
+              autocorrect="on"
+              class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+              dir="auto"
+              inputmode="decimal"
+              placeholder="Ex: 1499,00"
+              rows="1"
+              spellcheck="true"
+              style="--placeholderTextColor: #8A8F98;"
+              type="text"
+              value=""
+              virtualkeyboardpolicy="auto"
+            />
+          </div>
+          <div
+            class="css-text-146c3p1 r-color-1cucpzw r-fontSize-n6v787 r-lineHeight-hjklzo"
+            dir="auto"
+          >
+            Usamos 8 horas por dia e 22 dias por mês como padrão.
+          </div>
+        </div>
+        <div
+          class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-iudk43 r-borderRadius-1xfd6ze r-justifyContent-1777fci r-marginTop-1no09lo r-minHeight-vdqesa"
+          tabindex="0"
+        >
+          <div
+            class="css-text-146c3p1 r-color-jwli3a r-fontSize-ubezar r-fontWeight-1vr29t4"
+            dir="auto"
+          >
+            Calcular custo real
+          </div>
+        </div>
+        <div
+          class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-justifyContent-1777fci r-marginTop-1s2bzr4 r-minHeight-19yznuf"
+          tabindex="0"
+        >
+          <div
+            class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-ubezar r-fontWeight-1vr29t4"
+            dir="auto"
+          >
+            Mudar preferências
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      >
+        <div
+          class="css-view-g5y9jx r-backgroundColor-172bra0 r-flexGrow-16y2uox r-padding-d23pfw"
+        >
+          <div
+            class="css-view-g5y9jx r-marginBottom-1ivnorr r-paddingTop-131miar"
+          >
+            <div
+              class="css-text-146c3p1 r-color-ombics r-fontSize-n6v787 r-fontWeight-1vr29t4 r-marginBottom-15d164r r-textTransform-tsynxw"
+              dir="auto"
+            >
+              Cálculo rápido
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1njgeiw r-fontSize-1yjpyg1 r-fontWeight-1vr29t4 r-lineHeight-zj17g9 r-maxWidth-51zu7q"
+              dir="auto"
+            >
+              Qual compra você quer entender?
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-edjfg1 r-fontSize-ubezar r-lineHeight-7ptqe7 r-marginTop-1s2bzr4 r-maxWidth-hvns9x"
+              dir="auto"
+            >
+              Informe o produto e o preço. O resultado vem na próxima tela.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-gap-f4gmv6"
+          >
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Nome da compra
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                placeholder="Ex: Cadeira ergonômica"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Valor
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                inputmode="decimal"
+                placeholder="Ex: 1499,00"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                type="text"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1cucpzw r-fontSize-n6v787 r-lineHeight-hjklzo"
+              dir="auto"
+            >
+              Usamos 8 horas por dia e 22 dias por mês como padrão.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-iudk43 r-borderRadius-1xfd6ze r-justifyContent-1777fci r-marginTop-1no09lo r-minHeight-vdqesa"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-jwli3a r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Calcular custo real
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-justifyContent-1777fci r-marginTop-1s2bzr4 r-minHeight-19yznuf"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Mudar preferências
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ apps/mobile/src/integration/a-v1.integration.test.tsx:226:11
+    224|
+    225|     // CA-02.3 rege a expectativa; a implementação parcial pode falhar…
+    226|     await waitFor(() => {
+       |           ^
+    227|       expect(screen.getByRole('alert').textContent?.trim().length ?? 0…
+    228|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "" sem persistir
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "0" sem persistir
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "-1" sem persistir
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-03 — onboarding bloqueia renda inválida "abc" sem persistir
+AssertionError: expected '/calculator' to be '/onboarding' // Object.is equality
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      >
+        <div
+          class="css-view-g5y9jx r-backgroundColor-172bra0 r-flexGrow-16y2uox r-padding-d23pfw"
+        >
+          <div
+            class="css-view-g5y9jx r-marginBottom-1ivnorr r-paddingTop-131miar"
+          >
+            <div
+              class="css-text-146c3p1 r-color-ombics r-fontSize-n6v787 r-fontWeight-1vr29t4 r-marginBottom-15d164r r-textTransform-tsynxw"
+              dir="auto"
+            >
+              Cálculo rápido
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1njgeiw r-fontSize-1yjpyg1 r-fontWeight-1vr29t4 r-lineHeight-zj17g9 r-maxWidth-51zu7q"
+              dir="auto"
+            >
+              Qual compra você quer entender?
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-edjfg1 r-fontSize-ubezar r-lineHeight-7ptqe7 r-marginTop-1s2bzr4 r-maxWidth-hvns9x"
+              dir="auto"
+            >
+              Informe o produto e o preço. O resultado vem na próxima tela.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-gap-f4gmv6"
+          >
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Nome da compra
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                placeholder="Ex: Cadeira ergonômica"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Valor
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                inputmode="decimal"
+                placeholder="Ex: 1499,00"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                type="text"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1cucpzw r-fontSize-n6v787 r-lineHeight-hjklzo"
+              dir="auto"
+            >
+              Usamos 8 horas por dia e 22 dias por mês como padrão.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-iudk43 r-borderRadius-1xfd6ze r-justifyContent-1777fci r-marginTop-1no09lo r-minHeight-vdqesa"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-jwli3a r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Calcular custo real
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-justifyContent-1777fci r-marginTop-1s2bzr4 r-minHeight-19yznuf"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Mudar preferências
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+Expected: "/onboarding"
+Received: "/calculator"
+
+ ❯ apps/mobile/src/integration/b-v1.integration.test.tsx:147:37
+    145|       // Contrato CA-02.3: falha legítima na implementação parcial for…
+    146|       await waitFor(() => {
+    147|         expect(getRoute().pathname).toBe('/onboarding');
+       |                                     ^
+    148|         assertCorrectionMessage();
+    149|       });
+ ❯ runWithExpensiveErrorDiagnosticsDisabled node_modules/@testing-library/dom/dist/config.js:47:12
+ ❯ checkCallback node_modules/@testing-library/dom/dist/wait-for.js:124:77
+ ❯ Timeout.checkRealTimersCallback node_modules/@testing-library/dom/dist/wait-for.js:118:16
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v1.integration.test.tsx > B-V1 > B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v1.integration.test.tsx:225:53
+    223|     expect(checkboxes).toHaveLength(13);
+    224|     for (const checkbox of checkboxes) {
+    225|       expect(checkbox.getAttribute('aria-checked')).toBe('false');
+       |                                                     ^
+    226|     }
+    227|     enterIncome('1760');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected '/calculator' to be '/onboarding' // Object.is equality
+
+Expected: "/onboarding"
+Received: "/calculator"
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:204:38
+    202|     await press('Continuar');
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+       |                                      ^
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: '', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected null not to be null
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:209:28
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+       |                            ^
+    210|     expect.soft(alert?.textContent ?? '').toMatch(/renda/i);
+    211|     expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|váli…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected '' to match /renda/i
+
+- Expected:
+/renda/i
+
++ Received:
+""
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:210:43
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+    210|     expect.soft(alert?.textContent ?? '').toMatch(/renda/i);
+       |                                           ^
+    211|     expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|váli…
+    212|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected '' to match /inform|inválid|válid|positiv|maior|o…/i
+
+- Expected:
+/inform|inválid|válid|positiv|maior|obrigat/i
+
++ Received:
+""
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:211:43
+    209|     expect.soft(alert).not.toBeNull();
+    210|     expect.soft(alert?.textContent ?? '').toMatch(/renda/i);
+    211|     expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|váli…
+       |                                           ^
+    212|   });
+    213|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "0",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"0","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: '0', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "0",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "-1",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"-1","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: '-1', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "-1",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "abc",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"abc","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: 'abc', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "abc",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:272:58
+    270|     enterIncome('1760');
+    271|     for (const checkbox of screen.getAllByRole('checkbox')) {
+    272|       expect.soft(checkbox.getAttribute('aria-checked')).toBe('false');
+       |                                                          ^
+    273|     }
+    274|     const coffee = () => screen.getByRole('checkbox', { name: 'Café' }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:275:56
+    273|     }
+    274|     const coffee = () => screen.getByRole('checkbox', { name: 'Café' }…
+    275|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+       |                                                        ^
+    276|     await press('Café');
+    277|     expect.soft(coffee().getAttribute('aria-checked')).toBe('true');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[22/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'true' // Object.is equality
+
+- Expected:
+"true"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:277:56
+    275|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+    276|     await press('Café');
+    277|     expect.soft(coffee().getAttribute('aria-checked')).toBe('true');
+       |                                                        ^
+    278|     await press('Café');
+    279|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[23/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:279:56
+    277|     expect.soft(coffee().getAttribute('aria-checked')).toBe('true');
+    278|     await press('Café');
+    279|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+       |                                                        ^
+    280|     await press('Netflix');
+    281|     expect.soft(screen.getByRole('checkbox', { name: 'Netflix' }).getA…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[24/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'true' // Object.is equality
+
+- Expected:
+"true"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:281:97
+    279|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+    280|     await press('Netflix');
+    281|     expect.soft(screen.getByRole('checkbox', { name: 'Netflix' }).getA…
+       |                                                                                                 ^
+    282|     await press('Continuar');
+    283|     await atRoute('/calculator');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[25/58]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home
+AssertionError: expected { monthlyIncome: '1760', …(1) } to deeply equal { monthlyIncome: '1760', …(1) }
+
+- Expected
++ Received
+
+  {
+    "monthlyIncome": "1760",
+    "selectedComparisonIds": [
+-     "netflix",
++     "coffee",
++     "beer_can",
++     "bonbon",
++     "burger",
++     "gasoline",
++     "bus_ticket",
++     "movie_ticket",
++     "acai",
++     "pizza",
++     "bread",
++     "soda_2l",
++     "ride_short",
+    ],
+  }
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:348:32
+    346|     await atRoute('/calculator');
+    347|     const updated = { monthlyIncome: '1760', selectedComparisonIds: ['…
+    348|     expect(persistedProfile()).toEqual(updated);
+       |                                ^
+    349|     expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JS…
+    350|     expectLastNavigation('push', '/calculator', { monthlyIncome: '1760…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[26/58]⎯
+

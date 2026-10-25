@@ -1,0 +1,223 @@
+{
+  "cases": [
+    {
+      "id": "A-V2-01",
+      "title": "Primeiro acesso configura, persiste e calcula",
+      "objective": "Verificar o fluxo funcional completo sem fazer sua continuidade depender da exposição de aria-checked.",
+      "preconditions": [
+        "Storage e registros de navegação limpos; Math.random controlado em 0.25.",
+        "Telas, storage do aplicativo e core reais; AsyncStorage e Expo Router substituídos pelos adapters do harness.",
+        "Integração em React Native Web e jsdom; não representa E2E em dispositivo."
+      ],
+      "components": [
+        "HomeScreen",
+        "ComparisonPreferencesScreen",
+        "CalculatorScreen",
+        "ResultScreen",
+        "InitialProfileStorage",
+        "Core real"
+      ],
+      "actions": [
+        "Acionar Iniciar sem perfil.",
+        "Informar renda 1760, selecionar Café e Netflix e continuar.",
+        "Conferir persistência e parâmetros; calcular uma compra de 60."
+      ],
+      "expected": [
+        "Home consulta a chave real e abre onboarding.",
+        "Storage salva renda como string e IDs coffee e netflix.",
+        "Calculator e Result recebem os parâmetros corretos.",
+        "Resultado identifica a compra e apresenta 6,00 horas do seu trabalho.",
+        "Café e Netflix integram quatro comparações distintas, com quantidades verificadas por aritmética independente."
+      ],
+      "requirements": [
+        "RF-01/RF-02 → CA-01.1: primeiro acesso.",
+        "RF-04/RF-05/RF-06 → CA-02.1: configuração persistida.",
+        "RF-07/RF-09/RF-10/RF-11/RF-12/RF-13/RF-14 → CA-03.1 e CA-04.1 a CA-04.4.",
+        "RN-03 a RN-06 e RN-10/RN-11/RN-14: jornada, cálculo, prioridade, fallback e limite.",
+        "A falha candidata de ARIA de V1 permanece pendente de caso próprio; este caso não afirma sua resolução."
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "A-V2-02",
+      "title": "Retorno recupera perfil e prioriza quatro escolhas",
+      "objective": "Verificar recuperação pela Home e composição do resultado sem usar calculateComparisonResults como oráculo.",
+      "preconditions": [
+        "Perfil local com renda string 1760 e quatro preferências válidas.",
+        "Telas, storage e core reais; somente fronteiras nativas de persistência e navegação adaptadas.",
+        "Caso independente, sem herdar dados de outro teste."
+      ],
+      "components": [
+        "HomeScreen",
+        "CalculatorScreen",
+        "ResultScreen",
+        "InitialProfileStorage",
+        "Core real"
+      ],
+      "actions": [
+        "Preparar perfil com Café, Netflix, Hambúrguer e Pizza.",
+        "Acionar Iniciar e calcular compra de 60."
+      ],
+      "expected": [
+        "Home lê o perfil e abre Calculator com renda e IDs armazenados.",
+        "Resultado mostra 6,00 horas e exatamente as quatro preferências, em qualquer ordem.",
+        "Equivalências são 10 cafés, 1,5 meses de Netflix, 2,0 hambúrgueres e 1,0 pizzas.",
+        "Perfil permanece inalterado e não é regravado."
+      ],
+      "requirements": [
+        "RF-01/RF-03/RF-06 → CA-01.2: recuperação e reutilização.",
+        "RF-09 a RF-14 → CA-04.1/CA-04.2/CA-04.4.",
+        "RN-04/RN-05/RN-06/RN-10/RN-14/RN-15: cálculos independentes, prioridade e referências locais.",
+        "RNF-01 a RNF-04: fluxo local sem autenticação; não comprova execução em dispositivo offline."
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "A-V2-03",
+      "title": "Alternância permite salvar zero preferências e nome opcional",
+      "objective": "Verificar seleção e desmarcação, continuidade sem preferências e identificação substituta da compra.",
+      "preconditions": [
+        "Onboarding aberto sem perfil anterior.",
+        "Telas, storage e core reais; adapters do harness nas fronteiras nativas.",
+        "LAC-03 permanece aberta quanto à identidade específica do fallback vazio."
+      ],
+      "components": [
+        "ComparisonPreferencesScreen",
+        "CalculatorScreen",
+        "ResultScreen",
+        "InitialProfileStorage",
+        "Core real"
+      ],
+      "actions": [
+        "Selecionar e desmarcar Café e Netflix.",
+        "Salvar renda 1760 sem preferências.",
+        "Calcular compra de 60 sem nome."
+      ],
+      "expected": [
+        "Perfil persiste selectedComparisonIds vazio e navegação transmite string vazia.",
+        "Fluxo permite concluir o cálculo.",
+        "Resultado utiliza Essa compra e apresenta 6,00 horas do seu trabalho.",
+        "Comparações exibidas são válidas, distintas e limitadas a quatro, sem impor IDs ou ordem do fallback vazio."
+      ],
+      "requirements": [
+        "RF-05/RF-06 → CA-02.1/CA-02.2; RN-08/RN-09: preferências opcionais sem seleção implícita persistida.",
+        "RF-14 → CA-03.4; RN-17: nome substituto.",
+        "RF-11/RF-13 → CA-04.4; RN-06/RN-12/RN-14: quantidades válidas, unicidade e limite.",
+        "LAC-03: não transforma o fallback específico atual em contrato aprovado."
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "A-V2-04",
+      "title": "Entrada monetária pt-BR mantém strings e calcula corretamente",
+      "objective": "Verificar integração entre formulário, parâmetros e cálculo com separador de milhar e vírgula decimal.",
+      "preconditions": [
+        "Perfil local com renda string 1.760,00 e preferências coffee e netflix.",
+        "Telas, storage e core reais; fronteiras nativas adaptadas.",
+        "Não pressupõe suporte a ponto decimal internacional."
+      ],
+      "components": [
+        "HomeScreen",
+        "CalculatorScreen",
+        "ResultScreen",
+        "InitialProfileStorage",
+        "Core real"
+      ],
+      "actions": [
+        "Recuperar perfil pela Home.",
+        "Informar nome com espaços nas extremidades e valor 1.200,00.",
+        "Calcular e conferir parâmetros e resultado."
+      ],
+      "expected": [
+        "Parâmetros preservam renda e preço como strings pt-BR.",
+        "Nome enviado ao resultado é aparado.",
+        "Resultado mostra Notebook custa: e 120,0 horas do seu trabalho.",
+        "Comparações priorizam Café e Netflix, com quatro itens distintos e quantidades calculadas independentemente."
+      ],
+      "requirements": [
+        "RF-03/RF-07/RF-09 a RF-14 → CA-01.2/CA-03.1/CA-04.1 a CA-04.4.",
+        "RN-01/RN-03 a RN-06: BRL, jornada de 176 horas e cálculo.",
+        "RNF-08: entrada no contexto brasileiro.",
+        "LAC-02: outros formatos monetários permanecem pendentes."
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "A-V2-05",
+      "title": "Novo comparativo preserva perfil e substitui a compra",
+      "objective": "Verificar retorno por replace e novo cálculo sem reconfiguração nem regravação do perfil.",
+      "preconditions": [
+        "Perfil local com renda string 1760 e preferências coffee e netflix.",
+        "Telas, storage e core reais; navegação e AsyncStorage adaptados.",
+        "Caso independente dos demais."
+      ],
+      "components": [
+        "HomeScreen",
+        "CalculatorScreen",
+        "ResultScreen",
+        "InitialProfileStorage",
+        "Core real"
+      ],
+      "actions": [
+        "Calcular primeira compra de 60.",
+        "Acionar Novo comparativo.",
+        "Conferir parâmetros preservados e calcular segunda compra de 120."
+      ],
+      "expected": [
+        "Novo comparativo usa replace para Calculator com renda e preferências preservadas.",
+        "Segunda compra apresenta seu próprio nome e 12,0 horas do seu trabalho.",
+        "Resultado anterior não permanece na UI.",
+        "Preferências continuam prioritárias; perfil persistido não muda e não recebe novas gravações."
+      ],
+      "requirements": [
+        "RF-16 → CA-05.1: novo comparativo com preservação da sessão.",
+        "RF-09 a RF-14 → CA-03.1/CA-04.1 a CA-04.4.",
+        "RN-04/RN-05/RN-06/RN-10/RN-11/RN-14: recálculo, prioridade, fallback e limite."
+      ],
+      "status": "confirmed"
+    },
+    {
+      "id": "A-V2-06",
+      "title": "Alteração de perfil é persistida e reutilizada pela Home",
+      "objective": "Cobrir RF-17 com acesso, salvamento de alteração e reutilização posterior do perfil modificado.",
+      "preconditions": [
+        "Perfil anterior com renda string 1760 e lista vazia de preferências.",
+        "Telas, storage e core reais; somente fronteiras nativas adaptadas.",
+        "Não exige nem verifica pré-preenchimento, pendente em LAC-04/CA-06.2."
+      ],
+      "components": [
+        "HomeScreen",
+        "CalculatorScreen",
+        "ComparisonPreferencesScreen",
+        "ResultScreen",
+        "InitialProfileStorage",
+        "Core real"
+      ],
+      "actions": [
+        "Recuperar perfil anterior e acessar Mudar preferências pela Calculator.",
+        "Informar renda 3520 e selecionar Café e Netflix.",
+        "Salvar e conferir perfil e parâmetros.",
+        "Desmontar a árvore React e reabrir Home no mesmo caso, preservando nativeData.",
+        "Acionar Iniciar e calcular compra de 60."
+      ],
+      "expected": [
+        "Onboarding fica acessível e salva a alteração na chave real.",
+        "Perfil anterior é substituído por renda string 3520 e IDs coffee e netflix.",
+        "Home reaberta recupera os valores modificados.",
+        "Resultado apresenta 3,00 horas do seu trabalho e prioriza as preferências novas.",
+        "Comparações permanecem válidas, distintas e limitadas a quatro."
+      ],
+      "requirements": [
+        "RF-17 → CA-06.1: acesso à configuração pela Calculator.",
+        "RF-04/RF-05/RF-06 → CA-02.1: salvar alteração.",
+        "RF-01/RF-03 → CA-01.2: reutilizar posteriormente o perfil alterado.",
+        "RF-09 a RF-14 → CA-04.1 a CA-04.4; RN-04/RN-05/RN-06/RN-10/RN-11/RN-14.",
+        "LAC-04/CA-06.2: pré-preenchimento não é requisito deste caso.",
+        "Pendências fora desta suíte funcional: CA-02.3/RF-08 continua obrigatório e candidato a defeito; ARIA continua candidato separado; LAC-11 não define recuperação da Home e não recebe fallback inventado.",
+        "Metadados descrevem verificações executáveis de contrato; não constituem relato de execução ou aprovação."
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "source": "import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';\nimport {\n  renderFlow, seedProfile, persistedProfile, enterIncome, enterPurchase,\n  press, atRoute, screen, nativeData, nativeStorage, PROFILE_KEY, routes, getRoute,\n} from '../../../../tests/integration/flow-harness';\nimport { loadInitialProfile } from '../storage/InitialProfileStorage';\n\n// Integração de telas reais em React Native Web + jsdom, não E2E em dispositivo.\n// Nenhum mock de tela, storage do aplicativo ou core; nenhuma API externa.\n// Preços documentados são dados independentes do retorno das funções do core.\nconst references = [\n  { id: 'coffee', price: 6, unit: 'cafés' },\n  { id: 'beer_can', price: 5, unit: 'cervejas em lata' },\n  { id: 'bonbon', price: 2.5, unit: 'bombons' },\n  { id: 'burger', price: 30, unit: 'hambúrgueres' },\n  { id: 'netflix', price: 39.9, unit: 'meses de Netflix' },\n  { id: 'gasoline', price: 6, unit: 'litros de gasolina' },\n  { id: 'bus_ticket', price: 5, unit: 'passagens de ônibus' },\n  { id: 'movie_ticket', price: 35, unit: 'ingressos de cinema' },\n  { id: 'acai', price: 18, unit: 'açaís' },\n  { id: 'pizza', price: 60, unit: 'pizzas' },\n  { id: 'bread', price: 1.2, unit: 'pães franceses' },\n  { id: 'soda_2l', price: 10, unit: 'refrigerantes 2L' },\n  { id: 'ride_short', price: 20, unit: 'corridas curtas' },\n] as const;\n\nfunction expectRoute(pathname: string, params: Record<string, string>) {\n  expect(getRoute()).toEqual({ pathname, params });\n}\n\nfunction expectComparisons(amount: number, preferredIds: readonly string[], fillLimit = true) {\n  // Reconhece todas as linhas numéricas do resultado, incluindo uma unidade\n  // inesperada. A linha de horas é verificada separadamente em cada caso.\n  const rows = screen.queryAllByText(/^\\d+(?:[.,]\\d+)?\\s+.+$/)\n    .filter((node) => !/horas do seu trabalho$/.test(node.textContent ?? ''));\n  expect(rows.length).toBeGreaterThan(0);\n  expect(rows.length).toBeLessThanOrEqual(4);\n  if (fillLimit) expect(rows).toHaveLength(4);\n\n  const observedIds = rows.map((row) => {\n    const text = row.textContent ?? '';\n    const reference = references.find(({ unit }) => text.endsWith(` ${unit}`));\n    if (!reference) throw new Error(`Comparação fora do catálogo documentado: ${text}`);\n    const quantity = amount / reference.price;\n    expect(Number.isFinite(quantity)).toBe(true);\n    expect(quantity).toBeGreaterThan(0);\n    const displayedQuantity = quantity >= 10\n      ? String(Math.round(quantity))\n      : new Intl.NumberFormat('pt-BR', {\n          minimumFractionDigits: 1,\n          maximumFractionDigits: 1,\n          useGrouping: false,\n        }).format(quantity);\n    expect(text).toBe(`${displayedQuantity} ${reference.unit}`);\n    return reference.id;\n  });\n\n  expect(new Set(observedIds).size).toBe(observedIds.length);\n  for (const id of preferredIds) expect(observedIds).toContain(id);\n  expect(screen.queryAllByText(/NaN|Infinity|∞/)).toHaveLength(0);\n  expect(screen.queryByRole('alert')).toBeNull();\n  return observedIds;\n}\n\nbeforeEach(() => {\n  vi.restoreAllMocks();\n  nativeData.clear();\n  routes.length = 0;\n  nativeStorage.getItem.mockReset().mockImplementation(async (key: string) => nativeData.get(key) ?? null);\n  nativeStorage.setItem.mockReset().mockImplementation(async (key: string, value: string) => {\n    nativeData.set(key, value);\n  });\n  vi.spyOn(Math, 'random').mockReturnValue(0.25);\n  // Cada renderFlow inicializa a rota; seu replace inicial integra routes.\n});\n\nafterEach(() => {\n  vi.restoreAllMocks();\n  // O cleanup por caso é realizado automaticamente pela React Testing Library.\n});\n\ndescribe('A-V2', () => {\n  it('A-V2-01 primeiro acesso configura, persiste e calcula', async () => {\n    renderFlow();\n    await press('Iniciar');\n    await atRoute('/onboarding');\n    expect(nativeStorage.getItem).toHaveBeenCalledWith(PROFILE_KEY);\n    expect(screen.getByText('Escolha suas comparações favoritas.')).toBeTruthy();\n\n    enterIncome(' 1760 ');\n    await press('Café');\n    await press('Netflix');\n    await press('Continuar');\n    await atRoute('/calculator');\n\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ['coffee', 'netflix'] };\n    expect(nativeStorage.setItem).toHaveBeenCalledTimes(1);\n    expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(profile));\n    expect(persistedProfile()).toEqual(profile);\n    expect(await loadInitialProfile()).toEqual(profile);\n    expectRoute('/calculator', { monthlyIncome: '1760', selectedComparisonIds: 'coffee,netflix' });\n\n    enterPurchase('Fone', '60');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expectRoute('/result', {\n      monthlyIncome: '1760', selectedComparisonIds: 'coffee,netflix', expenseName: 'Fone', amount: '60',\n    });\n    expect(screen.getByText(/^Fone custa:$/)).toBeTruthy();\n    expect(screen.getByText(/^6,00 horas do seu trabalho$/)).toBeTruthy();\n    expectComparisons(60, ['coffee', 'netflix']);\n  });\n\n  it('A-V2-02 retorno recupera perfil e prioriza quatro escolhas', async () => {\n    const ids = ['coffee', 'netflix', 'burger', 'pizza'];\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ids };\n    seedProfile(profile);\n    renderFlow();\n    await press('Iniciar');\n    await atRoute('/calculator');\n    expect(nativeStorage.getItem).toHaveBeenCalledWith(PROFILE_KEY);\n    expectRoute('/calculator', { monthlyIncome: '1760', selectedComparisonIds: ids.join(',') });\n\n    enterPurchase('Livro', '60');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expectRoute('/result', {\n      monthlyIncome: '1760', selectedComparisonIds: ids.join(','), expenseName: 'Livro', amount: '60',\n    });\n    expect(screen.getByText(/^Livro custa:$/)).toBeTruthy();\n    expect(screen.getByText(/^6,00 horas do seu trabalho$/)).toBeTruthy();\n    const observed = expectComparisons(60, ids);\n    expect([...observed].sort()).toEqual([...ids].sort());\n    for (const line of ['10 cafés', '1,5 meses de Netflix', '2,0 hambúrgueres', '1,0 pizzas']) {\n      expect(screen.getByText(line, { exact: true })).toBeTruthy();\n    }\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeStorage.setItem).not.toHaveBeenCalled();\n  });\n\n  it('A-V2-03 alternância permite zero preferências e nome opcional', async () => {\n    renderFlow({ pathname: '/onboarding' });\n    enterIncome('1760');\n    await press('Café');\n    await press('Netflix');\n    await press('Café');\n    await press('Netflix');\n    await press('Continuar');\n    await atRoute('/calculator');\n\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: [] };\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(profile));\n    expectRoute('/calculator', { monthlyIncome: '1760', selectedComparisonIds: '' });\n\n    enterPurchase('', '60');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expectRoute('/result', {\n      monthlyIncome: '1760', selectedComparisonIds: '', expenseName: '', amount: '60',\n    });\n    expect(screen.getByText(/^Essa compra custa:$/)).toBeTruthy();\n    expect(screen.getByText(/^6,00 horas do seu trabalho$/)).toBeTruthy();\n    // LAC-03: não fixa IDs, ordem ou cardinalidade exata do fallback vazio.\n    expectComparisons(60, [], false);\n  });\n\n  it('A-V2-04 entrada pt-BR preserva strings e calcula valor válido', async () => {\n    const profile = { monthlyIncome: '1.760,00', selectedComparisonIds: ['coffee', 'netflix'] };\n    seedProfile(profile);\n    renderFlow();\n    await press('Iniciar');\n    await atRoute('/calculator');\n    expectRoute('/calculator', { monthlyIncome: '1.760,00', selectedComparisonIds: 'coffee,netflix' });\n\n    enterPurchase('  Notebook  ', ' 1.200,00 ');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expectRoute('/result', {\n      monthlyIncome: '1.760,00', selectedComparisonIds: 'coffee,netflix',\n      expenseName: 'Notebook', amount: '1.200,00',\n    });\n    // 1760 / 176 = 10 por hora; 1200 / 10 = 120 horas.\n    expect(screen.getByText(/^Notebook custa:$/)).toBeTruthy();\n    expect(screen.getByText(/^120,0 horas do seu trabalho$/)).toBeTruthy();\n    expectComparisons(1200, ['coffee', 'netflix']);\n    expect(persistedProfile()).toEqual(profile);\n  });\n\n  it('A-V2-05 novo comparativo preserva perfil e substitui a compra', async () => {\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ['coffee', 'netflix'] };\n    seedProfile(profile);\n    renderFlow();\n    await press('Iniciar');\n    await atRoute('/calculator');\n    enterPurchase('Primeira compra', '60');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expect(screen.getByText(/^6,00 horas do seu trabalho$/)).toBeTruthy();\n    expectComparisons(60, ['coffee', 'netflix']);\n\n    const navigationCount = routes.length;\n    await press('Novo comparativo');\n    await atRoute('/calculator');\n    const calculatorRoute = {\n      pathname: '/calculator',\n      params: { monthlyIncome: '1760', selectedComparisonIds: 'coffee,netflix' },\n    };\n    expect(getRoute()).toEqual(calculatorRoute);\n    expect(routes.slice(navigationCount)).toEqual([{ method: 'replace', route: calculatorRoute }]);\n\n    enterPurchase('Segunda compra', '120');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expectRoute('/result', {\n      monthlyIncome: '1760', selectedComparisonIds: 'coffee,netflix',\n      expenseName: 'Segunda compra', amount: '120',\n    });\n    expect(screen.getByText(/^Segunda compra custa:$/)).toBeTruthy();\n    expect(screen.getByText(/^12,0 horas do seu trabalho$/)).toBeTruthy();\n    expect(screen.queryByText(/^Primeira compra custa:$/)).toBeNull();\n    expect(screen.queryByText(/^6,00 horas do seu trabalho$/)).toBeNull();\n    expectComparisons(120, ['coffee', 'netflix']);\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeStorage.setItem).not.toHaveBeenCalled();\n  });\n\n  it('A-V2-06 alteração é persistida e reutilizada posteriormente pela Home', async () => {\n    seedProfile({ monthlyIncome: '1760', selectedComparisonIds: [] });\n    const initialFlow = renderFlow();\n    await press('Iniciar');\n    await atRoute('/calculator');\n    expectRoute('/calculator', { monthlyIncome: '1760', selectedComparisonIds: '' });\n    await press('Mudar preferências');\n    await atRoute('/onboarding');\n    expect(screen.getByText('Escolha suas comparações favoritas.')).toBeTruthy();\n\n    // A lista anterior vazia permite selecionar estas opções tanto com quanto\n    // sem pré-preenchimento. Não impõe comportamento pendente de CA-06.2.\n    enterIncome('3520');\n    await press('Café');\n    await press('Netflix');\n    await press('Continuar');\n    await atRoute('/calculator');\n    const updated = { monthlyIncome: '3520', selectedComparisonIds: ['coffee', 'netflix'] };\n    expect(nativeStorage.setItem).toHaveBeenCalledTimes(1);\n    expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(updated));\n    expect(persistedProfile()).toEqual(updated);\n    expect(await loadInitialProfile()).toEqual(updated);\n    expectRoute('/calculator', { monthlyIncome: '3520', selectedComparisonIds: 'coffee,netflix' });\n\n    initialFlow.unmount();\n    // Desmontar React preserva nativeData; não executa o setup de outro caso.\n    renderFlow({ pathname: '/' });\n    const readsBeforeStart = nativeStorage.getItem.mock.calls.length;\n    await press('Iniciar');\n    await atRoute('/calculator');\n    expect(nativeStorage.getItem.mock.calls.slice(readsBeforeStart)).toEqual([[PROFILE_KEY]]);\n    expectRoute('/calculator', { monthlyIncome: '3520', selectedComparisonIds: 'coffee,netflix' });\n\n    enterPurchase('Compra após alteração', '60');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expectRoute('/result', {\n      monthlyIncome: '3520', selectedComparisonIds: 'coffee,netflix',\n      expenseName: 'Compra após alteração', amount: '60',\n    });\n    // 3520 / 176 = 20 por hora; 60 / 20 = 3 horas.\n    expect(screen.getByText(/^Compra após alteração custa:$/)).toBeTruthy();\n    expect(screen.getByText(/^3,00 horas do seu trabalho$/)).toBeTruthy();\n    expectComparisons(60, ['coffee', 'netflix']);\n    expect(persistedProfile()).toEqual(updated);\n    expect(nativeStorage.setItem).toHaveBeenCalledTimes(1);\n  });\n});\n"
+}

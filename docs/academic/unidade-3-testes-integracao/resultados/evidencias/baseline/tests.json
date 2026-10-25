@@ -1,0 +1,466 @@
+{
+  "numTotalTestSuites": 14,
+  "numPassedTestSuites": 14,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 31,
+  "numPassedTests": 31,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1792887833885,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "@quanto-custa/core"
+          ],
+          "fullName": "@quanto-custa/core keeps the test runner configured",
+          "status": "passed",
+          "title": "keeps the test runner configured",
+          "duration": 1.8009999999999877,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834339,
+      "endTime": 1792887834340.801,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/packages/core/src/index.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "InitialProfileStorage"
+          ],
+          "fullName": "InitialProfileStorage returns null when no initial profile was saved",
+          "status": "passed",
+          "title": "returns null when no initial profile was saved",
+          "duration": 3.820099999999968,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "InitialProfileStorage"
+          ],
+          "fullName": "InitialProfileStorage loads a saved initial profile",
+          "status": "passed",
+          "title": "loads a saved initial profile",
+          "duration": 0.5774000000000115,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "InitialProfileStorage"
+          ],
+          "fullName": "InitialProfileStorage saves an initial profile as JSON",
+          "status": "passed",
+          "title": "saves an initial profile as JSON",
+          "duration": 0.42799999999999727,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "InitialProfileStorage"
+          ],
+          "fullName": "InitialProfileStorage rejects invalid stored JSON",
+          "status": "passed",
+          "title": "rejects invalid stored JSON",
+          "duration": 0.7297000000000367,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "InitialProfileStorage"
+          ],
+          "fullName": "InitialProfileStorage propagates AsyncStorage read failures",
+          "status": "passed",
+          "title": "propagates AsyncStorage read failures",
+          "duration": 1.064200000000028,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834363,
+      "endTime": 1792887834370.0642,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/apps/mobile/src/storage/InitialProfileStorage.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "calculateBasicExpenseImpact"
+          ],
+          "fullName": "calculateBasicExpenseImpact calculates hourly rate and work hours equivalent for an expense",
+          "status": "passed",
+          "title": "calculates hourly rate and work hours equivalent for an expense",
+          "duration": 1.8555000000000064,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateBasicExpenseImpact"
+          ],
+          "fullName": "calculateBasicExpenseImpact rejects invalid profile data",
+          "status": "passed",
+          "title": "rejects invalid profile data",
+          "duration": 1.1245000000000118,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateBasicExpenseImpact"
+          ],
+          "fullName": "calculateBasicExpenseImpact rejects invalid expense amount",
+          "status": "passed",
+          "title": "rejects invalid expense amount",
+          "duration": 0.351099999999974,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834360,
+      "endTime": 1792887834363.351,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/packages/core/src/calculations/calculateBasicExpenseImpact.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "calculateHourlyRate"
+          ],
+          "fullName": "calculateHourlyRate calculates the hourly rate from monthly income and monthly work hours",
+          "status": "passed",
+          "title": "calculates the hourly rate from monthly income and monthly work hours",
+          "duration": 1.6544999999999845,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateHourlyRate"
+          ],
+          "fullName": "calculateHourlyRate rejects non-positive monthly income",
+          "status": "passed",
+          "title": "rejects non-positive monthly income",
+          "duration": 0.8824999999999932,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateHourlyRate"
+          ],
+          "fullName": "calculateHourlyRate rejects non-positive work hours per day",
+          "status": "passed",
+          "title": "rejects non-positive work hours per day",
+          "duration": 0.28659999999996444,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateHourlyRate"
+          ],
+          "fullName": "calculateHourlyRate rejects non-positive work days per month",
+          "status": "passed",
+          "title": "rejects non-positive work days per month",
+          "duration": 0.2703000000000202,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateHourlyRate"
+          ],
+          "fullName": "calculateHourlyRate rejects non-finite financial inputs",
+          "status": "passed",
+          "title": "rejects non-finite financial inputs",
+          "duration": 0.4603000000000179,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834355,
+      "endTime": 1792887834359.4602,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/packages/core/src/calculations/calculateHourlyRate.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "calculateWorkHoursEquivalent"
+          ],
+          "fullName": "calculateWorkHoursEquivalent calculates how many work hours are needed to pay an expense",
+          "status": "passed",
+          "title": "calculates how many work hours are needed to pay an expense",
+          "duration": 1.6940999999999917,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateWorkHoursEquivalent"
+          ],
+          "fullName": "calculateWorkHoursEquivalent rejects non-positive expense amount",
+          "status": "passed",
+          "title": "rejects non-positive expense amount",
+          "duration": 0.719099999999969,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateWorkHoursEquivalent"
+          ],
+          "fullName": "calculateWorkHoursEquivalent rejects non-positive hourly rate",
+          "status": "passed",
+          "title": "rejects non-positive hourly rate",
+          "duration": 0.3002999999999929,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateWorkHoursEquivalent"
+          ],
+          "fullName": "calculateWorkHoursEquivalent rejects non-finite values",
+          "status": "passed",
+          "title": "rejects non-finite values",
+          "duration": 0.36230000000000473,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834355,
+      "endTime": 1792887834358.3623,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/packages/core/src/calculations/calculateWorkHoursEquivalent.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults selects a limited random set from preferred options",
+          "status": "passed",
+          "title": "selects a limited random set from preferred options",
+          "duration": 3.450800000000015,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults ignores unknown selected ids",
+          "status": "passed",
+          "title": "ignores unknown selected ids",
+          "duration": 0.45699999999999363,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults uses fallback preferences when selected ids are not enough",
+          "status": "passed",
+          "title": "uses fallback preferences when selected ids are not enough",
+          "duration": 0.6513999999999669,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults rejects non-positive amount",
+          "status": "passed",
+          "title": "rejects non-positive amount",
+          "duration": 0.8756999999999948,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults rejects non-finite amount",
+          "status": "passed",
+          "title": "rejects non-finite amount",
+          "duration": 0.2907999999999902,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults returns an empty list when limit is zero",
+          "status": "passed",
+          "title": "returns an empty list when limit is zero",
+          "duration": 0.2318000000000211,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults does not duplicate repeated selected ids",
+          "status": "passed",
+          "title": "does not duplicate repeated selected ids",
+          "duration": 0.5242999999999824,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults returns every available preference when limit is greater than available options",
+          "status": "passed",
+          "title": "returns every available preference when limit is greater than available options",
+          "duration": 0.3558999999999628,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "calculateComparisonResults"
+          ],
+          "fullName": "calculateComparisonResults rejects invalid unit prices",
+          "status": "passed",
+          "title": "rejects invalid unit prices",
+          "duration": 0.3838000000000079,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834360,
+      "endTime": 1792887834367.3838,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/packages/core/src/comparisons/calculateComparisonResults.test.ts"
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": [
+            "defaultComparisonPreferences"
+          ],
+          "fullName": "defaultComparisonPreferences contains unique preference ids",
+          "status": "passed",
+          "title": "contains unique preference ids",
+          "duration": 1.742999999999995,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "defaultComparisonPreferences"
+          ],
+          "fullName": "defaultComparisonPreferences starts with lightweight everyday comparison options",
+          "status": "passed",
+          "title": "starts with lightweight everyday comparison options",
+          "duration": 0.8020999999999958,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "defaultComparisonPreferences"
+          ],
+          "fullName": "defaultComparisonPreferences uses a specific Netflix monthly reference instead of a generic streaming option",
+          "status": "passed",
+          "title": "uses a specific Netflix monthly reference instead of a generic streaming option",
+          "duration": 0.6677000000000248,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        },
+        {
+          "ancestorTitles": [
+            "defaultComparisonPreferences"
+          ],
+          "fullName": "defaultComparisonPreferences uses only tangible comparison items with direct prices",
+          "status": "passed",
+          "title": "uses only tangible comparison items with direct prices",
+          "duration": 0.7876999999999725,
+          "failureMessages": [],
+          "meta": {},
+          "tags": []
+        }
+      ],
+      "startTime": 1792887834359,
+      "endTime": 1792887834362.7876,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/Quanto-Custa-na-Vida-Real/packages/core/src/comparisons/defaultComparisonPreferences.test.ts"
+    }
+  ]
+}

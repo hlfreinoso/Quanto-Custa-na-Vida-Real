@@ -1,0 +1,280 @@
+{
+  "cases": [
+    {
+      "id": "B-V2-01",
+      "title": "Primeiro acesso, perfil persistido e dois cálculos",
+      "objective": "Verificar configuração inicial, cálculo independente e reutilização do perfil na sessão.",
+      "preconditions": ["Storage vazio; Math.random=0.25."],
+      "components": ["Home, onboarding, Calculator, Result, storage e core reais.", "AsyncStorage e Expo Router adaptados; React Native Web com jsdom, sem E2E em dispositivo."],
+      "actions": ["Iniciar; informar renda '1760'; selecionar Café e Netflix; continuar.", "Calcular compra 'Livro' de '60'; iniciar novo comparativo e calcular 'Ingresso' de '30'."],
+      "expected": ["Perfil persistido com renda string e IDs coffee/netflix.", "Rotas transportam valores string e preferências.", "Resultados mostram respectivamente 6,00 e 3,00 horas do seu trabalho.", "Novo comparativo utiliza replace e preserva o perfil."],
+      "requirements": ["RF-01/02/04/05/06/07/09/10/14/16; RN-03/04/05; CA-01.1/02.1/03.1/04.1/05.1."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-02-empty",
+      "title": "Compra vazia: amount=''",
+      "objective": "Bloquear compra vazia e permitir corrigir a entrada.",
+      "preconditions": ["Calculator com renda '1760' e preferência coffee."],
+      "components": ["Calculator e Result reais; core real; rotas adaptadas em jsdom."],
+      "actions": ["Calcular com valor vazio.", "Corrigir valor para '60' e calcular."],
+      "expected": ["Permanece na Calculator com 'Informe o valor da compra.' e sem navegação.", "Correção abre Result com 6,00 horas."],
+      "requirements": ["RF-07/08/15; RN-02; CA-03.2/03.1."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-02-zero",
+      "title": "Compra inválida: amount='0'",
+      "objective": "Rejeitar zero e permitir novo cálculo após o erro.",
+      "preconditions": ["Calculator com renda válida."],
+      "components": ["Calculator, Result e core reais; navegação adaptada."],
+      "actions": ["Calcular '0'; observar erro na entrada ou no Result.", "Se estiver no Result, acionar Novo comparativo; corrigir para '60'."],
+      "expected": ["Mensagem orienta conferir valor/renda, sem resultado numérico.", "Retorno preserva parâmetros financeiros e novo cálculo mostra 6,00 horas."],
+      "requirements": ["RF-08/15/16; RN-02; CA-03.3/04.5/05.1; RNF-07."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-02-negative",
+      "title": "Compra inválida: amount='-1'",
+      "objective": "Rejeitar valor negativo e permitir recuperação.",
+      "preconditions": ["Calculator com renda válida."],
+      "components": ["Calculator, Result e core reais; navegação adaptada."],
+      "actions": ["Calcular '-1'; observar erro; retornar se necessário e corrigir para '60'."],
+      "expected": ["Nenhum resultado numérico inválido.", "Perfil preservado e cálculo corrigido apresenta 6,00 horas."],
+      "requirements": ["RF-08/15/16; RN-02; CA-03.3/04.5/05.1."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-02-text",
+      "title": "Compra inválida: amount='abc'",
+      "objective": "Rejeitar texto não numérico sem impor formato monetário alternativo.",
+      "preconditions": ["Calculator com renda válida."],
+      "components": ["Calculator, Result e core reais; navegação adaptada."],
+      "actions": ["Calcular 'abc'; observar erro; retornar se necessário e corrigir para '60'."],
+      "expected": ["Mensagem de correção, sem NaN, Infinity ou horas calculadas.", "Novo cálculo válido funciona."],
+      "requirements": ["RF-08/15/16; RN-02; CA-03.3/04.5/05.1; LAC-02 permanece pendente."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-02-infinity",
+      "title": "Compra inválida: amount='Infinity'",
+      "objective": "Rejeitar número não finito e permitir recuperação.",
+      "preconditions": ["Calculator com renda válida."],
+      "components": ["Calculator, Result e core reais; navegação adaptada."],
+      "actions": ["Calcular 'Infinity'; observar erro; retornar se necessário e corrigir para '60'."],
+      "expected": ["Mensagem de correção, sem resultado numérico.", "Retorno e cálculo válido preservam renda e preferências."],
+      "requirements": ["RF-08/15/16; RN-02; CA-03.3/04.5/05.1; RNF-07."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-03-empty",
+      "title": "Onboarding bloqueia monthlyIncome=''",
+      "objective": "Exigir renda válida antes de persistir ou navegar.",
+      "preconditions": ["Onboarding com storage vazio."],
+      "components": ["Onboarding e storage reais; adapters nativos simulados."],
+      "actions": ["Informar renda vazia e acionar Continuar."],
+      "expected": ["Permanece no onboarding, apresenta erro de renda e não grava perfil.", "Contrato pode falhar na implementação atual; não é marcado como falha esperada."],
+      "requirements": ["RF-08; RN-02; CA-02.3; LAC-01."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-03-zero",
+      "title": "Onboarding bloqueia monthlyIncome='0'",
+      "objective": "Impedir persistência e navegação com renda zero.",
+      "preconditions": ["Onboarding com storage vazio."],
+      "components": ["Onboarding e storage reais; adapters simulados."],
+      "actions": ["Informar '0' e acionar Continuar."],
+      "expected": ["Erro de renda, nenhuma escrita e nenhuma navegação.", "Falha atual deve permanecer visível."],
+      "requirements": ["RF-08; RN-02; CA-02.3; LAC-01."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-03-negative",
+      "title": "Onboarding bloqueia monthlyIncome='-1'",
+      "objective": "Impedir renda negativa.",
+      "preconditions": ["Onboarding com storage vazio."],
+      "components": ["Onboarding e storage reais; adapters simulados."],
+      "actions": ["Informar '-1' e acionar Continuar."],
+      "expected": ["Erro de renda, nenhuma escrita e nenhuma navegação.", "Falha atual deve permanecer visível."],
+      "requirements": ["RF-08; RN-02; CA-02.3; LAC-01."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-03-text",
+      "title": "Onboarding bloqueia monthlyIncome='abc'",
+      "objective": "Impedir renda não numérica.",
+      "preconditions": ["Onboarding com storage vazio."],
+      "components": ["Onboarding e storage reais; adapters simulados."],
+      "actions": ["Informar 'abc' e acionar Continuar."],
+      "expected": ["Erro de renda, nenhuma escrita e nenhuma navegação.", "Falha atual deve permanecer visível."],
+      "requirements": ["RF-08; RN-02; CA-02.3; LAC-01."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-04-no-params",
+      "title": "Result com params realmente ausente",
+      "objective": "Tratar rota sem objeto params.",
+      "preconditions": ["Rota /result sem propriedade params."],
+      "components": ["Result e core reais; parâmetros fornecidos pelo adaptador de rotas."],
+      "actions": ["Montar Result diretamente.", "Acionar Novo comparativo."],
+      "expected": ["Alerta de cálculo, sem números inválidos.", "Retorna por replace à Calculator com strings vazias para os dados ausentes."],
+      "requirements": ["RF-15/16; CA-04.5/05.1; RNF-07."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-04-no-income",
+      "title": "Result com amount='60' e monthlyIncome ausente",
+      "objective": "Rejeitar ausência real de renda na rota.",
+      "preconditions": ["Result recebe amount e preferências, sem monthlyIncome."],
+      "components": ["Result e core reais; rotas adaptadas."],
+      "actions": ["Montar Result e acionar Novo comparativo após erro."],
+      "expected": ["Alerta sem horas ou comparações numéricas.", "Calculator recebe renda vazia e preserva coffee."],
+      "requirements": ["RF-08/15/16; RN-02; CA-04.5/05.1."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-04-no-amount",
+      "title": "Result com monthlyIncome='1760' e amount ausente",
+      "objective": "Rejeitar ausência real de preço na rota.",
+      "preconditions": ["Result recebe renda e preferências, sem amount."],
+      "components": ["Result e core reais; rotas adaptadas."],
+      "actions": ["Montar Result e acionar Novo comparativo após erro."],
+      "expected": ["Alerta sem números inválidos.", "Calculator preserva renda '1760' e coffee."],
+      "requirements": ["RF-08/15/16; RN-02; CA-04.5/05.1."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-04-inconsistent",
+      "title": "Result com monthlyIncome='abc' e amount='60'",
+      "objective": "Tratar parâmetros presentes, mas inconsistentes.",
+      "preconditions": ["Result recebe renda não numérica."],
+      "components": ["Result e core reais; rotas adaptadas."],
+      "actions": ["Montar Result e acionar Novo comparativo."],
+      "expected": ["Alerta, sem NaN, Infinity ou resultado numérico.", "Retorno preserva os parâmetros recebidos, sem inventar correção automática."],
+      "requirements": ["RF-15/16; RN-02; CA-04.5/05.1."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-04-optional",
+      "title": "Result válido sem expenseName e selectedComparisonIds",
+      "objective": "Distinguir parâmetros opcionais ausentes de dados financeiros inválidos.",
+      "preconditions": ["Result recebe somente monthlyIncome='1760' e amount='60'."],
+      "components": ["Result e core reais; rotas adaptadas."],
+      "actions": ["Montar Result sem nome e preferências."],
+      "expected": ["Título 'Essa compra custa:' e 6,00 horas.", "Até quatro comparações válidas e distintas, sem exigir IDs ou ordem de fallback."],
+      "requirements": ["RF-12/13/14; RN-08/11/14/17; CA-03.4/04.1/04.3; LAC-03 permanece pendente."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-05-duplicate",
+      "title": "Preferências 'coffee,coffee,desconhecido'",
+      "objective": "Verificar deduplicação, descarte de ID inexistente e complemento por fallback.",
+      "preconditions": ["Perfil persistido com IDs duplicados e desconhecido; renda '1760'."],
+      "components": ["Home, Calculator, Result, storage e core reais; adapters simulados."],
+      "actions": ["Iniciar pelo perfil salvo e calcular compra de '60'."],
+      "expected": ["Parâmetros preservam a entrada armazenada.", "Uma comparação de 10 cafés; quatro comparações válidas e distintas; nenhum ID desconhecido."],
+      "requirements": ["RF-03/11/12/13; RN-06/10/11/12/14; CA-01.2/04.2/04.3/04.4."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-05-empty",
+      "title": "Onboarding aceita selectedComparisonIds=[]",
+      "objective": "Medir fallback independentemente da falha de aria-checked.",
+      "preconditions": ["Onboarding sem seleção e storage vazio."],
+      "components": ["Onboarding, Calculator, Result, storage e core reais; adapters simulados."],
+      "actions": ["Salvar renda '1760' sem selecionar preferências e calcular '60'."],
+      "expected": ["Perfil persiste lista vazia e navegação é permitida.", "Resultado contém até quatro comparações válidas e distintas; IDs e ordem não são fixados."],
+      "requirements": ["RF-05/06/12/13; RN-08/11/14; CA-02.1/02.2/04.3; LAC-03 permanece pendente."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-05-limit",
+      "title": "Cinco preferências válidas para limite quatro",
+      "objective": "Verificar prioridade e limite sem fixar ordem aleatória.",
+      "preconditions": ["Perfil com coffee, beer_can, bonbon, burger e netflix."],
+      "components": ["Home, Calculator, Result, storage e core reais; adapters simulados."],
+      "actions": ["Recuperar perfil e calcular '60'."],
+      "expected": ["Exatamente quatro comparações distintas pertencentes às preferências escolhidas.", "Quantidades conferidas por valores literais independentes do core."],
+      "requirements": ["RF-03/11/12/13; RN-06/10/14; CA-01.2/04.2/04.4."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-06",
+      "title": "Checkbox web Café: false → true → false",
+      "objective": "Isolar o contrato público de estado acessível e verificar persistência da seleção final.",
+      "preconditions": ["Onboarding com preferências inicialmente desmarcadas."],
+      "components": ["Onboarding e storage reais em React Native Web/jsdom.", "Fronteira nativa adaptada; não afirma reprodução em Android/iOS."],
+      "actions": ["Inspecionar aria-checked de Café; selecionar e desmarcar Café.", "Selecionar Netflix e salvar renda válida."],
+      "expected": ["Café expõe aria-checked='false', depois 'true', depois 'false'.", "Perfil final contém somente netflix.", "Assertions soft preservam a falha acessível conhecida e permitem medir a persistência."],
+      "requirements": ["RF-05/06; RN-09; CA-02.1; contrato web W3C checkbox com aria-checked false/true."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-07-json",
+      "title": "Storage real: JSON corrompido",
+      "objective": "Verificar propagação controlada de erro de interpretação.",
+      "preconditions": ["Adapter contém JSON inválido na chave do perfil."],
+      "components": ["loadInitialProfile real; bytes corrompidos somente no adapter nativo.", "Home real montada, sem clicar Iniciar."],
+      "actions": ["Invocar leitura pelo controlador do teste e aguardar a rejeição."],
+      "expected": ["Rejeita com SyntaxError; chave correta é lida; conteúdo permanece intacto; nenhuma navegação adicional.", "Recuperação e aviso na Home permanecem pendentes em LAC-11."],
+      "requirements": ["RF-06; fronteira de persistência real; LAC-11/RNF-A04 sem política de UI inventada."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-07-read",
+      "title": "Storage real: getItem rejeita",
+      "objective": "Verificar propagação da falha de leitura sem rejection não tratada.",
+      "preconditions": ["Perfil anterior válido; getItem do adapter rejeita uma vez."],
+      "components": ["loadInitialProfile real; somente falha do adapter simulada.", "Home real sem clique assíncrono."],
+      "actions": ["Invocar leitura pelo controlador e capturar a rejeição."],
+      "expected": ["Mesmo erro é propagado; perfil anterior é preservado; nenhuma escrita ou navegação adicional.", "Aviso e recuperação de UI não são definidos por este teste."],
+      "requirements": ["RF-06; fronteira de persistência; LAC-11/RNF-A04 pendentes."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-07-write",
+      "title": "Storage real: setItem rejeita",
+      "objective": "Verificar rejeição da gravação de dados originados da interface.",
+      "preconditions": ["Perfil anterior válido; setItem do adapter rejeita uma vez."],
+      "components": ["Onboarding e saveInitialProfile reais; controlador do teste aguarda a rejeição; falha somente no adapter."],
+      "actions": ["Informar nova renda e selecionar Netflix.", "Invocar gravação real com dados da entrada, sem clicar Continuar."],
+      "expected": ["Mesmo erro é propagado; argumentos serializados corretos; perfil anterior não é substituído; nenhuma navegação adicional.", "Não impõe mensagem ou recuperação pendente em LAC-11."],
+      "requirements": ["RF-06; fronteira de persistência; LAC-11/RNF-A04 pendentes."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-08-home",
+      "title": "Editar pela Home e reutilizar perfil atualizado",
+      "objective": "Verificar acesso, gravação e nova leitura pela Home.",
+      "preconditions": ["Perfil anterior com renda '3520' e coffee; origem Home."],
+      "components": ["Home, onboarding, Calculator, Result e storage reais; adapters simulados."],
+      "actions": ["Abrir Mudar preferências; definir renda '1760' e seleção somente Netflix; salvar.", "Remontar Home, iniciar e calcular '60'."],
+      "expected": ["Perfil atualizado persistido antes de remontar Home.", "Home recupera renda string e netflix; cálculo mostra 6,00 horas e 1,5 meses de Netflix.", "Não exige pré-preenchimento na edição."],
+      "requirements": ["RF-03/06/17; CA-01.2/02.1/06.1; CA-06.2/LAC-04 pendentes."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-08-calculator",
+      "title": "Editar pela Calculator e reutilizar perfil atualizado",
+      "objective": "Verificar edição acessível pela Calculator e recuperação posterior.",
+      "preconditions": ["Perfil anterior válido; origem Calculator."],
+      "components": ["Telas, storage e core reais; adapters de rotas e AsyncStorage."],
+      "actions": ["Abrir configuração; salvar renda '1760' e somente Netflix.", "Remontar Home, iniciar e calcular '60'."],
+      "expected": ["Persistência e parâmetros refletem a alteração.", "Resultado mostra 6,00 horas e Netflix; não exige pré-preenchimento."],
+      "requirements": ["RF-03/06/17; CA-01.2/02.1/06.1; LAC-04 pendente."],
+      "status": "confirmed"
+    },
+    {
+      "id": "B-V2-08-result",
+      "title": "Editar pelo Result e reutilizar perfil atualizado",
+      "objective": "Verificar edição acessível pelo Result e recuperação posterior.",
+      "preconditions": ["Perfil anterior válido; origem Result."],
+      "components": ["Telas, storage e core reais; adapters de rotas e AsyncStorage."],
+      "actions": ["Abrir configuração; salvar renda '1760' e somente Netflix.", "Remontar Home, iniciar e calcular '60'."],
+      "expected": ["Persistência e parâmetros refletem a alteração.", "Resultado mostra 6,00 horas e Netflix; não exige pré-preenchimento."],
+      "requirements": ["RF-03/06/17; CA-01.2/02.1/06.1; LAC-04 pendente."],
+      "status": "confirmed"
+    }
+  ],
+  "source": "import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';\nimport {\n  renderFlow, seedProfile, persistedProfile, enterIncome, enterPurchase,\n  press, atRoute, screen, waitFor, nativeData, nativeStorage,\n  PROFILE_KEY, routes, getRoute,\n} from '../../../../tests/integration/flow-harness';\nimport { resetBoundaries } from '../../../../tests/integration/boundaries';\nimport { loadInitialProfile, saveInitialProfile } from '../storage/InitialProfileStorage';\n\n// Vitest 4.1.5; React 19.1; RTL 16.3.3.\n// Integração de telas reais com React Native Web/jsdom, não E2E em dispositivo.\n// Core e storage do aplicativo não são substituídos. Somente adapters são controlados.\n// RTL executa cleanup automaticamente após cada caso.\n// Pendências: LAC-02 não define formatos alternativos; LAC-03 não fixa fallback vazio;\n// LAC-04 não confirma pré-preenchimento; LAC-11 não define recuperação/aviso na Home.\n// Estes testes não executam chamadas externas ou pagas.\n\ntype TestRoute = Parameters<typeof renderFlow>[0];\nconst oldProfile = { monthlyIncome: '3520', selectedComparisonIds: ['coffee'] };\nconst sessionParams = { monthlyIncome: '1760', selectedComparisonIds: 'coffee' };\n\n// Oráculo literal independente das funções e dos dados exportados pelo core.\n// Compra de R$ 60: quantidade = 60 / preço local documentado.\nconst comparisonsAt60 = [\n  { id: 'coffee', text: '10 cafés' },\n  { id: 'beer_can', text: '12 cervejas em lata' },\n  { id: 'bonbon', text: '24 bombons' },\n  { id: 'burger', text: '2,0 hambúrgueres' },\n  { id: 'netflix', text: '1,5 meses de Netflix' },\n  { id: 'gasoline', text: '10 litros de gasolina' },\n  { id: 'bus_ticket', text: '12 passagens de ônibus' },\n  { id: 'movie_ticket', text: '1,7 ingressos de cinema' },\n  { id: 'acai', text: '3,3 açaís' },\n  { id: 'pizza', text: '1,0 pizzas' },\n  { id: 'bread', text: '50 pães franceses' },\n  { id: 'soda_2l', text: '6,0 refrigerantes 2L' },\n  { id: 'ride_short', text: '3,0 corridas curtas' },\n];\nconst comparisonPattern = /^\\d+(?:,\\d+)? (?:cafés|cervejas em lata|bombons|hambúrgueres|meses de Netflix|litros de gasolina|passagens de ônibus|ingressos de cinema|açaís|pizzas|pães franceses|refrigerantes 2L|corridas curtas)$/;\n\nfunction assertComparisonsAt60(): string[] {\n  const lines = screen.queryAllByText(comparisonPattern).map(node => node.textContent!.trim());\n  expect(lines.length).toBeGreaterThan(0);\n  expect(lines.length).toBeLessThanOrEqual(4);\n  expect(new Set(lines).size).toBe(lines.length);\n  for (const line of lines) {\n    expect(comparisonsAt60.map(item => item.text)).toContain(line);\n  }\n  return lines.map(line => comparisonsAt60.find(item => item.text === line)!.id);\n}\n\nfunction assertNoNumericResult() {\n  expect(screen.queryByText(/NaN|Infinity/)).toBeNull();\n  expect(screen.queryByText(/horas do seu trabalho/)).toBeNull();\n  expect(screen.queryAllByText(comparisonPattern)).toHaveLength(0);\n}\n\nfunction expectLastNavigation(method: 'push' | 'replace', pathname: string, params?: Record<string, string>) {\n  expect(routes[routes.length - 1]).toEqual({\n    method,\n    route: params === undefined ? { pathname } : { pathname, params },\n  });\n}\n\nasync function calculate60(name = 'Livro') {\n  enterPurchase(name, '60');\n  await press('Calcular custo real');\n  await atRoute('/result');\n  expect(screen.getByText(/6,00 horas do seu trabalho/).textContent).toBe('6,00 horas do seu trabalho');\n}\n\nconst purchaseRows = [\n  { id: 'B-V2-02-empty', amount: '', empty: true },\n  { id: 'B-V2-02-zero', amount: '0', empty: false },\n  { id: 'B-V2-02-negative', amount: '-1', empty: false },\n  { id: 'B-V2-02-text', amount: 'abc', empty: false },\n  { id: 'B-V2-02-infinity', amount: 'Infinity', empty: false },\n];\nconst incomeRows = [\n  { id: 'B-V2-03-empty', income: '' },\n  { id: 'B-V2-03-zero', income: '0' },\n  { id: 'B-V2-03-negative', income: '-1' },\n  { id: 'B-V2-03-text', income: 'abc' },\n];\nconst resultRows: Array<{\n  id: string; description: string; route: TestRoute; valid: boolean;\n  returned: Record<string, string>;\n}> = [\n  { id: 'B-V2-04-no-params', description: 'params ausente', route: { pathname: '/result' }, valid: false, returned: { monthlyIncome: '', selectedComparisonIds: '' } },\n  { id: 'B-V2-04-no-income', description: 'amount=60; monthlyIncome ausente', route: { pathname: '/result', params: { amount: '60', selectedComparisonIds: 'coffee' } }, valid: false, returned: { monthlyIncome: '', selectedComparisonIds: 'coffee' } },\n  { id: 'B-V2-04-no-amount', description: 'monthlyIncome=1760; amount ausente', route: { pathname: '/result', params: sessionParams }, valid: false, returned: sessionParams },\n  { id: 'B-V2-04-inconsistent', description: 'monthlyIncome=abc; amount=60', route: { pathname: '/result', params: { monthlyIncome: 'abc', amount: '60', selectedComparisonIds: 'coffee' } }, valid: false, returned: { monthlyIncome: 'abc', selectedComparisonIds: 'coffee' } },\n  { id: 'B-V2-04-optional', description: 'nome e preferências ausentes; renda=1760; amount=60', route: { pathname: '/result', params: { monthlyIncome: '1760', amount: '60' } }, valid: true, returned: { monthlyIncome: '1760', selectedComparisonIds: '' } },\n];\nconst preferenceRows = [\n  { id: 'B-V2-05-duplicate', ids: ['coffee', 'coffee', 'desconhecido'], firstAccess: false },\n  { id: 'B-V2-05-empty', ids: [] as string[], firstAccess: true },\n  { id: 'B-V2-05-limit', ids: ['coffee', 'beer_can', 'bonbon', 'burger', 'netflix'], firstAccess: false },\n];\nconst storageRows = [\n  { id: 'B-V2-07-json', mode: 'json' },\n  { id: 'B-V2-07-read', mode: 'read' },\n  { id: 'B-V2-07-write', mode: 'write' },\n] as const;\nconst editRows: Array<{ id: string; origin: string; route: TestRoute }> = [\n  { id: 'B-V2-08-home', origin: 'Home', route: { pathname: '/' } },\n  { id: 'B-V2-08-calculator', origin: 'Calculator', route: { pathname: '/calculator', params: { monthlyIncome: '3520', selectedComparisonIds: 'coffee' } } },\n  { id: 'B-V2-08-result', origin: 'Result', route: { pathname: '/result', params: { monthlyIncome: '3520', selectedComparisonIds: 'coffee', amount: '60' } } },\n];\n\ndescribe('B-V2', () => {\n  beforeEach(() => {\n    vi.restoreAllMocks();\n    resetBoundaries();\n    vi.spyOn(Math, 'random').mockReturnValue(0.25);\n  });\n\n  afterEach(() => {\n    vi.restoreAllMocks();\n  });\n\n  it('B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30', async () => {\n    renderFlow();\n    await press('Iniciar');\n    await atRoute('/onboarding');\n    expect(nativeStorage.getItem).toHaveBeenCalledWith(PROFILE_KEY);\n    expectLastNavigation('push', '/onboarding');\n    enterIncome('1760');\n    await press('Café');\n    await press('Netflix');\n    await press('Continuar');\n    await atRoute('/calculator');\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ['coffee', 'netflix'] };\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeData.get(PROFILE_KEY)).toBe(JSON.stringify(profile));\n    expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(profile));\n    const params = { monthlyIncome: '1760', selectedComparisonIds: 'coffee,netflix' };\n    expectLastNavigation('push', '/calculator', params);\n    await calculate60('Livro');\n    expectLastNavigation('push', '/result', { ...params, amount: '60', expenseName: 'Livro' });\n    expect(screen.getByText(/Livro custa:/).textContent).toBe('Livro custa:');\n    expect(screen.getByText(/^10 cafés$/).textContent).toBe('10 cafés');\n    expect(screen.getByText(/^1,5 meses de Netflix$/).textContent).toBe('1,5 meses de Netflix');\n    assertComparisonsAt60();\n    await press('Novo comparativo');\n    await atRoute('/calculator');\n    expectLastNavigation('replace', '/calculator', params);\n    enterPurchase('Ingresso', '30');\n    await press('Calcular custo real');\n    await atRoute('/result');\n    expect(screen.getByText(/Ingresso custa:/).textContent).toBe('Ingresso custa:');\n    expect(screen.getByText(/3,00 horas do seu trabalho/).textContent).toBe('3,00 horas do seu trabalho');\n    expectLastNavigation('push', '/result', { ...params, amount: '30', expenseName: 'Ingresso' });\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeStorage.setItem).toHaveBeenCalledTimes(1);\n  });\n\n  it.each(purchaseRows)('$id compra amount=\"$amount\": erro e correção', async ({ amount, empty }) => {\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ['coffee'] };\n    seedProfile(profile);\n    renderFlow({ pathname: '/calculator', params: sessionParams });\n    const initialRoutes = [...routes];\n    enterPurchase('Teste', amount);\n    await press('Calcular custo real');\n    if (empty) {\n      await atRoute('/calculator');\n      expect(routes).toEqual(initialRoutes);\n      expect(screen.getByRole('alert').textContent).toBe('Informe o valor da compra.');\n    } else {\n      // CA-03.3 permite rejeitar na entrada ou no Result.\n      await waitFor(() => {\n        expect(screen.getByRole('alert').textContent).toMatch(/(?:confira|corrija|informe|inválid|maior|positiv).*(?:renda|valor)|(?:renda|valor).*(?:inválid|maior|positiv|válid)/i);\n      });\n      const errorRoute = getRoute().pathname;\n      expect(['/calculator', '/result']).toContain(errorRoute);\n      await atRoute(errorRoute);\n      if (errorRoute === '/result') {\n        expectLastNavigation('push', '/result', { ...sessionParams, amount, expenseName: 'Teste' });\n      } else {\n        expect(routes).toEqual(initialRoutes);\n      }\n    }\n    assertNoNumericResult();\n    if (getRoute().pathname === '/result') {\n      await press('Novo comparativo');\n      await atRoute('/calculator');\n      expectLastNavigation('replace', '/calculator', sessionParams);\n    }\n    expect(getRoute().params).toEqual(sessionParams);\n    await calculate60('Corrigida');\n    expect(screen.queryByRole('alert')).toBeNull();\n    expect(screen.getByText(/Corrigida custa:/).textContent).toBe('Corrigida custa:');\n    expectLastNavigation('push', '/result', { ...sessionParams, amount: '60', expenseName: 'Corrigida' });\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeStorage.setItem).not.toHaveBeenCalled();\n  });\n\n  it.each(incomeRows)('$id onboarding monthlyIncome=\"$income\": bloqueia sem escrita', async ({ income }) => {\n    renderFlow({ pathname: '/onboarding' });\n    const initialRoutes = [...routes];\n    enterIncome(income);\n    await press('Continuar');\n    // Assertions soft registram todas as violações sem transformar defeitos em sucesso.\n    expect.soft(getRoute().pathname).toBe('/onboarding');\n    expect.soft(routes).toEqual(initialRoutes);\n    expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();\n    expect.soft(persistedProfile()).toBeNull();\n    const alert = screen.queryByRole('alert');\n    expect.soft(alert).not.toBeNull();\n    expect.soft(alert?.textContent ?? '').toMatch(/renda/i);\n    expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|válid|positiv|maior|obrigat/i);\n  });\n\n  it.each(resultRows)('$id Result: $description', async ({ route, valid, returned }) => {\n    renderFlow(route);\n    if (valid) {\n      expect(screen.queryByRole('alert')).toBeNull();\n      expect(screen.getByText(/Essa compra custa:/).textContent).toBe('Essa compra custa:');\n      expect(screen.getByText(/6,00 horas do seu trabalho/).textContent).toBe('6,00 horas do seu trabalho');\n      assertComparisonsAt60();\n    } else {\n      expect(screen.getByRole('alert').textContent).toBe('Não foi possível calcular. Volte e confira renda e valor.');\n      assertNoNumericResult();\n    }\n    await press('Novo comparativo');\n    await atRoute('/calculator');\n    expectLastNavigation('replace', '/calculator', returned);\n    expect(screen.getByPlaceholderText('Ex: Cadeira ergonômica').getAttribute('value')).toBe('');\n    expect(screen.getByPlaceholderText('Ex: 1499,00').getAttribute('value')).toBe('');\n    expect(nativeStorage.setItem).not.toHaveBeenCalled();\n  });\n\n  it.each(preferenceRows)('$id fallback: selectedComparisonIds=$ids', async ({ ids, firstAccess }) => {\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ids };\n    if (firstAccess) {\n      renderFlow({ pathname: '/onboarding' });\n      enterIncome('1760');\n      // Nenhuma assertion de aria aqui: a falha web não deve abortar este contrato.\n      await press('Continuar');\n      await atRoute('/calculator');\n      expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(profile));\n    } else {\n      seedProfile(profile);\n      renderFlow();\n      await press('Iniciar');\n      await atRoute('/calculator');\n      expect(nativeStorage.getItem).toHaveBeenCalledWith(PROFILE_KEY);\n    }\n    expect(persistedProfile()).toEqual(profile);\n    expectLastNavigation('push', '/calculator', { monthlyIncome: '1760', selectedComparisonIds: ids.join(',') });\n    await calculate60();\n    const renderedIds = assertComparisonsAt60();\n    expect(screen.queryByText(/desconhecido/)).toBeNull();\n    if (ids.includes('desconhecido')) {\n      expect(screen.getAllByText(/^10 cafés$/)).toHaveLength(1);\n      expect(renderedIds).toContain('coffee');\n      expect(renderedIds).not.toContain('desconhecido');\n      expect(renderedIds).toHaveLength(4);\n      expect(renderedIds.filter(id => id !== 'coffee')).toHaveLength(3);\n    }\n    if (ids.length > 4) {\n      expect(renderedIds).toHaveLength(4);\n      for (const id of renderedIds) expect(ids).toContain(id);\n    }\n    expect(persistedProfile()).toEqual(profile);\n  });\n\n  it('B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix', async () => {\n    renderFlow({ pathname: '/onboarding' });\n    enterIncome('1760');\n    for (const checkbox of screen.getAllByRole('checkbox')) {\n      expect.soft(checkbox.getAttribute('aria-checked')).toBe('false');\n    }\n    const coffee = () => screen.getByRole('checkbox', { name: 'Café' });\n    expect.soft(coffee().getAttribute('aria-checked')).toBe('false');\n    await press('Café');\n    expect.soft(coffee().getAttribute('aria-checked')).toBe('true');\n    await press('Café');\n    expect.soft(coffee().getAttribute('aria-checked')).toBe('false');\n    await press('Netflix');\n    expect.soft(screen.getByRole('checkbox', { name: 'Netflix' }).getAttribute('aria-checked')).toBe('true');\n    await press('Continuar');\n    await atRoute('/calculator');\n    const profile = { monthlyIncome: '1760', selectedComparisonIds: ['netflix'] };\n    expect(persistedProfile()).toEqual(profile);\n    expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(profile));\n    expectLastNavigation('push', '/calculator', { monthlyIncome: '1760', selectedComparisonIds: 'netflix' });\n  });\n\n  it.each(storageRows)('$id storage real: falha=$mode, rejeição aguardada pelo controlador', async ({ mode }) => {\n    seedProfile(oldProfile);\n    renderFlow({ pathname: mode === 'write' ? '/onboarding' : '/' });\n    const initialRoutes = [...routes];\n    const failure = new Error(`adapter-${mode}`);\n    if (mode === 'json') {\n      nativeData.set(PROFILE_KEY, '{invalid-json');\n      await expect(loadInitialProfile()).rejects.toBeInstanceOf(SyntaxError);\n      expect(nativeStorage.getItem).toHaveBeenCalledExactlyOnceWith(PROFILE_KEY);\n      expect(nativeData.get(PROFILE_KEY)).toBe('{invalid-json');\n      expect(nativeStorage.setItem).not.toHaveBeenCalled();\n    } else if (mode === 'read') {\n      nativeStorage.getItem.mockRejectedValueOnce(failure);\n      await expect(loadInitialProfile()).rejects.toBe(failure);\n      expect(nativeStorage.getItem).toHaveBeenCalledExactlyOnceWith(PROFILE_KEY);\n      expect(persistedProfile()).toEqual(oldProfile);\n      expect(nativeStorage.setItem).not.toHaveBeenCalled();\n    } else {\n      enterIncome('1760');\n      await press('Netflix');\n      const input = screen.getByPlaceholderText('Ex: 4500,00') as HTMLInputElement;\n      const updated = { monthlyIncome: input.value, selectedComparisonIds: ['netflix'] };\n      nativeStorage.setItem.mockRejectedValueOnce(failure);\n      // Chamada real aguardada; não dispara handler de UI com rejeição não tratada.\n      await expect(saveInitialProfile(updated)).rejects.toBe(failure);\n      expect(nativeStorage.setItem).toHaveBeenCalledExactlyOnceWith(PROFILE_KEY, JSON.stringify(updated));\n      expect(nativeStorage.getItem).not.toHaveBeenCalled();\n      expect(persistedProfile()).toEqual(oldProfile);\n    }\n    expect(routes).toEqual(initialRoutes);\n    expect(getRoute().pathname).toBe(mode === 'write' ? '/onboarding' : '/');\n  });\n\n  it.each(editRows)('$id edição a partir de $origin: salva e recupera via Home', async ({ route }) => {\n    seedProfile(oldProfile);\n    const view = renderFlow(route);\n    await press('Mudar preferências');\n    await atRoute('/onboarding');\n    expectLastNavigation('push', '/onboarding');\n    enterIncome('1760');\n    // Define a seleção final sem exigir nem proibir pré-preenchimento (LAC-04).\n    // O marcador visual existente identifica seleção; aria é verificada separadamente.\n    for (const checkbox of screen.getAllByRole('checkbox')) {\n      if (checkbox.querySelector('[style*=\"background-color: rgb(47, 128, 237)\"]')) {\n        // Não é usado como oráculo: seleção final é determinada abaixo por interação e persistência.\n      }\n    }\n    // A tela fornecida inicia sem seleção. Para tolerar edição com pré-preenchimento,\n    // infere-se a seleção corrente pelo marcador renderizado dentro do checkbox.\n    for (const checkbox of screen.getAllByRole('checkbox')) {\n      const label = checkbox.textContent!.trim();\n      const selected = checkbox.getAttribute('aria-checked') === 'true'\n        || checkbox.querySelector('div > div') !== null;\n      if ((label === 'Netflix') !== selected) await press(label);\n    }\n    await press('Continuar');\n    await atRoute('/calculator');\n    const updated = { monthlyIncome: '1760', selectedComparisonIds: ['netflix'] };\n    expect(persistedProfile()).toEqual(updated);\n    expect(nativeStorage.setItem).toHaveBeenCalledWith(PROFILE_KEY, JSON.stringify(updated));\n    expectLastNavigation('push', '/calculator', { monthlyIncome: '1760', selectedComparisonIds: 'netflix' });\n    // Escrita confirmada antes da nova montagem: simula retorno à Home, sem inventar botão.\n    view.unmount();\n    renderFlow({ pathname: '/' });\n    const readsBeforeStart = nativeStorage.getItem.mock.calls.length;\n    await press('Iniciar');\n    await atRoute('/calculator');\n    expect(nativeStorage.getItem).toHaveBeenCalledTimes(readsBeforeStart + 1);\n    expect(nativeStorage.getItem).toHaveBeenLastCalledWith(PROFILE_KEY);\n    expectLastNavigation('push', '/calculator', { monthlyIncome: '1760', selectedComparisonIds: 'netflix' });\n    await calculate60('Perfil atualizado');\n    expect(screen.getByText(/Perfil atualizado custa:/).textContent).toBe('Perfil atualizado custa:');\n    expect(screen.getByText(/^1,5 meses de Netflix$/).textContent).toBe('1,5 meses de Netflix');\n    expect(persistedProfile()).toEqual(updated);\n    expect(nativeStorage.setItem).toHaveBeenCalledTimes(1);\n  });\n});\n"
+}
