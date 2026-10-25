@@ -19,4 +19,6 @@ LAC-02/03/04/11, teste nativo, navegação de dispositivo, deduplicação semân
 
 ## Publicação
 
-Branch test/genai-integration-unit3 e PR serão enviados para revisão. Não fazer merge nem publicar no AVA. Registrar confirmação e CI após os retornos do GitHub.
+Branch `test/genai-integration-unit3` publicada; [PR #5](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real/pull/5) aberto para revisão. Sem merge e sem publicação no AVA.
+
+[GitHub Actions, execução 40149381436](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real/actions/runs/40149381436), evento push do commit `144522f3537254aa7dd80db0f94584ad12a6b9e8`, concluído com sucesso em 25/10/2026 às 01:08:03 UTC. Checkout limpo Ubuntu, Node 24.12.0, npm ci, typecheck, verificador de evidências, 12 arquivos/93 testes aprovados e upload dos relatórios aprovados. Cobertura geral no CI: statements 99,21%, ramos 96,59%, funções 100% e linhas 99,20%, concordantes com a execução local. A referência é imutável; o registro posterior destes links altera somente a documentação.
