@@ -1,0 +1,8 @@
+{
+  "stage": "after-fixes",
+  "suite": "b-v2",
+  "typecheck_exit": 0,
+  "test_exit": 0,
+  "signal": null,
+  "error": null
+}

@@ -73,7 +73,7 @@ Para diagramas Mermaid do fluxo, veja [flowchart.md](flowchart.md).
 
 ## Testes
 
-O `packages/core` é a fonte de verdade das regras testáveis. Telas e navegação ainda não possuem testes automatizados dedicados.
+O `packages/core` é a fonte de verdade das regras testáveis. A Unidade III acrescenta testes de integração das telas compartilhadas com storage e core reais, renderizadas na implementação React Native Web; somente fronteiras de AsyncStorage e Expo Router recebem adapters no Vitest. [Metodologia e limites](academic/unidade-3-testes-integracao/metodologia.md).
 
 Cobertura atual:
 
@@ -85,6 +85,6 @@ Cobertura atual:
 
 Lacunas conhecidas:
 
-- testes de componentes React Native;
-- testes de navegação Expo Router;
-- testes end-to-end do fluxo completo.
+- renderização nativa Android/iOS;
+- navegação Expo Router em dispositivo;
+- testes end-to-end nativos.

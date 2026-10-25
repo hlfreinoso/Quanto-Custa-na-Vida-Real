@@ -219,10 +219,14 @@ Cobertura atual:
 
 Ainda não coberto:
 
-- componentes React Native;
-- navegação Expo Router;
-- fluxo visual completo de onboarding até resultado;
-- testes end-to-end.
+- renderização e navegação nativas em Android/iOS;
+- testes end-to-end em dispositivo.
+
+### Unidade III — integração com IA generativa
+
+A atividade foi realizada neste aplicativo existente, preservando a arquitetura e os 31 testes anteriores. Quatro gerações reais de prompts A/B V1/V2 produziram 61 casos de integração de telas, storage e core. A suíte final tem 93 testes aprovados (31 originais, 61 gerados e um smoke da infraestrutura), com typecheck e exportação Expo web aprovados.
+
+Os testes Vitest usam React Native Web e adapters nas fronteiras nativas/roteamento; não equivalem a execução em dispositivo. Duas correções pequenas foram feitas no onboarding após preservar as falhas originais, e uma preparação de teste foi corrigida sem alterar assertions. [Experimento, prompts, evidências, limites e texto do fórum](docs/academic/unidade-3-testes-integracao/README.md).
 
 Mais detalhes:
 
@@ -249,12 +253,12 @@ Mais detalhes:
 - O histórico local ainda não foi implementado.
 - O compartilhamento de card como imagem ainda não foi implementado.
 - Os valores de referência das comparações são locais e fixos.
-- Ainda não há testes automatizados para componentes React Native e navegação.
+- Testes de integração cobrem as telas compartilhadas na implementação web; execução nativa em Android/iOS ainda não foi validada nesta atividade.
 - O lint ainda é um placeholder no `package.json`.
 
 ## Próximos Passos
 
-- Adicionar testes de UI com React Native Testing Library.
+- Ampliar testes de UI e navegação na implementação nativa Android/iOS.
 - Melhorar validações e máscaras de entrada monetária.
 - Implementar histórico local.
 - Implementar geração de card compartilhável.

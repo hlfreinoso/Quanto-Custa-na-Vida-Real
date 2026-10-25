@@ -1,0 +1,13 @@
+{
+  "commit": "fe3103d9d9946b3a449469e5bf675b038ce6e3ed",
+  "production": {
+    "apps/mobile/src/screens/home/HomeScreen.tsx": "6bc36e64a5aa75905ffc9a104985804e9bed37cb0fc3a32ec02404bb62f0e71c",
+    "apps/mobile/src/screens/onboarding/ComparisonPreferencesScreen.tsx": "c0a1410b01b64197d398cb114e02c1ed3be23a2088ec050d60b301b120579e88",
+    "apps/mobile/src/screens/calculator/CalculatorScreen.tsx": "857901a3401684377f2b5d5301f042f09abcc8990217baa5cd75a3fd13d776fa",
+    "apps/mobile/src/screens/result/ResultScreen.tsx": "de29cee707eacdae4b2194d1634754d13f90046e020e8f3055f16d83b0717c00",
+    "apps/mobile/src/storage/InitialProfileStorage.ts": "b7b7f467c17cb4aea7bd12c4722db38ad7de88396fd59d2edbbc3a7fa6931bda",
+    "packages/core/src/comparisons/calculateComparisonResults.ts": "821cd1930b578280bbf1cda6b67778e8dbeac104299e99c88ad10f795b0e255f",
+    "packages/core/src/comparisons/defaultComparisonPreferences.ts": "7669ab81fe0f773610040e0fda626b52b13238f4294e520e6abda9a42712fed2"
+  },
+  "generated_at": "2026-10-25T00:31:13.650Z"
+}

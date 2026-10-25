@@ -2,8 +2,8 @@
 
 > **Projeto:** Quanto Custa na Vida Real  
 > **Repositório:** https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real  
-> **Versão do documento:** 1.0  
-> **Data:** 08/08/2026  
+> **Versão do documento:** 1.1<br>
+> **Data:** 25/10/2026 (criado em 08/08/2026)<br>
 > **Autor:** Heitor Reinoso  
 > **Situação:** Em validação  
 > **Escopo analisado:** protótipo mobile navegável — Fase 1 do roadmap
@@ -279,7 +279,7 @@ Os itens abaixo são relevantes, mas o repositório não contém metas objetivas
 - **Então** o sistema deve permanecer na tela;
 - **E** deve informar claramente o problema.
 
-> **Situação atual:** critério ainda não atendido integralmente pela interface.
+> **Atualização Unidade III:** a interface passou a bloquear renda vazia, não positiva ou não finita antes de salvar/navegar, com mensagem inline. CA-02.3 foi verificado pelos testes de integração. A interpretação de formatos monetários alternativos continua em LAC-02; não foi decidida por esta correção.
 
 ---
 
@@ -480,7 +480,7 @@ Os itens abaixo são relevantes, mas o repositório não contém metas objetivas
 
 | ID | Severidade | Ponto identificado | Evidência atual | Decisão necessária |
 |---|---|---|---|---|
-| **LAC-01** | Alta | O onboarding salva renda vazia ou inválida sem validação visível. | `handleContinue` persiste o texto informado diretamente. | Bloquear a continuidade e definir mensagens para vazio, zero, negativo e formato inválido. |
+| **LAC-01** | Resolvida nesta branch para os casos confirmados | O onboarding anteriormente salvava renda vazia ou inválida. | Unidade III: `handleContinue` valida positividade/finitude antes da gravação; cenários CA-02.3 aprovados. | Manter regressões; interpretação de formatos alternativos permanece em LAC-02. |
 | **LAC-02** | Alta | O formato monetário aceito não está formalmente definido. | O parser remove todos os pontos e troca vírgula por ponto; `1499.00`, por exemplo, pode ser interpretado incorretamente. | Definir máscara, separadores aceitos e estratégia de normalização. |
 | **LAC-03** | Alta | Há conflito entre “nenhuma preferência pré-selecionada” e o fallback atual. | O onboarding inicia vazio, mas a tela de resultado usa `coffee`, `netflix` e `bonbon` quando recebe lista vazia. | Decidir se lista vazia deve priorizar itens fixos ou selecionar aleatoriamente no catálogo geral. |
 | **LAC-04** | Alta | A ação **Mudar preferências** abre a configuração sem carregar os valores existentes. | O estado inicial do onboarding é vazio. | Criar modo de edição com pré-preenchimento ou definir outro comportamento explicitamente. |
@@ -590,3 +590,4 @@ A especificação pode orientar a evolução do protótipo, mas ainda não deve 
 | Versão | Data | Alteração |
 |---|---|---|
 | 1.0 | 08/08/2026 | Criação da especificação inicial a partir da documentação e do código do protótipo. |
+| 1.1 | 25/10/2026 | Atualização factual de CA-02.3/LAC-01 após os testes e correção da Unidade III; sem alterar requisitos nem aprovar decisões pendentes. |

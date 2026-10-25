@@ -1,0 +1,106 @@
+{
+  "a-v1": {
+    "model_configured": "gpt-6.1-sol",
+    "reasoning_effort_configured": "medium",
+    "provider": "OpenAI via Codex CLI",
+    "model_snapshot": "not exposed",
+    "temperature": "not exposed",
+    "cli": "0.164.0-alpha.11.1",
+    "session": "01a17077-fc33-7220-9f96-3c5b4eb8efc3",
+    "usage": {
+      "input_tokens": 31676,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7196,
+      "reasoning_output_tokens": 1034
+    },
+    "date_utc": "2026-10-25T00:33:11.511Z",
+    "prompt_sha256": "75e41a03738d93e2d4c8c13b98221a602c56fac546635f1d0253eb3ff09455d6",
+    "response_sha256": "a6463a228e42b77ce8a9c3c1a332f2d9223b12ba7dafacfc61c8fd0f136fac5f",
+    "source_sha256": "0297913e3264487a630ee0bceef9600883101c3b30c0a60e313216b61e910fb6",
+    "cases_metadata": 12,
+    "source": "apps/mobile/src/integration/a-v1.integration.test.tsx",
+    "tool_events": [],
+    "post_generation_edits": []
+  },
+  "b-v1": {
+    "model_configured": "gpt-6.1-sol",
+    "reasoning_effort_configured": "medium",
+    "provider": "OpenAI via Codex CLI",
+    "model_snapshot": "not exposed",
+    "temperature": "not exposed",
+    "cli": "0.164.0-alpha.11.1",
+    "session": "01a17079-62a5-7120-8d77-e641eb1da9ea",
+    "usage": {
+      "input_tokens": 31794,
+      "cached_input_tokens": 0,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7117,
+      "reasoning_output_tokens": 970
+    },
+    "date_utc": "2026-10-25T00:34:49.774Z",
+    "prompt_sha256": "e6fd4959260a11e989ae150210d34360b72aa153c349d81ff787341785240cae",
+    "response_sha256": "fb003ee10ea4c65395c4fd6e4d6dd69899450c6b278761fc0a613ccf61559b7a",
+    "source_sha256": "535c71386178ee7175252a413b9f69d3773592b0b397065bfea7ced4048b3700",
+    "cases_metadata": 8,
+    "source": "apps/mobile/src/integration/b-v1.integration.test.tsx",
+    "tool_events": [],
+    "post_generation_edits": []
+  },
+  "a-v2": {
+    "model_configured": "gpt-6.1-sol",
+    "reasoning_effort_configured": "medium",
+    "provider": "OpenAI via Codex CLI",
+    "model_snapshot": "not exposed",
+    "temperature": "not exposed",
+    "cli": "0.164.0-alpha.11.1",
+    "session": "01a1707e-8bf8-7960-a848-4464edfedb1d",
+    "usage": {
+      "input_tokens": 32086,
+      "cached_input_tokens": 7296,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 7179,
+      "reasoning_output_tokens": 995
+    },
+    "date_utc": "2026-10-25T00:40:29.043Z",
+    "prompt_sha256": "bd6f0ca66458cd779b6a57c32ad024353cc885513b6f8d41762528ab7347a68a",
+    "response_sha256": "f18dc99ac574dc7c03e782e6eb054c3373c5e2530b323f4bb8959638147d9642",
+    "source_sha256": "35cd4ae2a66c64048988ec5c5535a977e3b675a271278d27291c5e919e7e3746",
+    "cases_metadata": 6,
+    "source": "apps/mobile/src/integration/a-v2.integration.test.tsx",
+    "tool_events": [],
+    "post_generation_edits": []
+  },
+  "b-v2": {
+    "model_configured": "gpt-6.1-sol",
+    "reasoning_effort_configured": "medium",
+    "provider": "OpenAI via Codex CLI",
+    "model_snapshot": "not exposed",
+    "temperature": "not exposed",
+    "cli": "0.164.0-alpha.11.1",
+    "session": "01a1707f-1517-7c62-9e9d-fc0def02ad2d",
+    "usage": {
+      "input_tokens": 32178,
+      "cached_input_tokens": 16128,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 11761,
+      "reasoning_output_tokens": 1552
+    },
+    "date_utc": "2026-10-25T00:41:37.538Z",
+    "prompt_sha256": "23a1947512d89245601600bf106490e5efa3b6326fa498fcdaad97dc7d1cae54",
+    "response_sha256": "84b53750918e962bfbb419d5a06e1546f3d703d862bdd9374724cd5ff3c79c70",
+    "source_sha256": "5974f28cd57a119bc7085a8572e5d5e9c8b3d9416eff278987cc0f600e614507",
+    "cases_metadata": 25,
+    "source": "apps/mobile/src/integration/b-v2.integration.test.tsx",
+    "tool_events": [],
+    "post_generation_edits": [
+      {
+        "id": "T-01",
+        "kind": "test arrangement correction",
+        "reason": "div > div matched unselected controls and inverted selection preparation; now uses semantic aria-checked only; no assertion changed",
+        "stage": "test-correction-only"
+      }
+    ],
+    "executed_source_sha256": "8ec2b7216d7cf3442e1a0ba682a22d4db7b72bffdb03c9384bfad2f66bce55e9"
+  }
+}

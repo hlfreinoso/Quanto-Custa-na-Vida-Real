@@ -1,0 +1,323 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ❯ |integration| apps/mobile/src/integration/a-v1.integration.test.tsx (12 tests | 5 failed) 4707ms
+     × A-V1-01 primeiro acesso persiste seleção e apresenta custo real 248ms
+     ✓ A-V1-02 retorno recupera perfil e integra seleção real sem duplicatas 34ms
+     ✓ A-V1-03 zero preferências aceita pt-BR e nome opcional sem fixar fallback 58ms
+     ✓ A-V1-04 novo comparativo preserva perfil e usa a segunda compra 60ms
+     × 'A-V1-05-empty' bloqueia renda inválida no onboarding 1020ms
+     × 'A-V1-05-zero' bloqueia renda inválida no onboarding 1019ms
+     × 'A-V1-05-negative' bloqueia renda inválida no onboarding 1025ms
+     × 'A-V1-05-text' bloqueia renda inválida no onboarding 1020ms
+     ✓ 'A-V1-06-empty' rejeita compra inválida sem equivalências numéricas 58ms
+     ✓ 'A-V1-06-zero' rejeita compra inválida sem equivalências numéricas 60ms
+     ✓ 'A-V1-06-negative' rejeita compra inválida sem equivalências numéricas 49ms
+     ✓ 'A-V1-06-text' rejeita compra inválida sem equivalências numéricas 53ms
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 7 passed (12)
+   Start at  11:34:39
+   Duration  6.95s (transform 135ms, setup 222ms, import 944ms, tests 4.71s, environment 743ms)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/before-fixes/a-v1/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   85.12 |    74.39 |   83.33 |   84.74 |                   
+ ...ens/calculator |    90.9 |       75 |   66.66 |    90.9 |                   
+  ...torScreen.tsx |    90.9 |       75 |   66.66 |    90.9 | 89                
+ ...c/screens/home |   91.66 |      100 |   66.66 |   91.66 |                   
+  HomeScreen.tsx   |   91.66 |      100 |   66.66 |   91.66 | 50                
+ ...ens/onboarding |   63.15 |       40 |    62.5 |   61.11 |                   
+  ...cesScreen.tsx |   63.15 |       40 |    62.5 |   61.11 | 24-33,87          
+ ...screens/result |   96.29 |       75 |   88.88 |   96.29 |                   
+  ResultScreen.tsx |   96.29 |       75 |   88.88 |   96.29 | 76                
+ ...c/calculations |      75 |       80 |     100 |      75 |                   
+  ...HourlyRate.ts |    62.5 |       75 |     100 |    62.5 | 5,12,19           
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 85.12% ( 103/121 )
+Branches     : 74.39% ( 61/82 )
+Functions    : 83.33% ( 30/36 )
+Lines        : 84.74% ( 100/118 )
+================================================================================
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > A-V1-01 primeiro acesso persiste seleção e apresenta custo real
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/a-v1.integration.test.tsx:92:53
+     90|     expect(checkboxes).toHaveLength(13);
+     91|     for (const checkbox of checkboxes) {
+     92|       expect(checkbox.getAttribute('aria-checked')).toBe('false');
+       |                                                     ^
+     93|     }
+     94|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-empty' bloqueia renda inválida no onboarding
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-zero' bloqueia renda inválida no onboarding
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-negative' bloqueia renda inválida no onboarding
+ FAIL  |integration| apps/mobile/src/integration/a-v1.integration.test.tsx > A-V1 > 'A-V1-05-text' bloqueia renda inválida no onboarding
+TestingLibraryElementError: Unable to find role="alert"
+
+Ignored nodes: comments, script, style
+<body>
+  <div>
+    <div
+      class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+    >
+      <div
+        class="css-view-g5y9jx r-backgroundColor-172bra0 r-flexGrow-16y2uox r-padding-d23pfw"
+      >
+        <div
+          class="css-view-g5y9jx r-marginBottom-1ivnorr r-paddingTop-131miar"
+        >
+          <div
+            class="css-text-146c3p1 r-color-ombics r-fontSize-n6v787 r-fontWeight-1vr29t4 r-marginBottom-15d164r r-textTransform-tsynxw"
+            dir="auto"
+          >
+            Cálculo rápido
+          </div>
+          <div
+            class="css-text-146c3p1 r-color-1njgeiw r-fontSize-1yjpyg1 r-fontWeight-1vr29t4 r-lineHeight-zj17g9 r-maxWidth-51zu7q"
+            dir="auto"
+          >
+            Qual compra você quer entender?
+          </div>
+          <div
+            class="css-text-146c3p1 r-color-edjfg1 r-fontSize-ubezar r-lineHeight-7ptqe7 r-marginTop-1s2bzr4 r-maxWidth-hvns9x"
+            dir="auto"
+          >
+            Informe o produto e o preço. O resultado vem na próxima tela.
+          </div>
+        </div>
+        <div
+          class="css-view-g5y9jx r-gap-f4gmv6"
+        >
+          <div
+            class="css-view-g5y9jx r-gap-1cmwbt1"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Nome da compra
+            </div>
+            <input
+              autocapitalize="sentences"
+              autocomplete="on"
+              autocorrect="on"
+              class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+              dir="auto"
+              placeholder="Ex: Cadeira ergonômica"
+              rows="1"
+              spellcheck="true"
+              style="--placeholderTextColor: #8A8F98;"
+              value=""
+              virtualkeyboardpolicy="auto"
+            />
+          </div>
+          <div
+            class="css-view-g5y9jx r-gap-1cmwbt1"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Valor
+            </div>
+            <input
+              autocapitalize="sentences"
+              autocomplete="on"
+              autocorrect="on"
+              class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+              dir="auto"
+              inputmode="decimal"
+              placeholder="Ex: 1499,00"
+              rows="1"
+              spellcheck="true"
+              style="--placeholderTextColor: #8A8F98;"
+              type="text"
+              value=""
+              virtualkeyboardpolicy="auto"
+            />
+          </div>
+          <div
+            class="css-text-146c3p1 r-color-1cucpzw r-fontSize-n6v787 r-lineHeight-hjklzo"
+            dir="auto"
+          >
+            Usamos 8 horas por dia e 22 dias por mês como padrão.
+          </div>
+        </div>
+        <div
+          class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-iudk43 r-borderRadius-1xfd6ze r-justifyContent-1777fci r-marginTop-1no09lo r-minHeight-vdqesa"
+          tabindex="0"
+        >
+          <div
+            class="css-text-146c3p1 r-color-jwli3a r-fontSize-ubezar r-fontWeight-1vr29t4"
+            dir="auto"
+          >
+            Calcular custo real
+          </div>
+        </div>
+        <div
+          class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-justifyContent-1777fci r-marginTop-1s2bzr4 r-minHeight-19yznuf"
+          tabindex="0"
+        >
+          <div
+            class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-ubezar r-fontWeight-1vr29t4"
+            dir="auto"
+          >
+            Mudar preferências
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+Ignored nodes: comments, script, style
+<html>
+  <head />
+  <body>
+    <div>
+      <div
+        class="css-view-g5y9jx r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
+      >
+        <div
+          class="css-view-g5y9jx r-backgroundColor-172bra0 r-flexGrow-16y2uox r-padding-d23pfw"
+        >
+          <div
+            class="css-view-g5y9jx r-marginBottom-1ivnorr r-paddingTop-131miar"
+          >
+            <div
+              class="css-text-146c3p1 r-color-ombics r-fontSize-n6v787 r-fontWeight-1vr29t4 r-marginBottom-15d164r r-textTransform-tsynxw"
+              dir="auto"
+            >
+              Cálculo rápido
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1njgeiw r-fontSize-1yjpyg1 r-fontWeight-1vr29t4 r-lineHeight-zj17g9 r-maxWidth-51zu7q"
+              dir="auto"
+            >
+              Qual compra você quer entender?
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-edjfg1 r-fontSize-ubezar r-lineHeight-7ptqe7 r-marginTop-1s2bzr4 r-maxWidth-hvns9x"
+              dir="auto"
+            >
+              Informe o produto e o preço. O resultado vem na próxima tela.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-gap-f4gmv6"
+          >
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Nome da compra
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                placeholder="Ex: Cadeira ergonômica"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-view-g5y9jx r-gap-1cmwbt1"
+            >
+              <div
+                class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-1b43r93 r-fontWeight-1vr29t4"
+                dir="auto"
+              >
+                Valor
+              </div>
+              <input
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-color-1njgeiw r-fontSize-1inkyih r-minHeight-vdqesa r-paddingInline-gu64tb"
+                dir="auto"
+                inputmode="decimal"
+                placeholder="Ex: 1499,00"
+                rows="1"
+                spellcheck="true"
+                style="--placeholderTextColor: #8A8F98;"
+                type="text"
+                value=""
+                virtualkeyboardpolicy="auto"
+              />
+            </div>
+            <div
+              class="css-text-146c3p1 r-color-1cucpzw r-fontSize-n6v787 r-lineHeight-hjklzo"
+              dir="auto"
+            >
+              Usamos 8 horas por dia e 22 dias por mês como padrão.
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-iudk43 r-borderRadius-1xfd6ze r-justifyContent-1777fci r-marginTop-1no09lo r-minHeight-vdqesa"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-jwli3a r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Calcular custo real
+            </div>
+          </div>
+          <div
+            class="css-view-g5y9jx r-cursor-1loqt21 r-touchAction-1otgn73 r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-qz5of6 r-borderRadius-1xfd6ze r-borderWidth-rs99b7 r-justifyContent-1777fci r-marginTop-1s2bzr4 r-minHeight-19yznuf"
+            tabindex="0"
+          >
+            <div
+              class="css-text-146c3p1 r-color-19ic4t9 r-fontSize-ubezar r-fontWeight-1vr29t4"
+              dir="auto"
+            >
+              Mudar preferências
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ ❯ waitForWrapper node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ apps/mobile/src/integration/a-v1.integration.test.tsx:226:11
+    224|
+    225|     // CA-02.3 rege a expectativa; a implementação parcial pode falhar…
+    226|     await waitFor(() => {
+       |           ^
+    227|       expect(screen.getByRole('alert').textContent?.trim().length ?? 0…
+    228|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+

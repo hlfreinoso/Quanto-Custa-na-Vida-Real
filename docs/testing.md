@@ -29,6 +29,9 @@ make validate
 - `defaultComparisonPreferences`
 - `calculateComparisonResults`
 - `InitialProfileStorage`
+- integração Home → Onboarding → persistência → Calculator → core → Result e retorno;
+- alteração/reutilização de perfil, validação de renda, parâmetros de rota e comparações;
+- falhas isoladas da fronteira nativa de armazenamento e semântica de checkbox no alvo web.
 
 ## Tipos de Cenário Cobertos
 
@@ -44,16 +47,15 @@ make validate
 
 ## O Que Ainda Não Está Coberto
 
-- fluxo visual de home, onboarding, calculadora e resultado;
-- navegação entre rotas;
-- renderização de componentes React Native;
-- testes end-to-end.
+- renderização nativa em Android/iOS;
+- Expo Router nativo em dispositivo;
+- testes end-to-end de dispositivo.
 
 ## Diretriz
 
 Toda regra nova deve nascer no `packages/core` com teste antes de ser conectada na UI.
 
-Quando a UI estabilizar, adicionar uma biblioteca de teste para React Native e cobrir:
+Na Unidade III, estes fluxos passaram a ter testes de integração das telas compartilhadas na implementação web:
 
 - home pula onboarding quando existe perfil salvo;
 - onboarding salva perfil e preferências;
@@ -63,4 +65,10 @@ Quando a UI estabilizar, adicionar uma biblioteca de teste para React Native e c
 
 ## Limitações Atuais
 
-O projeto ainda não possui testes de renderização de componentes, testes de navegação e testes end-to-end. Esses pontos devem ser tratados quando o fluxo visual estabilizar.
+Os testes de integração da Unidade III renderizam telas reais usando React Native Web e adapters de roteamento/AsyncStorage. Não substituem validação nativa em Android/iOS. Um smoke adicional operou o build Expo web com roteamento e storage reais da implementação web; não foi contado como geração LLM ou teste em dispositivo. A atividade e os relatórios antes/depois estão em [docs/academic/unidade-3-testes-integracao](academic/unidade-3-testes-integracao/README.md).
+
+## Resultados da Unidade III
+
+Baseline 31/31; quatro suítes geradas com 12, 6, 18 e 25 casos. Após diagnóstico/correções: 61/61 gerados e 93/93 na suíte geral. Typecheck inclui as fontes geradas importadas em apps/mobile/src/integration. `npm test -- --coverage` mede quatro telas, InitialProfileStorage e core, excluindo testes/framework: suíte geral com 127/128 statements e 85/88 ramos na execução registrada. Isso não representa cobertura de toda a plataforma nativa.
+
+Scripts: `node scripts/academic/verify-evidence.mjs` confere hashes e assertions; `node scripts/academic/evaluate.mjs nome-novo` mede cada suíte e combinado em diretório novo. O [relatório completo](academic/unidade-3-testes-integracao/resultados/execucoes.md) separa saídas originais, correção do teste e produto corrigido. Não comparar percentuais com denominadores diferentes como efeito do prompt.

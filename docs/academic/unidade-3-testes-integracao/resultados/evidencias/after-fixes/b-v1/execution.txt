@@ -1,0 +1,37 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ✓ |integration| apps/mobile/src/integration/b-v1.integration.test.tsx (18 tests) 1751ms
+     ✓ B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo  820ms
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  11:44:57
+   Duration  4.21s (transform 140ms, setup 232ms, import 1.05s, tests 1.75s, environment 832ms)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/after-fixes/b-v1/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    91.4 |    82.95 |   91.66 |    91.2 |                   
+ ...ens/calculator |    90.9 |       75 |   66.66 |    90.9 |                   
+  ...torScreen.tsx |    90.9 |       75 |   66.66 |    90.9 | 89                
+ ...c/screens/home |   91.66 |      100 |   66.66 |   91.66 |                   
+  HomeScreen.tsx   |   91.66 |      100 |   66.66 |   91.66 | 50                
+ ...screens/result |   92.59 |       70 |   88.88 |   92.59 |                   
+  ResultScreen.tsx |   92.59 |       70 |   88.88 |   92.59 | 76,137            
+ ...c/calculations |   81.25 |       85 |     100 |   81.25 |                   
+  ...HourlyRate.ts |      75 |    83.33 |     100 |      75 | 12,19             
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 91.4% ( 117/128 )
+Branches     : 82.95% ( 73/88 )
+Functions    : 91.66% ( 33/36 )
+Lines        : 91.2% ( 114/125 )
+================================================================================

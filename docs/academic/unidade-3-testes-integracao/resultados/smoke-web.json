@@ -1,0 +1,17 @@
+{
+  "date_local": "2026-10-25 Australia/Sydney",
+  "method": "Export Expo web servido em loopback e operado pelo navegador; não integra a contagem Vitest/LLM",
+  "native_device_tested": false,
+  "router": "Expo Router real do build",
+  "storage": "AsyncStorage da implementação web do aplicativo, sem mock do harness",
+  "observations": [
+    "Home sem perfil abriu onboarding",
+    "Continuar com renda vazia permaneceu no onboarding com mensagem de correção",
+    "Checkboxes expuseram estado não selecionado ao navegador",
+    "Renda sintética 1760 e preferências coffee/netflix atravessaram a URL para Calculator",
+    "Compra Livro de 60 exibiu 6,00 horas, 10 cafés e 1,5 meses de Netflix; mais dois itens de fallback",
+    "Novo comparativo retornou a Calculator com a mesma renda/preferências",
+    "Reabrir Home e acionar Iniciar reutilizou perfil persistido, sem passar por onboarding"
+  ],
+  "screenshot": "evidencias/smoke-web.png"
+}

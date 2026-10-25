@@ -1,0 +1,571 @@
+
+ RUN  v4.1.5 /workspace/Quanto-Custa-na-Vida-Real
+      Coverage enabled with v8
+
+ ❯ |integration| apps/mobile/src/integration/b-v2.integration.test.tsx (25 tests | 5 failed) 2923ms
+     ✓ B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30 159ms
+     ✓ 'B-V2-02-empty' compra amount="''": erro e correção 152ms
+     ✓ 'B-V2-02-zero' compra amount="'0'": erro e correção 81ms
+     ✓ 'B-V2-02-negative' compra amount="'-1'": erro e correção 98ms
+     ✓ 'B-V2-02-text' compra amount="'abc'": erro e correção 104ms
+     ✓ 'B-V2-02-infinity' compra amount="'Infinity'": erro e correção 102ms
+     × 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita 26ms
+     × 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita 25ms
+     × 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita 23ms
+     × 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita 25ms
+     ✓ 'B-V2-04-no-params' Result: 'params ausente' 40ms
+     ✓ 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente' 35ms
+     ✓ 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente' 51ms
+     ✓ 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60' 39ms
+     ✓ 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…' 13ms
+     ✓ 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ] 30ms
+     ✓ 'B-V2-05-empty' fallback: selectedComparisonIds=[] 41ms
+     ✓ 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ] 39ms
+     × B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix 1274ms
+     ✓ 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador 6ms
+     ✓ 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador 3ms
+     ✓ 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador 22ms
+     ✓ 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home 184ms
+     ✓ 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home 158ms
+     ✓ 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home 189ms
+
+ Test Files  1 failed (1)
+      Tests  5 failed | 20 passed (25)
+   Start at  11:44:00
+   Duration  5.40s (transform 149ms, setup 246ms, import 1.04s, tests 2.92s, environment 861ms)
+
+JSON report written to /workspace/Quanto-Custa-na-Vida-Real/.experiment-local/test-correction-only/b-v2/tests.json
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   93.38 |     87.8 |     100 |   93.22 |                   
+ ...ens/calculator |     100 |       75 |     100 |     100 |                   
+  ...torScreen.tsx |     100 |       75 |     100 |     100 | 32-33             
+ ...screens/result |   96.29 |       95 |     100 |   96.29 |                   
+  ResultScreen.tsx |   96.29 |       95 |     100 |   96.29 | 137               
+ ...c/calculations |   81.25 |       85 |     100 |   81.25 |                   
+  ...HourlyRate.ts |      75 |    83.33 |     100 |      75 | 12,19             
+  ...Equivalent.ts |      80 |     87.5 |     100 |      80 | 15                
+ ...rc/comparisons |   86.66 |    77.77 |     100 |   85.71 |                   
+  ...sonResults.ts |    86.2 |    77.77 |     100 |   85.18 | 22,26,63,87       
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 93.38% ( 113/121 )
+Branches     : 87.8% ( 72/82 )
+Functions    : 100% ( 36/36 )
+Lines        : 93.22% ( 110/118 )
+================================================================================
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 5 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected '/calculator' to be '/onboarding' // Object.is equality
+
+Expected: "/onboarding"
+Received: "/calculator"
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:204:38
+    202|     await press('Continuar');
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+       |                                      ^
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: '', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected null not to be null
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:209:28
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+       |                            ^
+    210|     expect.soft(alert?.textContent ?? '').toMatch(/renda/i);
+    211|     expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|váli…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected '' to match /renda/i
+
+- Expected:
+/renda/i
+
++ Received:
+""
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:210:43
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+    210|     expect.soft(alert?.textContent ?? '').toMatch(/renda/i);
+       |                                           ^
+    211|     expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|váli…
+    212|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-empty' onboarding monthlyIncome="''": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected '' to match /inform|inválid|válid|positiv|maior|o…/i
+
+- Expected:
+/inform|inválid|válid|positiv|maior|obrigat/i
+
++ Received:
+""
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:211:43
+    209|     expect.soft(alert).not.toBeNull();
+    210|     expect.soft(alert?.textContent ?? '').toMatch(/renda/i);
+    211|     expect.soft(alert?.textContent ?? '').toMatch(/inform|inválid|váli…
+       |                                           ^
+    212|   });
+    213|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "0",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"0","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-zero' onboarding monthlyIncome="'0'": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: '0', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "0",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "-1",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"-1","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-negative' onboarding monthlyIncome="'-1'": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: '-1', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "-1",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected [ { method: 'replace', …(1) }, …(1) ] to deeply equal [ { method: 'replace', …(1) } ]
+
+- Expected
++ Received
+
+@@ -3,6 +3,16 @@
+      "method": "replace",
+      "route": {
+        "pathname": "/onboarding",
+      },
+    },
++   {
++     "method": "push",
++     "route": {
++       "params": {
++         "monthlyIncome": "abc",
++         "selectedComparisonIds": "",
++       },
++       "pathname": "/calculator",
++     },
++   },
+  ]
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:205:25
+    203|     // Assertions soft registram todas as violações sem transformar de…
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+       |                         ^
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected "vi.fn()" to not be called at all, but actually been called 1 times
+
+Received:
+
+  1st vi.fn() call:
+
+    Array [
+      "@quanto-custa/initial-profile",
+      "{"monthlyIncome":"abc","selectedComparisonIds":[]}",
+    ]
+
+
+Number of calls: 1
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:206:44
+    204|     expect.soft(getRoute().pathname).toBe('/onboarding');
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+       |                                            ^
+    207|     expect.soft(persistedProfile()).toBeNull();
+    208|     const alert = screen.queryByRole('alert');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > 'B-V2-03-text' onboarding monthlyIncome="'abc'": bloqueia sem escrita
+AssertionError: expected { monthlyIncome: 'abc', …(1) } to be null
+
+- Expected:
+null
+
++ Received:
+{
+  "monthlyIncome": "abc",
+  "selectedComparisonIds": [],
+}
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:207:37
+    205|     expect.soft(routes).toEqual(initialRoutes);
+    206|     expect.soft(nativeStorage.setItem).not.toHaveBeenCalled();
+    207|     expect.soft(persistedProfile()).toBeNull();
+       |                                     ^
+    208|     const alert = screen.queryByRole('alert');
+    209|     expect.soft(alert).not.toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:272:58
+    270|     enterIncome('1760');
+    271|     for (const checkbox of screen.getAllByRole('checkbox')) {
+    272|       expect.soft(checkbox.getAttribute('aria-checked')).toBe('false');
+       |                                                          ^
+    273|     }
+    274|     const coffee = () => screen.getByRole('checkbox', { name: 'Café' }…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:275:56
+    273|     }
+    274|     const coffee = () => screen.getByRole('checkbox', { name: 'Café' }…
+    275|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+       |                                                        ^
+    276|     await press('Café');
+    277|     expect.soft(coffee().getAttribute('aria-checked')).toBe('true');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'true' // Object.is equality
+
+- Expected:
+"true"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:277:56
+    275|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+    276|     await press('Café');
+    277|     expect.soft(coffee().getAttribute('aria-checked')).toBe('true');
+       |                                                        ^
+    278|     await press('Café');
+    279|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'false' // Object.is equality
+
+- Expected:
+"false"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:279:56
+    277|     expect.soft(coffee().getAttribute('aria-checked')).toBe('true');
+    278|     await press('Café');
+    279|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+       |                                                        ^
+    280|     await press('Netflix');
+    281|     expect.soft(screen.getByRole('checkbox', { name: 'Netflix' }).getA…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/45]⎯
+
+ FAIL  |integration| apps/mobile/src/integration/b-v2.integration.test.tsx > B-V2 > B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix
+AssertionError: expected null to be 'true' // Object.is equality
+
+- Expected:
+"true"
+
++ Received:
+null
+
+ ❯ apps/mobile/src/integration/b-v2.integration.test.tsx:281:97
+    279|     expect.soft(coffee().getAttribute('aria-checked')).toBe('false');
+    280|     await press('Netflix');
+    281|     expect.soft(screen.getByRole('checkbox', { name: 'Netflix' }).getA…
+       |                                                                                                 ^
+    282|     await press('Continuar');
+    283|     await atRoute('/calculator');
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/45]⎯
+

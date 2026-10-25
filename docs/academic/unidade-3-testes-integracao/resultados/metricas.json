@@ -1,0 +1,1557 @@
+{
+  "before-fixes": {
+    "a-v1": {
+      "total": 12,
+      "passed": 7,
+      "failed": 5,
+      "pending": 0,
+      "unique_executor_names": 12,
+      "typecheck_exit": 0,
+      "test_exit": 1,
+      "coverage": {
+        "lines": {
+          "total": 118,
+          "covered": 100,
+          "skipped": 0,
+          "pct": 84.74
+        },
+        "statements": {
+          "total": 121,
+          "covered": 103,
+          "skipped": 0,
+          "pct": 85.12
+        },
+        "functions": {
+          "total": 36,
+          "covered": 30,
+          "skipped": 0,
+          "pct": 83.33
+        },
+        "branches": {
+          "total": 82,
+          "covered": 61,
+          "skipped": 0,
+          "pct": 74.39
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "A-V1 A-V1-01 primeiro acesso persiste seleção e apresenta custo real",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 A-V1-02 retorno recupera perfil e integra seleção real sem duplicatas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-03 zero preferências aceita pt-BR e nome opcional sem fixar fallback",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-04 novo comparativo preserva perfil e usa a segunda compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-empty' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-zero' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-negative' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-text' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-empty' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-zero' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-negative' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-text' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        }
+      ]
+    },
+    "a-v2": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "pending": 0,
+      "unique_executor_names": 6,
+      "typecheck_exit": 0,
+      "test_exit": 0,
+      "coverage": {
+        "lines": {
+          "total": 118,
+          "covered": 103,
+          "skipped": 0,
+          "pct": 87.28
+        },
+        "statements": {
+          "total": 121,
+          "covered": 106,
+          "skipped": 0,
+          "pct": 87.6
+        },
+        "functions": {
+          "total": 36,
+          "covered": 34,
+          "skipped": 0,
+          "pct": 94.44
+        },
+        "branches": {
+          "total": 82,
+          "covered": 62,
+          "skipped": 0,
+          "pct": 75.6
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "A-V2 A-V2-01 primeiro acesso configura, persiste e calcula",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-02 retorno recupera perfil e prioriza quatro escolhas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-03 alternância permite zero preferências e nome opcional",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-04 entrada pt-BR preserva strings e calcula valor válido",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-05 novo comparativo preserva perfil e substitui a compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-06 alteração é persistida e reutilizada posteriormente pela Home",
+          "status": "passed"
+        }
+      ]
+    },
+    "b-v1": {
+      "total": 18,
+      "passed": 13,
+      "failed": 5,
+      "pending": 0,
+      "unique_executor_names": 18,
+      "typecheck_exit": 0,
+      "test_exit": 1,
+      "coverage": {
+        "lines": {
+          "total": 118,
+          "covered": 104,
+          "skipped": 0,
+          "pct": 88.13
+        },
+        "statements": {
+          "total": 121,
+          "covered": 107,
+          "skipped": 0,
+          "pct": 88.42
+        },
+        "functions": {
+          "total": 36,
+          "covered": 32,
+          "skipped": 0,
+          "pct": 88.88
+        },
+        "branches": {
+          "total": 82,
+          "covered": 62,
+          "skipped": 0,
+          "pct": 75.6
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "B-V1 B-V1-01 — compra vazia permanece na Calculator com mensagem específica",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-02 — core e Result deduplicam preferências e completam fallback",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"0\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"-1\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"abc\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"0\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"-1\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"abc\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"Infinity\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"0\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"-1\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"abc\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"Infinity\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-06 — pt-BR preserva strings e calcula renda e compra normalizadas",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-08 — storage real propaga corrupção e falhas controladas antes de reutilização válida",
+          "status": "passed"
+        }
+      ]
+    },
+    "b-v2": {
+      "total": 25,
+      "passed": 17,
+      "failed": 8,
+      "pending": 0,
+      "unique_executor_names": 25,
+      "typecheck_exit": 0,
+      "test_exit": 1,
+      "coverage": {
+        "lines": {
+          "total": 118,
+          "covered": 110,
+          "skipped": 0,
+          "pct": 93.22
+        },
+        "statements": {
+          "total": 121,
+          "covered": 113,
+          "skipped": 0,
+          "pct": 93.38
+        },
+        "functions": {
+          "total": 36,
+          "covered": 36,
+          "skipped": 0,
+          "pct": 100
+        },
+        "branches": {
+          "total": 82,
+          "covered": 72,
+          "skipped": 0,
+          "pct": 87.8
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "B-V2 B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-empty' compra amount=\"''\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-zero' compra amount=\"'0'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-negative' compra amount=\"'-1'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-text' compra amount=\"'abc'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-infinity' compra amount=\"'Infinity'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-empty' onboarding monthlyIncome=\"''\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-zero' onboarding monthlyIncome=\"'0'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-negative' onboarding monthlyIncome=\"'-1'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-text' onboarding monthlyIncome=\"'abc'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-params' Result: 'params ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-empty' fallback: selectedComparisonIds=[]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home",
+          "status": "failed"
+        }
+      ]
+    },
+    "combined": {
+      "total": 61,
+      "passed": 43,
+      "failed": 18,
+      "pending": 0,
+      "unique_executor_names": 61,
+      "typecheck_exit": null,
+      "test_exit": 1,
+      "coverage": {
+        "lines": {
+          "total": 118,
+          "covered": 111,
+          "skipped": 0,
+          "pct": 94.06
+        },
+        "statements": {
+          "total": 121,
+          "covered": 114,
+          "skipped": 0,
+          "pct": 94.21
+        },
+        "functions": {
+          "total": 36,
+          "covered": 36,
+          "skipped": 0,
+          "pct": 100
+        },
+        "branches": {
+          "total": 82,
+          "covered": 73,
+          "skipped": 0,
+          "pct": 89.02
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "A-V1 A-V1-01 primeiro acesso persiste seleção e apresenta custo real",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 A-V1-02 retorno recupera perfil e integra seleção real sem duplicatas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-03 zero preferências aceita pt-BR e nome opcional sem fixar fallback",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-04 novo comparativo preserva perfil e usa a segunda compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-empty' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-zero' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-negative' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-text' bloqueia renda inválida no onboarding",
+          "status": "failed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-empty' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-zero' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-negative' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-text' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-01 primeiro acesso configura, persiste e calcula",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-02 retorno recupera perfil e prioriza quatro escolhas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-03 alternância permite zero preferências e nome opcional",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-04 entrada pt-BR preserva strings e calcula valor válido",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-05 novo comparativo preserva perfil e substitui a compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-06 alteração é persistida e reutilizada posteriormente pela Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-01 — compra vazia permanece na Calculator com mensagem específica",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-02 — core e Result deduplicam preferências e completam fallback",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"0\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"-1\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"abc\" sem persistir",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"0\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"-1\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"abc\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"Infinity\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"0\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"-1\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"abc\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"Infinity\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-06 — pt-BR preserva strings e calcula renda e compra normalizadas",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo",
+          "status": "failed"
+        },
+        {
+          "name": "B-V1 B-V1-08 — storage real propaga corrupção e falhas controladas antes de reutilização válida",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-empty' compra amount=\"''\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-zero' compra amount=\"'0'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-negative' compra amount=\"'-1'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-text' compra amount=\"'abc'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-infinity' compra amount=\"'Infinity'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-empty' onboarding monthlyIncome=\"''\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-zero' onboarding monthlyIncome=\"'0'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-negative' onboarding monthlyIncome=\"'-1'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-text' onboarding monthlyIncome=\"'abc'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-params' Result: 'params ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-empty' fallback: selectedComparisonIds=[]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home",
+          "status": "failed"
+        }
+      ]
+    }
+  },
+  "test-correction-only": {
+    "b-v2": {
+      "total": 25,
+      "passed": 20,
+      "failed": 5,
+      "pending": 0,
+      "unique_executor_names": 25,
+      "typecheck_exit": 0,
+      "test_exit": 1,
+      "coverage": {
+        "lines": {
+          "total": 118,
+          "covered": 110,
+          "skipped": 0,
+          "pct": 93.22
+        },
+        "statements": {
+          "total": 121,
+          "covered": 113,
+          "skipped": 0,
+          "pct": 93.38
+        },
+        "functions": {
+          "total": 36,
+          "covered": 36,
+          "skipped": 0,
+          "pct": 100
+        },
+        "branches": {
+          "total": 82,
+          "covered": 72,
+          "skipped": 0,
+          "pct": 87.8
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "B-V2 B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-empty' compra amount=\"''\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-zero' compra amount=\"'0'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-negative' compra amount=\"'-1'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-text' compra amount=\"'abc'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-infinity' compra amount=\"'Infinity'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-empty' onboarding monthlyIncome=\"''\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-zero' onboarding monthlyIncome=\"'0'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-negative' onboarding monthlyIncome=\"'-1'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-text' onboarding monthlyIncome=\"'abc'\": bloqueia sem escrita",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-params' Result: 'params ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-empty' fallback: selectedComparisonIds=[]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix",
+          "status": "failed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home",
+          "status": "passed"
+        }
+      ]
+    }
+  },
+  "after-fixes": {
+    "a-v1": {
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "pending": 0,
+      "unique_executor_names": 12,
+      "typecheck_exit": 0,
+      "test_exit": 0,
+      "coverage": {
+        "lines": {
+          "total": 125,
+          "covered": 114,
+          "skipped": 0,
+          "pct": 91.2
+        },
+        "statements": {
+          "total": 128,
+          "covered": 117,
+          "skipped": 0,
+          "pct": 91.4
+        },
+        "functions": {
+          "total": 36,
+          "covered": 33,
+          "skipped": 0,
+          "pct": 91.66
+        },
+        "branches": {
+          "total": 88,
+          "covered": 73,
+          "skipped": 0,
+          "pct": 82.95
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "A-V1 A-V1-01 primeiro acesso persiste seleção e apresenta custo real",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-02 retorno recupera perfil e integra seleção real sem duplicatas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-03 zero preferências aceita pt-BR e nome opcional sem fixar fallback",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-04 novo comparativo preserva perfil e usa a segunda compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-empty' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-zero' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-negative' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-text' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-empty' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-zero' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-negative' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-text' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        }
+      ]
+    },
+    "a-v2": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "pending": 0,
+      "unique_executor_names": 6,
+      "typecheck_exit": 0,
+      "test_exit": 0,
+      "coverage": {
+        "lines": {
+          "total": 125,
+          "covered": 108,
+          "skipped": 0,
+          "pct": 86.4
+        },
+        "statements": {
+          "total": 128,
+          "covered": 111,
+          "skipped": 0,
+          "pct": 86.71
+        },
+        "functions": {
+          "total": 36,
+          "covered": 34,
+          "skipped": 0,
+          "pct": 94.44
+        },
+        "branches": {
+          "total": 88,
+          "covered": 66,
+          "skipped": 0,
+          "pct": 75
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "A-V2 A-V2-01 primeiro acesso configura, persiste e calcula",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-02 retorno recupera perfil e prioriza quatro escolhas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-03 alternância permite zero preferências e nome opcional",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-04 entrada pt-BR preserva strings e calcula valor válido",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-05 novo comparativo preserva perfil e substitui a compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-06 alteração é persistida e reutilizada posteriormente pela Home",
+          "status": "passed"
+        }
+      ]
+    },
+    "b-v1": {
+      "total": 18,
+      "passed": 18,
+      "failed": 0,
+      "pending": 0,
+      "unique_executor_names": 18,
+      "typecheck_exit": 0,
+      "test_exit": 0,
+      "coverage": {
+        "lines": {
+          "total": 125,
+          "covered": 114,
+          "skipped": 0,
+          "pct": 91.2
+        },
+        "statements": {
+          "total": 128,
+          "covered": 117,
+          "skipped": 0,
+          "pct": 91.4
+        },
+        "functions": {
+          "total": 36,
+          "covered": 33,
+          "skipped": 0,
+          "pct": 91.66
+        },
+        "branches": {
+          "total": 88,
+          "covered": 73,
+          "skipped": 0,
+          "pct": 82.95
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "B-V1 B-V1-01 — compra vazia permanece na Calculator com mensagem específica",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-02 — core e Result deduplicam preferências e completam fallback",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"0\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"-1\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"abc\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"0\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"-1\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"abc\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"Infinity\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"0\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"-1\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"abc\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"Infinity\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-06 — pt-BR preserva strings e calcula renda e compra normalizadas",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-08 — storage real propaga corrupção e falhas controladas antes de reutilização válida",
+          "status": "passed"
+        }
+      ]
+    },
+    "b-v2": {
+      "total": 25,
+      "passed": 25,
+      "failed": 0,
+      "pending": 0,
+      "unique_executor_names": 25,
+      "typecheck_exit": 0,
+      "test_exit": 0,
+      "coverage": {
+        "lines": {
+          "total": 125,
+          "covered": 117,
+          "skipped": 0,
+          "pct": 93.6
+        },
+        "statements": {
+          "total": 128,
+          "covered": 120,
+          "skipped": 0,
+          "pct": 93.75
+        },
+        "functions": {
+          "total": 36,
+          "covered": 36,
+          "skipped": 0,
+          "pct": 100
+        },
+        "branches": {
+          "total": 88,
+          "covered": 78,
+          "skipped": 0,
+          "pct": 88.63
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "B-V2 B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-empty' compra amount=\"''\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-zero' compra amount=\"'0'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-negative' compra amount=\"'-1'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-text' compra amount=\"'abc'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-infinity' compra amount=\"'Infinity'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-empty' onboarding monthlyIncome=\"''\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-zero' onboarding monthlyIncome=\"'0'\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-negative' onboarding monthlyIncome=\"'-1'\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-text' onboarding monthlyIncome=\"'abc'\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-params' Result: 'params ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-empty' fallback: selectedComparisonIds=[]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home",
+          "status": "passed"
+        }
+      ]
+    },
+    "combined": {
+      "total": 61,
+      "passed": 61,
+      "failed": 0,
+      "pending": 0,
+      "unique_executor_names": 61,
+      "typecheck_exit": null,
+      "test_exit": 0,
+      "coverage": {
+        "lines": {
+          "total": 125,
+          "covered": 118,
+          "skipped": 0,
+          "pct": 94.4
+        },
+        "statements": {
+          "total": 128,
+          "covered": 121,
+          "skipped": 0,
+          "pct": 94.53
+        },
+        "functions": {
+          "total": 36,
+          "covered": 36,
+          "skipped": 0,
+          "pct": 100
+        },
+        "branches": {
+          "total": 88,
+          "covered": 79,
+          "skipped": 0,
+          "pct": 89.77
+        },
+        "branchesTrue": {
+          "total": 0,
+          "covered": 0,
+          "skipped": 0,
+          "pct": 100
+        }
+      },
+      "cases": [
+        {
+          "name": "A-V1 A-V1-01 primeiro acesso persiste seleção e apresenta custo real",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-02 retorno recupera perfil e integra seleção real sem duplicatas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-03 zero preferências aceita pt-BR e nome opcional sem fixar fallback",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 A-V1-04 novo comparativo preserva perfil e usa a segunda compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-empty' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-zero' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-negative' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-05-text' bloqueia renda inválida no onboarding",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-empty' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-zero' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-negative' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V1 'A-V1-06-text' rejeita compra inválida sem equivalências numéricas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-01 primeiro acesso configura, persiste e calcula",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-02 retorno recupera perfil e prioriza quatro escolhas",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-03 alternância permite zero preferências e nome opcional",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-04 entrada pt-BR preserva strings e calcula valor válido",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-05 novo comparativo preserva perfil e substitui a compra",
+          "status": "passed"
+        },
+        {
+          "name": "A-V2 A-V2-06 alteração é persistida e reutilizada posteriormente pela Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-01 — compra vazia permanece na Calculator com mensagem específica",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-02 — core e Result deduplicam preferências e completam fallback",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"0\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"-1\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-03 — onboarding bloqueia renda inválida \"abc\" sem persistir",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"0\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"-1\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"abc\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-04 — compra inválida \"Infinity\" recebe mensagem sem resultado numérico",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"0\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"-1\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"abc\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-05 — Result rejeita renda inválida \"Infinity\" recebida por rota",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-06 — pt-BR preserva strings e calcula renda e compra normalizadas",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-07 — zero preferências aceita fallback e preserva perfil no novo comparativo",
+          "status": "passed"
+        },
+        {
+          "name": "B-V1 B-V1-08 — storage real propaga corrupção e falhas controladas antes de reutilização válida",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-01 primeiro acesso: renda=1760; Livro=60; Ingresso=30",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-empty' compra amount=\"''\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-zero' compra amount=\"'0'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-negative' compra amount=\"'-1'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-text' compra amount=\"'abc'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-02-infinity' compra amount=\"'Infinity'\": erro e correção",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-empty' onboarding monthlyIncome=\"''\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-zero' onboarding monthlyIncome=\"'0'\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-negative' onboarding monthlyIncome=\"'-1'\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-03-text' onboarding monthlyIncome=\"'abc'\": bloqueia sem escrita",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-params' Result: 'params ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-income' Result: 'amount=60; monthlyIncome ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-no-amount' Result: 'monthlyIncome=1760; amount ausente'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-inconsistent' Result: 'monthlyIncome=abc; amount=60'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-04-optional' Result: 'nome e preferências ausentes; renda=1…'",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-duplicate' fallback: selectedComparisonIds=[ 'coffee', 'coffee', 'desconhecido' ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-empty' fallback: selectedComparisonIds=[]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-05-limit' fallback: selectedComparisonIds=[ Array(5) ]",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 B-V2-06 checkbox web Café: aria-checked=false,true,false; persistência final=netflix",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-json' storage real: falha='json', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-read' storage real: falha='read', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-07-write' storage real: falha='write', rejeição aguardada pelo controlador",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-home' edição a partir de 'Home': salva e recupera via Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-calculator' edição a partir de 'Calculator': salva e recupera via Home",
+          "status": "passed"
+        },
+        {
+          "name": "B-V2 'B-V2-08-result' edição a partir de 'Result': salva e recupera via Home",
+          "status": "passed"
+        }
+      ]
+    }
+  }
+}

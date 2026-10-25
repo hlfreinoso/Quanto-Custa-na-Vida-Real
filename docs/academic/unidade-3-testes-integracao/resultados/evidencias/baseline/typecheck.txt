@@ -1,0 +1,4 @@
+
+> quanto-custa-na-vida-real@0.1.0 typecheck
+> tsc -p packages/core/tsconfig.json && tsc -p packages/ui/tsconfig.json && tsc -p apps/mobile/tsconfig.json
+
