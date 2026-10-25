@@ -1,5 +1,4 @@
-* text=auto eol=lf
-
-*.bat text eol=crlf
-*.cmd text eol=crlf
-*.ps1 text eol=crlf
+# Preserve the exact experimental inputs/outputs; do not normalize their bytes.
+docs/academic/unidade-3-testes-integracao/prompts/* -text
+docs/academic/unidade-3-testes-integracao/respostas-llm/* -text
+apps/mobile/src/integration/*.integration.test.tsx -text

@@ -2,6 +2,12 @@
 
 ## Comandos
 
+### Unidade III — infraestrutura de integração
+
+A branch da atividade acrescenta o projeto Vitest `integration`, com React Testing Library/jsdom e a implementação React Native Web já utilizada no aplicativo. `unit` mantém os testes originais em Node. A linha de base `fe3103d` passou em 31/31 casos e typecheck. Não houve exclusão ou alteração dos testes unitários.
+
+`npm test -- --project=unit` executa os testes existentes; `npm test -- --project=integration` executa os arquivos `.test.tsx`. O smoke de infraestrutura em `tests/integration/harness.smoke.test.tsx` é autoria do assistente coordenador e não conta como saída dos prompts do experimento. Telas, InitialProfileStorage e core são reais; adapter AsyncStorage e roteamento são simulados. Não é E2E em Android/iOS. [Método da atividade](academic/unidade-3-testes-integracao/metodologia.md).
+
 ```bash
 npm test
 npm run typecheck
