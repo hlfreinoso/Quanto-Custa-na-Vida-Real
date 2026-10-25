@@ -1,0 +1,220 @@
+[
+  {
+    "id": "A-V2-01",
+    "title": "Primeiro acesso configura, persiste e calcula",
+    "objective": "Verificar o fluxo funcional completo sem fazer sua continuidade depender da exposição de aria-checked.",
+    "preconditions": [
+      "Storage e registros de navegação limpos; Math.random controlado em 0.25.",
+      "Telas, storage do aplicativo e core reais; AsyncStorage e Expo Router substituídos pelos adapters do harness.",
+      "Integração em React Native Web e jsdom; não representa E2E em dispositivo."
+    ],
+    "components": [
+      "HomeScreen",
+      "ComparisonPreferencesScreen",
+      "CalculatorScreen",
+      "ResultScreen",
+      "InitialProfileStorage",
+      "Core real"
+    ],
+    "actions": [
+      "Acionar Iniciar sem perfil.",
+      "Informar renda 1760, selecionar Café e Netflix e continuar.",
+      "Conferir persistência e parâmetros; calcular uma compra de 60."
+    ],
+    "expected": [
+      "Home consulta a chave real e abre onboarding.",
+      "Storage salva renda como string e IDs coffee e netflix.",
+      "Calculator e Result recebem os parâmetros corretos.",
+      "Resultado identifica a compra e apresenta 6,00 horas do seu trabalho.",
+      "Café e Netflix integram quatro comparações distintas, com quantidades verificadas por aritmética independente."
+    ],
+    "requirements": [
+      "RF-01/RF-02 → CA-01.1: primeiro acesso.",
+      "RF-04/RF-05/RF-06 → CA-02.1: configuração persistida.",
+      "RF-07/RF-09/RF-10/RF-11/RF-12/RF-13/RF-14 → CA-03.1 e CA-04.1 a CA-04.4.",
+      "RN-03 a RN-06 e RN-10/RN-11/RN-14: jornada, cálculo, prioridade, fallback e limite.",
+      "A falha candidata de ARIA de V1 permanece pendente de caso próprio; este caso não afirma sua resolução."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V2-02",
+    "title": "Retorno recupera perfil e prioriza quatro escolhas",
+    "objective": "Verificar recuperação pela Home e composição do resultado sem usar calculateComparisonResults como oráculo.",
+    "preconditions": [
+      "Perfil local com renda string 1760 e quatro preferências válidas.",
+      "Telas, storage e core reais; somente fronteiras nativas de persistência e navegação adaptadas.",
+      "Caso independente, sem herdar dados de outro teste."
+    ],
+    "components": [
+      "HomeScreen",
+      "CalculatorScreen",
+      "ResultScreen",
+      "InitialProfileStorage",
+      "Core real"
+    ],
+    "actions": [
+      "Preparar perfil com Café, Netflix, Hambúrguer e Pizza.",
+      "Acionar Iniciar e calcular compra de 60."
+    ],
+    "expected": [
+      "Home lê o perfil e abre Calculator com renda e IDs armazenados.",
+      "Resultado mostra 6,00 horas e exatamente as quatro preferências, em qualquer ordem.",
+      "Equivalências são 10 cafés, 1,5 meses de Netflix, 2,0 hambúrgueres e 1,0 pizzas.",
+      "Perfil permanece inalterado e não é regravado."
+    ],
+    "requirements": [
+      "RF-01/RF-03/RF-06 → CA-01.2: recuperação e reutilização.",
+      "RF-09 a RF-14 → CA-04.1/CA-04.2/CA-04.4.",
+      "RN-04/RN-05/RN-06/RN-10/RN-14/RN-15: cálculos independentes, prioridade e referências locais.",
+      "RNF-01 a RNF-04: fluxo local sem autenticação; não comprova execução em dispositivo offline."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V2-03",
+    "title": "Alternância permite salvar zero preferências e nome opcional",
+    "objective": "Verificar seleção e desmarcação, continuidade sem preferências e identificação substituta da compra.",
+    "preconditions": [
+      "Onboarding aberto sem perfil anterior.",
+      "Telas, storage e core reais; adapters do harness nas fronteiras nativas.",
+      "LAC-03 permanece aberta quanto à identidade específica do fallback vazio."
+    ],
+    "components": [
+      "ComparisonPreferencesScreen",
+      "CalculatorScreen",
+      "ResultScreen",
+      "InitialProfileStorage",
+      "Core real"
+    ],
+    "actions": [
+      "Selecionar e desmarcar Café e Netflix.",
+      "Salvar renda 1760 sem preferências.",
+      "Calcular compra de 60 sem nome."
+    ],
+    "expected": [
+      "Perfil persiste selectedComparisonIds vazio e navegação transmite string vazia.",
+      "Fluxo permite concluir o cálculo.",
+      "Resultado utiliza Essa compra e apresenta 6,00 horas do seu trabalho.",
+      "Comparações exibidas são válidas, distintas e limitadas a quatro, sem impor IDs ou ordem do fallback vazio."
+    ],
+    "requirements": [
+      "RF-05/RF-06 → CA-02.1/CA-02.2; RN-08/RN-09: preferências opcionais sem seleção implícita persistida.",
+      "RF-14 → CA-03.4; RN-17: nome substituto.",
+      "RF-11/RF-13 → CA-04.4; RN-06/RN-12/RN-14: quantidades válidas, unicidade e limite.",
+      "LAC-03: não transforma o fallback específico atual em contrato aprovado."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V2-04",
+    "title": "Entrada monetária pt-BR mantém strings e calcula corretamente",
+    "objective": "Verificar integração entre formulário, parâmetros e cálculo com separador de milhar e vírgula decimal.",
+    "preconditions": [
+      "Perfil local com renda string 1.760,00 e preferências coffee e netflix.",
+      "Telas, storage e core reais; fronteiras nativas adaptadas.",
+      "Não pressupõe suporte a ponto decimal internacional."
+    ],
+    "components": [
+      "HomeScreen",
+      "CalculatorScreen",
+      "ResultScreen",
+      "InitialProfileStorage",
+      "Core real"
+    ],
+    "actions": [
+      "Recuperar perfil pela Home.",
+      "Informar nome com espaços nas extremidades e valor 1.200,00.",
+      "Calcular e conferir parâmetros e resultado."
+    ],
+    "expected": [
+      "Parâmetros preservam renda e preço como strings pt-BR.",
+      "Nome enviado ao resultado é aparado.",
+      "Resultado mostra Notebook custa: e 120,0 horas do seu trabalho.",
+      "Comparações priorizam Café e Netflix, com quatro itens distintos e quantidades calculadas independentemente."
+    ],
+    "requirements": [
+      "RF-03/RF-07/RF-09 a RF-14 → CA-01.2/CA-03.1/CA-04.1 a CA-04.4.",
+      "RN-01/RN-03 a RN-06: BRL, jornada de 176 horas e cálculo.",
+      "RNF-08: entrada no contexto brasileiro.",
+      "LAC-02: outros formatos monetários permanecem pendentes."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V2-05",
+    "title": "Novo comparativo preserva perfil e substitui a compra",
+    "objective": "Verificar retorno por replace e novo cálculo sem reconfiguração nem regravação do perfil.",
+    "preconditions": [
+      "Perfil local com renda string 1760 e preferências coffee e netflix.",
+      "Telas, storage e core reais; navegação e AsyncStorage adaptados.",
+      "Caso independente dos demais."
+    ],
+    "components": [
+      "HomeScreen",
+      "CalculatorScreen",
+      "ResultScreen",
+      "InitialProfileStorage",
+      "Core real"
+    ],
+    "actions": [
+      "Calcular primeira compra de 60.",
+      "Acionar Novo comparativo.",
+      "Conferir parâmetros preservados e calcular segunda compra de 120."
+    ],
+    "expected": [
+      "Novo comparativo usa replace para Calculator com renda e preferências preservadas.",
+      "Segunda compra apresenta seu próprio nome e 12,0 horas do seu trabalho.",
+      "Resultado anterior não permanece na UI.",
+      "Preferências continuam prioritárias; perfil persistido não muda e não recebe novas gravações."
+    ],
+    "requirements": [
+      "RF-16 → CA-05.1: novo comparativo com preservação da sessão.",
+      "RF-09 a RF-14 → CA-03.1/CA-04.1 a CA-04.4.",
+      "RN-04/RN-05/RN-06/RN-10/RN-11/RN-14: recálculo, prioridade, fallback e limite."
+    ],
+    "status": "confirmed"
+  },
+  {
+    "id": "A-V2-06",
+    "title": "Alteração de perfil é persistida e reutilizada pela Home",
+    "objective": "Cobrir RF-17 com acesso, salvamento de alteração e reutilização posterior do perfil modificado.",
+    "preconditions": [
+      "Perfil anterior com renda string 1760 e lista vazia de preferências.",
+      "Telas, storage e core reais; somente fronteiras nativas adaptadas.",
+      "Não exige nem verifica pré-preenchimento, pendente em LAC-04/CA-06.2."
+    ],
+    "components": [
+      "HomeScreen",
+      "CalculatorScreen",
+      "ComparisonPreferencesScreen",
+      "ResultScreen",
+      "InitialProfileStorage",
+      "Core real"
+    ],
+    "actions": [
+      "Recuperar perfil anterior e acessar Mudar preferências pela Calculator.",
+      "Informar renda 3520 e selecionar Café e Netflix.",
+      "Salvar e conferir perfil e parâmetros.",
+      "Desmontar a árvore React e reabrir Home no mesmo caso, preservando nativeData.",
+      "Acionar Iniciar e calcular compra de 60."
+    ],
+    "expected": [
+      "Onboarding fica acessível e salva a alteração na chave real.",
+      "Perfil anterior é substituído por renda string 3520 e IDs coffee e netflix.",
+      "Home reaberta recupera os valores modificados.",
+      "Resultado apresenta 3,00 horas do seu trabalho e prioriza as preferências novas.",
+      "Comparações permanecem válidas, distintas e limitadas a quatro."
+    ],
+    "requirements": [
+      "RF-17 → CA-06.1: acesso à configuração pela Calculator.",
+      "RF-04/RF-05/RF-06 → CA-02.1: salvar alteração.",
+      "RF-01/RF-03 → CA-01.2: reutilizar posteriormente o perfil alterado.",
+      "RF-09 a RF-14 → CA-04.1 a CA-04.4; RN-04/RN-05/RN-06/RN-10/RN-11/RN-14.",
+      "LAC-04/CA-06.2: pré-preenchimento não é requisito deste caso.",
+      "Pendências fora desta suíte funcional: CA-02.3/RF-08 continua obrigatório e candidato a defeito; ARIA continua candidato separado; LAC-11 não define recuperação da Home e não recebe fallback inventado.",
+      "Metadados descrevem verificações executáveis de contrato; não constituem relato de execução ou aprovação."
+    ],
+    "status": "confirmed"
+  }
+]
