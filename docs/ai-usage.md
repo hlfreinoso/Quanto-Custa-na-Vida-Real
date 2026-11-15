@@ -24,6 +24,14 @@ O Codex foi usado para:
 - implementar telas iniciais do app;
 - organizar commits pequenos por etapa.
 
+## Diagnóstico de falha no laboratório de DevOps
+
+No [PR do Módulo 14](https://github.com/hlfreinoso/Quanto-Custa-na-Vida-Real/pull/6), a expressão `amount / hourlyRate` foi invertida de propósito. Com um preço de R$ 299,90 e uma taxa de aproximadamente R$ 25,57 por hora, dois testes do Vitest acusaram `0,085256` no lugar de aproximadamente `11,729` horas.
+
+O Codex cruzou as asserções do log com o diff da função. A conferência da fórmula confirmou que dividir reais pela taxa em reais por hora dá o resultado em horas. A expressão invertida calcula o recíproco. A correção restaura a ordem dos operandos e mantém as asserções originais.
+
+O caso ilustra como a IA ajuda a ligar duas falhas de teste a uma única linha. O log mostra o valor divergente. A validação exige conferir a fórmula contra a regra de negócio e rodar novamente a mesma suíte. O diagnóstico foi feito manualmente com o Codex.
+
 ## Responsabilidade Humana
 
 A IA atuou como ferramenta de apoio. As decisões de produto, validação dos requisitos, direção das etapas, aceite das mudanças e revisão final permanecem sob responsabilidade humana.
