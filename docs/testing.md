@@ -15,6 +15,12 @@ make typecheck
 make validate
 ```
 
+## Integração contínua
+
+O workflow [CI](../.github/workflows/ci.yml) roda em pull requests com Node.js 24. Ele instala as dependências com `npm ci`, executa o Vitest e verifica os tipos com `npm run typecheck` quando os testes passam.
+
+O passo de testes usa Bash com `pipefail` para preservar o código de saída do Vitest ao gravar o log com `tee`. Abra a execução na aba **Actions** e procure o artefato `vitest-log`. Ele é publicado quando o Vitest roda, inclusive se houver testes reprovados.
+
 ## O Que Está Coberto
 
 - `calculateHourlyRate`
