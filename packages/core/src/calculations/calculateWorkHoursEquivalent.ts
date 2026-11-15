@@ -15,5 +15,5 @@ export function calculateWorkHoursEquivalent({
     throw new RangeError("hourlyRate must be a finite number greater than zero");
   }
 
-  return hourlyRate / amount;
+  return amount / hourlyRate;
 }
